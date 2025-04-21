@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "REMOTE DEBUG",
+            "request": "attach",
+            "hostName": "127.0.0.1",
+            "port": "8000"
+        },
+        {
+            "type": "java",
+            "name": "SPRINGBOOT",
+            "request": "launch",
+            "mainClass": "ar.gov.posadas.mbe.MBEApplication",
+            "projectName": "mbe",
+            "env": {
+                "SPRING_CONFIG_LOCATION": "classpath:/application.properties,file:${workspaceFolder}\\local\\appext.properties",
+                "LOGGING_HOME":"${workspaceFolder}\\logs",
+                "TNS_ADMIN": "${env:TNS_ADMIN}",
+                "ORACLE_HOME": "${env:ORACLE_HOME}",
+                "WALLET_DIR": "${env:TNS_ADMIN}",
+                "SERVER_SERVLET_CONTEXT_PATH": "/mbe"
+            }
+        }
+    ]
+}

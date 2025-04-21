@@ -1,0 +1,16 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.terminal.favorites": [
+        {
+            "alias": "mvnpnt",
+            "command": "clean package -DskipTests=true"
+        },
+        {
+            "alias": "mvnpntdeploy",
+            "command": "clean package tomcat7:deploy -DskipTests=true"
+        }
+    ],
+    "maven.view": "hierarchical",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms100m -Xlog:disable"
+}
