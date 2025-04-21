@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import ar.gov.posadas.mbe.ports.repos.IRepositorio;
+import ar.com.acme.ports.repos.IRepositorio;
 
 import java.util.Optional;
 

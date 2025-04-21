@@ -1,10 +1,10 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
-import ar.gov.posadas.mbe.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
-import ar.gov.posadas.mbe.sistema.seguridad.permiso.Permiso;
-import ar.gov.posadas.mbe.ports.repos.IRepositorio;
-import ar.gov.posadas.mbe.sistema.persona.persona.Persona;
-import ar.gov.posadas.mbe.sistema.tramite.areausuario.Areausuariovista;
+import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
+import ar.com.acme.sistema.seguridad.permiso.Permiso;
+import ar.com.acme.ports.repos.IRepositorio;
+import ar.com.acme.sistema.persona.persona.Persona;
+import ar.com.acme.sistema.tramite.areausuario.Areausuariovista;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +43,7 @@ public interface IUsuarioRepo extends IRepositorio<Usuario, Long> {
     Optional<Usuario> findByUsernameOrEmail(String parametro);
 
     @Query("select p " +
-            " from ar.gov.posadas.mbe.seguridad.permiso.Permiso p " +
+            " from ar.com.acme.seguridad.permiso.Permiso p " +
             "where p.fechabaja is null " +
             "  and p in (select g.permiso " +
             "              from GrupoPermiso g" +
@@ -64,7 +64,7 @@ public interface IUsuarioRepo extends IRepositorio<Usuario, Long> {
             " WHERE lower(tauv.username) like ?1 ")
     List<Areausuariovista> findTramiteAreaByUsername(String username);
 
-    @Query(value = "select new ar.gov.posadas.mbe.seguridad.auditoriausuario.AuditoriausuarioDTO(au.usuario, aut.descripcion, us.username, au.observacion, au.fechaalta, pe.razonsocial, pe.imagen)" +
+    @Query(value = "select new ar.com.acme.seguridad.auditoriausuario.AuditoriausuarioDTO(au.usuario, aut.descripcion, us.username, au.observacion, au.fechaalta, pe.razonsocial, pe.imagen)" +
             " FROM Auditoriausuario  au" +
             " LEFT JOIN Auditoriausuariotipo aut ON (aut.id = au.auditoriausuariotipo)" +
             " LEFT JOIN Usuario us ON ( us.id = au.usuarioprocesa)" +

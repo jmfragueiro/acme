@@ -1,7 +1,7 @@
-package ar.gov.posadas.mbe.framework.core.exception;
+package ar.com.acme.framework.core.exception;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Tools;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Tools;
 
 public class ItemNotFoundException extends MessageException {
     public ItemNotFoundException(String entidad, String item) {

@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.exception;
+package ar.com.acme.framework.core.exception;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema

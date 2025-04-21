@@ -1,15 +1,15 @@
-package ar.gov.posadas.mbe.framework.utils.filemanager;
+package ar.com.acme.framework.utils.filemanager;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Fechas;
-import ar.gov.posadas.mbe.framework.common.Propiedades;
-import ar.gov.posadas.mbe.framework.common.Tools;
-import ar.gov.posadas.mbe.ports.apirest.RestService;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerRequest;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerResponse;
-import ar.gov.posadas.mbe.ports.filemanager.IFilemanagerOnActionClient;
-import ar.gov.posadas.mbe.ports.filemanager.IFilemanagerOnActionServer;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerRequest.EFilemanagerAction;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Fechas;
+import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.common.Tools;
+import ar.com.acme.ports.apirest.RestService;
+import ar.com.acme.ports.filemanager.FilemanagerRequest;
+import ar.com.acme.ports.filemanager.FilemanagerResponse;
+import ar.com.acme.ports.filemanager.IFilemanagerOnActionClient;
+import ar.com.acme.ports.filemanager.IFilemanagerOnActionServer;
+import ar.com.acme.ports.filemanager.FilemanagerRequest.EFilemanagerAction;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;

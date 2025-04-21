@@ -1,12 +1,10 @@
-package ar.gov.posadas.mbe.framework.core.auth;
+package ar.com.acme.framework.core.auth;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.framework.common.Tools;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.http.EHttpAuthType;
-import ar.gov.posadas.mbe.framework.core.http.HttpResponseBody;
-import ar.gov.posadas.mbe.framework.core.session.ISessionService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Tools;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.http.HttpResponseBody;
+import ar.com.acme.framework.core.session.ISessionService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDateTime;
@@ -34,12 +32,9 @@ public class AuthenticationController {
             return ResponseEntity.ok(
                     new HttpResponseBody(
                         LocalDateTime.now().toString(),
-                        HttpStatus.CREATED,
-                        null,
-                        logginSuccessJws,
+                        HttpStatus.OK,
                         Constantes.MSJ_SES_INF_LOGGON,
-                        request.getServletPath(),
-                        EHttpAuthType.BEARER));
+                        logginSuccessJws));
         } catch (Exception e) {
             throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGIN, e.getMessage(), username));
         }
@@ -56,18 +51,10 @@ public class AuthenticationController {
                     new HttpResponseBody(
                         LocalDateTime.now().toString(),
                         HttpStatus.OK,
-                        null,
                         loggoutSuccessJws,
-                        Constantes.MSJ_SES_INF_LOGGOFF,
-                        request.getServletPath(),
-                        EHttpAuthType.BEARER));
+                        Constantes.MSJ_SES_INF_LOGGOFF));
         } catch (Exception e) {
-            throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGOFF, e.getMessage(), Constantes.SYS_CAD_UNKNOW));
+            throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGOFF, e.getMessage(), null));
         }
-    }
-
-    @PostMapping(value = Constantes.SYS_CAD_GETTOKEN_URL)
-    public ResponseEntity<?> jwtByUsername(HttpServletRequest request, Long userId, String controlFecha) {
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Response.fail(Constantes.MSJ_SEC_ERR_NOT_IMPLEMENTED));
     }
 }

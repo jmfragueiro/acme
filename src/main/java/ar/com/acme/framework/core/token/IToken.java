@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.framework.core.token;
+package ar.com.acme.framework.core.token;
 
 import java.time.LocalDateTime;
 
-import ar.gov.posadas.mbe.framework.core.jws.IJwsDataHelper;
+import ar.com.acme.framework.core.jws.IJwsDataHelper;
 
 /**
  * Un TOKEN es un elemento que permite mantener "registrado" otro objeto cualquiera denominado

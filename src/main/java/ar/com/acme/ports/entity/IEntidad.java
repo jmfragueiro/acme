@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.ports.entity;
+package ar.com.acme.ports.entity;
 
 import java.time.LocalDateTime;
 

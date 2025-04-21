@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.jws;
+package ar.com.acme.framework.core.jws;
 
 import java.time.LocalDateTime;
 import java.util.List;

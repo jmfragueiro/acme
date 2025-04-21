@@ -1,5 +1,5 @@
-package ar.gov.posadas.mbe.framework.core.auth;
+package ar.com.acme.framework.core.auth;
 
-import ar.gov.posadas.mbe.framework.core.http.EHttpAuthType;
+import ar.com.acme.framework.core.http.EHttpAuthType;
 
 public record HttpRequestAuthorizationHeader(EHttpAuthType type, String value) { }

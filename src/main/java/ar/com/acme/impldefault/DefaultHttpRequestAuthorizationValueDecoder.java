@@ -1,17 +1,17 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
 import java.util.Base64;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Propiedades;
-import ar.gov.posadas.mbe.framework.core.auth.HttpRequestAuthorizationHeader;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.http.EHttpAuthType;
-import ar.gov.posadas.mbe.framework.core.http.IHttpRequestAuthorizationValueDecoder;
-import ar.gov.posadas.mbe.framework.core.jws.IJwsService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.core.auth.HttpRequestAuthorizationHeader;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.http.EHttpAuthType;
+import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
+import ar.com.acme.framework.core.jws.IJwsService;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Component

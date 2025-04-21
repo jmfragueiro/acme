@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.exception.TokenException;
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayload;
-import ar.gov.posadas.mbe.framework.core.token.ITokenService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.exception.TokenException;
+import ar.com.acme.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.core.token.ITokenService;
 
 import java.util.Optional;
 

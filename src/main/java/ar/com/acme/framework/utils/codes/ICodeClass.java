@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.codes;
+package ar.com.acme.framework.utils.codes;
 
 public interface ICodeClass {
     /**
@@ -20,7 +20,7 @@ public interface ICodeClass {
      * identifican el origen deseado de los datos.
      *
      * @param token el token con los datos origen
-     * @return una secuencia que representa la imagen QR a partir de la información asociada al token 
+     * @return una secuencia que representa la imagen QR a partir de la información asociada al token
      */
     byte[] findQRImageByToken(String token);
 }

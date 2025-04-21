@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.session.ISessionService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.session.ISessionService;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

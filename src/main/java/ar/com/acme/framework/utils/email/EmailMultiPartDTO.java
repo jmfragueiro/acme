@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.email;
+package ar.com.acme.framework.utils.email;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

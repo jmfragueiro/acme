@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.http;
+package ar.com.acme.framework.core.http;
 
 import org.springframework.http.HttpStatus;
 
@@ -11,8 +11,5 @@ import org.springframework.http.HttpStatus;
  */
 public record HttpResponseBody(String timestamp,
 							   HttpStatus status,
-							   String error,
-							   String object,
-							   Object message,
-							   String path,
-							   EHttpAuthType type) {}
+							   String message,
+							   Object object) {}

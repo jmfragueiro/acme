@@ -1,16 +1,16 @@
-package ar.gov.posadas.mbe.framework.utils.scheduled;
+package ar.com.acme.framework.utils.scheduled;
 
-import ar.gov.posadas.mbe.framework.common.Fechas;
-import ar.gov.posadas.mbe.sistema.domiciliofiscal.notificacion.DfNotificacionProcesarEnvioService;
-import ar.gov.posadas.mbe.sistema.evento.procesoventa.ProcesoenvioService;
-import ar.gov.posadas.mbe.sistema.forenea.falta.procesos.ProcesarCausa;
-import ar.gov.posadas.mbe.sistema.forenea.seccion.tiposeccion.Tiposeccion;
-import ar.gov.posadas.mbe.sistema.libredeuda.log.LdILogService;
-import ar.gov.posadas.mbe.sistema.libredeuda.procesoslibredeuda.ProcesarSolicitudService;
-import ar.gov.posadas.mbe.sistema.libredeuda.registro.LdIRegistroService;
-import ar.gov.posadas.mbe.sistema.libredeuda.registro.LdRegistro;
-import ar.gov.posadas.mbe.sistema.notificacion.log.NaILogService;
-import ar.gov.posadas.mbe.sistema.notificacion.notificacion.NaProcesarNotificacion;
+import ar.com.acme.framework.common.Fechas;
+import ar.com.acme.sistema.domiciliofiscal.notificacion.DfNotificacionProcesarEnvioService;
+import ar.com.acme.sistema.evento.procesoventa.ProcesoenvioService;
+import ar.com.acme.sistema.forenea.falta.procesos.ProcesarCausa;
+import ar.com.acme.sistema.forenea.seccion.tiposeccion.Tiposeccion;
+import ar.com.acme.sistema.libredeuda.log.LdILogService;
+import ar.com.acme.sistema.libredeuda.procesoslibredeuda.ProcesarSolicitudService;
+import ar.com.acme.sistema.libredeuda.registro.LdIRegistroService;
+import ar.com.acme.sistema.libredeuda.registro.LdRegistro;
+import ar.com.acme.sistema.notificacion.log.NaILogService;
+import ar.com.acme.sistema.notificacion.notificacion.NaProcesarNotificacion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

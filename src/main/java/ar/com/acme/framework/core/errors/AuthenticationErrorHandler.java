@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.framework.core.errors;
+package ar.com.acme.framework.core.errors;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.http.EHttpAuthType;
-import ar.gov.posadas.mbe.framework.core.http.HttpResponseBody;
-import ar.gov.posadas.mbe.framework.core.http.HttpResponseService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.http.EHttpAuthType;
+import ar.com.acme.framework.core.http.HttpResponseBody;
+import ar.com.acme.framework.core.http.HttpResponseService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;

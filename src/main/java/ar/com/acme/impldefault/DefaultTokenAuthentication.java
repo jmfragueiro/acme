@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.security.SecurityService;
-import ar.gov.posadas.mbe.framework.core.token.AbstractTokenAuthentication;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.security.SecurityService;
+import ar.com.acme.framework.core.token.AbstractTokenAuthentication;
 
 public class DefaultTokenAuthentication extends AbstractTokenAuthentication {
     public DefaultTokenAuthentication(DefaultToken token, String username, String password) {
@@ -25,12 +25,12 @@ public class DefaultTokenAuthentication extends AbstractTokenAuthentication {
         // no puede ser nulo y además, si viene la credencial, la misma
         // debe coincidir con la que tiene el principal contenido aqui
         if (getPrincipal() == null) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_INVALIDTOKEN);
+            throw new AuthException(Constantes.MSJ_SES_ERR_INVALIDTOKEN);
         }
 
         if (getCredentials() != null
             && !SecurityService.passwordsMatch(getCredentials().toString(), ((DefaultToken)getPrincipal()).getPayload().getCredential())) {
-            throw new AuthException(Constantes.MSJ_SES_INF_BADCREDENTIAL);
+            throw new AuthException(Constantes.MSJ_SES_ERR_BADCREDENTIAL);
         }
     }
 }

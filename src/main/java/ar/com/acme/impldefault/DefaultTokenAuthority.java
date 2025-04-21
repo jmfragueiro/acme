@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.core.token.ITokenAuthority;
+import ar.com.acme.framework.core.token.ITokenAuthority;
 
 public class DefaultTokenAuthority implements ITokenAuthority {
     private final String role;

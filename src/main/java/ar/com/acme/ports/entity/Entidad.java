@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.ports.entity;
+package ar.com.acme.ports.entity;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

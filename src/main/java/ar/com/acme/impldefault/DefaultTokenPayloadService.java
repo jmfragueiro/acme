@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
 import org.springframework.stereotype.Service;
 
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayloadService;
+import ar.com.acme.framework.core.token.ITokenPayloadService;
 
 import java.util.Optional;
 

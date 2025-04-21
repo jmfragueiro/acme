@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;

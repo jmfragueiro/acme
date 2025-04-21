@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.token;
+package ar.com.acme.framework.core.token;
 
 import java.util.List;
 import java.util.Optional;

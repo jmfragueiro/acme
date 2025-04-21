@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.ports.control;
+package ar.com.acme.ports.control;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 
-import ar.gov.posadas.mbe.ports.entity.IEntidad;
-import ar.gov.posadas.mbe.ports.service.IServicio;
+import ar.com.acme.ports.entity.IEntidad;
+import ar.com.acme.ports.service.IServicio;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Collection;

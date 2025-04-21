@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.config;
+package ar.com.acme.framework.core.config;
 
 import java.util.Arrays;
 import org.springframework.stereotype.Component;
@@ -6,8 +6,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Propiedades;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Propiedades;
 
 import static java.util.Collections.singletonList;
 

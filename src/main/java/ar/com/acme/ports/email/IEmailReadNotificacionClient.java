@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.ports.email;
+package ar.com.acme.ports.email;
 
-import ar.gov.posadas.mbe.framework.common.Response;
+import ar.com.acme.framework.common.Response;
 
 public interface IEmailReadNotificacionClient {
     Response registrarVisto(String tokenLeido);

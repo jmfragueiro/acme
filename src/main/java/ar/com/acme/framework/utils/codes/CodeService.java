@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.codes;
+package ar.com.acme.framework.utils.codes;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -8,7 +8,7 @@ import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.oned.Code39Writer;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.core.io.ResourceLoader;

@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.framework.core.http;
+package ar.com.acme.framework.core.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 

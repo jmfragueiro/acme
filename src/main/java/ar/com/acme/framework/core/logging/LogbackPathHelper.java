@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.logging;
+package ar.com.acme.framework.core.logging;
 
 import ch.qos.logback.core.PropertyDefinerBase;
 

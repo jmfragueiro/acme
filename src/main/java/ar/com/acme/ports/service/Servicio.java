@@ -1,12 +1,12 @@
-package ar.gov.posadas.mbe.ports.service;
+package ar.com.acme.ports.service;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.framework.common.Tools;
-import ar.gov.posadas.mbe.ports.entity.EntityException;
-import ar.gov.posadas.mbe.ports.entity.IEntidad;
-import ar.gov.posadas.mbe.ports.entity.IEntityContext;
-import ar.gov.posadas.mbe.ports.repos.IRepositorio;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Response;
+import ar.com.acme.framework.common.Tools;
+import ar.com.acme.ports.entity.EntityException;
+import ar.com.acme.ports.entity.IEntidad;
+import ar.com.acme.ports.entity.IEntityContext;
+import ar.com.acme.ports.repos.IRepositorio;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

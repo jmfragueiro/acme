@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.ports.filemanager;
+package ar.com.acme.ports.filemanager;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 
 /**
  * Esta clase es utilizada para registrar el resultado de operaciones sobre archivos,

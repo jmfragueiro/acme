@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.codes;
+package ar.com.acme.framework.utils.codes;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.zxing.WriterException;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 import lombok.RequiredArgsConstructor;
 
 @RestController

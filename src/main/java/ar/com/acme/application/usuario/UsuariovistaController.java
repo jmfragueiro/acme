@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.gov.posadas.mbe.ports.control.Controlador;
+import ar.com.acme.ports.control.Controlador;
 
 @RestController
 @RequestMapping("/usuariosvista")

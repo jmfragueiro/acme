@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.common;
+package ar.com.acme.framework.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
  * Esta clase debe ser utilizada como un wrapper para las operaciones de logging del sistema.
  *
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250421
  */
 public abstract class Logging {
     public static void info(Class<?> clazz, String mensaje) {

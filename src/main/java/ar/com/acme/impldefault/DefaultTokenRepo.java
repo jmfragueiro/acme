@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import ar.gov.posadas.mbe.framework.core.token.AbstractTokenRepo;
+import ar.com.acme.framework.core.token.AbstractTokenRepo;
 
 import java.util.Hashtable;
 import java.util.Map;

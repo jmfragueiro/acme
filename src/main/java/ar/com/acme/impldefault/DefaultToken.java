@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Fechas;
-import ar.gov.posadas.mbe.framework.common.Tools;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.token.AbstractToken;
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Fechas;
+import ar.com.acme.framework.common.Tools;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.token.AbstractToken;
+import ar.com.acme.framework.core.token.ITokenPayload;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -45,7 +45,7 @@ public class DefaultToken extends AbstractToken<String, ITokenPayload> {
         try {
             return getPayload().getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
         } catch (Exception e) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_NOGRANTS, e.getMessage());
+            throw new AuthException(Constantes.MSJ_SES_ERR_NOGRANTS, e.getMessage());
         }
     }
 

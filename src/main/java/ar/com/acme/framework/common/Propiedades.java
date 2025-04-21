@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.common;
+package ar.com.acme.framework.common;
 
 import java.util.Map;
 
@@ -7,18 +7,17 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 
+/**
+ * Esta clase debe ser utilizada como un punto focal para el acceso a las propiedades configurables para
+ * el sistema, de manera de tener encasulada, en una sola clase, todas las cuestiones relativas a estos.
+ *
+ * @author jmfragueiro
+ * @version 20250421
+ */
 @Component
-@ConfigurationProperties(prefix = "frameworkmbe")
+@ConfigurationProperties(prefix = "framework")
 @Getter
 public class Propiedades {
-    private String entorno;
     private Map<String, String> security;
     private Map<String, String> token;
-    private Map<String, String> extradata;
-    private Map<String, String> reportes;
-    private Map<String, String> qr;
-    private Map<String, String> email;
-    private Map<String, String> fileman;
-    private Map<String, String> empresa;
-    private Map<String, String> extra;
 }

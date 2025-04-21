@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.http;
+package ar.com.acme.framework.core.http;
 
 import jakarta.servlet.http.HttpServletRequest;
 

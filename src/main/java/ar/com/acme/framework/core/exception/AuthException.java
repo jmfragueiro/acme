@@ -1,10 +1,10 @@
-package ar.gov.posadas.mbe.framework.core.exception;
+package ar.com.acme.framework.core.exception;
 
 import org.springframework.security.core.AuthenticationException;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Logging;
-import ar.gov.posadas.mbe.framework.common.Tools;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Logging;
+import ar.com.acme.framework.common.Tools;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema

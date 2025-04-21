@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.database;
+package ar.com.acme.framework.utils.database;
 
 import org.springframework.stereotype.Component;
 

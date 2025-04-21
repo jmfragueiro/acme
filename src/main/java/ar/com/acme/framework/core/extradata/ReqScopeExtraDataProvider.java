@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.extradata;
+package ar.com.acme.framework.core.extradata;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

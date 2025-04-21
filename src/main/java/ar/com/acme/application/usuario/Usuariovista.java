@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-import ar.gov.posadas.mbe.ports.entity.Entidad;
+import ar.com.acme.ports.entity.Entidad;
 
 @Entity
 @Table(name = "view_sg_usuario")

@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.config;
+package ar.com.acme.framework.core.config;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,11 +10,11 @@ import org.springframework.security.config.annotation.web.configurers.*;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import ar.gov.posadas.mbe.framework.core.auth.AuthenticationFilter;
-import ar.gov.posadas.mbe.framework.core.auth.IAuthenticationService;
-import ar.gov.posadas.mbe.framework.core.errors.AccessErrorHandler;
-import ar.gov.posadas.mbe.framework.core.errors.AuthenticationErrorHandler;
-import ar.gov.posadas.mbe.framework.core.extradata.IReqScopeExtraDataService;
+import ar.com.acme.framework.core.auth.AuthenticationFilter;
+import ar.com.acme.framework.core.auth.IAuthenticationService;
+import ar.com.acme.framework.core.errors.AccessErrorHandler;
+import ar.com.acme.framework.core.errors.AuthenticationErrorHandler;
+import ar.com.acme.framework.core.extradata.IReqScopeExtraDataService;
 
 @Configuration
 @EnableWebSecurity

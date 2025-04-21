@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
 import java.time.LocalDate;
 

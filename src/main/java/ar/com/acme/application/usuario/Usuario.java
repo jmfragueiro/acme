@@ -1,14 +1,14 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.token.ITokenAuthority;
-import ar.gov.posadas.mbe.ports.entity.Entidad;
-import ar.gov.posadas.mbe.impldefault.DefaultTokenAuthority;
-import ar.gov.posadas.mbe.ports.security.ITokenUser;
-import ar.gov.posadas.mbe.sistema.seguridad.grupo.Grupo;
-import ar.gov.posadas.mbe.sistema.seguridad.grupopermiso.GrupoPermiso;
-import ar.gov.posadas.mbe.sistema.seguridad.usuariogrupo.UsuarioGrupo;
-import ar.gov.posadas.mbe.sistema.persona.persona.Persona;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.token.ITokenAuthority;
+import ar.com.acme.ports.entity.Entidad;
+import ar.com.acme.impldefault.DefaultTokenAuthority;
+import ar.com.acme.ports.security.ITokenUser;
+import ar.com.acme.sistema.seguridad.grupo.Grupo;
+import ar.com.acme.sistema.seguridad.grupopermiso.GrupoPermiso;
+import ar.com.acme.sistema.seguridad.usuariogrupo.UsuarioGrupo;
+import ar.com.acme.sistema.persona.persona.Persona;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;

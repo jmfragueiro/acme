@@ -1,19 +1,19 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Fechas;
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.framework.core.exception.SecurityException;
-import ar.gov.posadas.mbe.ports.control.Controlador;
-import ar.gov.posadas.mbe.ports.repos.ItemNotFoundException;
-import ar.gov.posadas.mbe.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
-import ar.gov.posadas.mbe.sistema.notificacion.direccionenvio.NaIDireccionenvioService;
-import ar.gov.posadas.mbe.sistema.notificacion.medio.NaMedio;
-import ar.gov.posadas.mbe.sistema.notificacion.notificacion.NaINotificacionService;
-import ar.gov.posadas.mbe.sistema.notificacion.notificacion.NaNotificacionAdjuntoDTO;
-import ar.gov.posadas.mbe.sistema.notificacion.notificacion.NaNotificacionDetalleDTO;
-import ar.gov.posadas.mbe.sistema.notificacion.origen.NaOrigen;
-import ar.gov.posadas.mbe.sistema.tramite.areausuario.Areausuariovista;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Fechas;
+import ar.com.acme.framework.common.Response;
+import ar.com.acme.framework.core.exception.SecurityException;
+import ar.com.acme.ports.control.Controlador;
+import ar.com.acme.ports.repos.ItemNotFoundException;
+import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
+import ar.com.acme.sistema.notificacion.direccionenvio.NaIDireccionenvioService;
+import ar.com.acme.sistema.notificacion.medio.NaMedio;
+import ar.com.acme.sistema.notificacion.notificacion.NaINotificacionService;
+import ar.com.acme.sistema.notificacion.notificacion.NaNotificacionAdjuntoDTO;
+import ar.com.acme.sistema.notificacion.notificacion.NaNotificacionDetalleDTO;
+import ar.com.acme.sistema.notificacion.origen.NaOrigen;
+import ar.com.acme.sistema.tramite.areausuario.Areausuariovista;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

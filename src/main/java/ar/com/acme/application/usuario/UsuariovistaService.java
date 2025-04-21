@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Logging;
-import ar.gov.posadas.mbe.framework.common.Numeros;
-import ar.gov.posadas.mbe.framework.core.extradata.IExtraDataService;
-import ar.gov.posadas.mbe.ports.service.Servicio;
-import ar.gov.posadas.mbe.impldefault.DefaultToken;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Logging;
+import ar.com.acme.framework.common.Numeros;
+import ar.com.acme.framework.core.extradata.IExtraDataService;
+import ar.com.acme.ports.service.Servicio;
+import ar.com.acme.impldefault.DefaultToken;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;

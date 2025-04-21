@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Fechas;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.extradata.IExtraDataService;
-import ar.gov.posadas.mbe.framework.core.jws.IJwsDataHelper;
-import ar.gov.posadas.mbe.framework.core.jws.IJwsService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Fechas;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.extradata.IExtraDataService;
+import ar.com.acme.framework.core.jws.IJwsDataHelper;
+import ar.com.acme.framework.core.jws.IJwsService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;

@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.framework.core.token;
+package ar.com.acme.framework.core.token;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-import ar.gov.posadas.mbe.framework.common.Fechas;
+import ar.com.acme.framework.common.Fechas;
 
 public abstract class AbstractToken<K, U extends ITokenPayload> implements IToken<K, U> {
     private final Long min_interval = 60L;

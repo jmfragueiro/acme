@@ -1,5 +1,5 @@
-package ar.gov.posadas.mbe.ports.security;
+package ar.com.acme.ports.security;
 
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.core.token.ITokenPayload;
 
 public interface ITokenUser extends ITokenPayload { }

@@ -1,0 +1,21 @@
+
+POST https://sistema.posadas.gov.ar/sigb/oauth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
+Validation: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
+
+username=vcpires&password=Damasco004
+
+###
+
+POST https://sistema.posadas.gov.ar/sigb/oauth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
+Validation: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
+
+username=lschwegler&password=Damasco004
+

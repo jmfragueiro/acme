@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
 import org.springframework.stereotype.Service;
 
-import ar.gov.posadas.mbe.framework.core.extradata.IReqScopeExtraDataService;
-import ar.gov.posadas.mbe.framework.core.extradata.ReqScopeExtraData;
-import ar.gov.posadas.mbe.framework.core.http.IHttpRequestAuthorizationValueDecoder;
-import ar.gov.posadas.mbe.framework.core.jws.IJwsService;
+import ar.com.acme.framework.core.extradata.IReqScopeExtraDataService;
+import ar.com.acme.framework.core.extradata.ReqScopeExtraData;
+import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
+import ar.com.acme.framework.core.jws.IJwsService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 

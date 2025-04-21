@@ -1,13 +1,13 @@
-package ar.gov.posadas.mbe.framework.utils.filemanager;
+package ar.com.acme.framework.utils.filemanager;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.ports.control.CtrlResponse;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerRequest;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerResponse;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerRequest.EFilemanagerAction;
-import ar.gov.posadas.mbe.ports.filemanager.FilemanagerRequest.EFilemanagerSubtipo;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.ports.control.CtrlResponse;
+import ar.com.acme.ports.filemanager.FilemanagerRequest;
+import ar.com.acme.ports.filemanager.FilemanagerResponse;
+import ar.com.acme.ports.filemanager.FilemanagerRequest.EFilemanagerAction;
+import ar.com.acme.ports.filemanager.FilemanagerRequest.EFilemanagerSubtipo;
 import lombok.RequiredArgsConstructor;
 
 @RestController

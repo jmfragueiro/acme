@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.security;
+package ar.com.acme.framework.core.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

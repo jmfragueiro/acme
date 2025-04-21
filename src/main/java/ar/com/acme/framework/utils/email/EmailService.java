@@ -1,15 +1,15 @@
-package ar.gov.posadas.mbe.framework.utils.email;
+package ar.com.acme.framework.utils.email;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.ETipoContacto;
-import ar.gov.posadas.mbe.framework.common.Propiedades;
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.framework.core.logging.IPersistentLogService;
-import ar.gov.posadas.mbe.ports.email.IEmailConfigService;
-import ar.gov.posadas.mbe.ports.email.IEmailReadNotificacionClient;
-import ar.gov.posadas.mbe.ports.email.IEmailReadNotificacionServer;
-import ar.gov.posadas.mbe.ports.email.IEmailTemplateService;
-import ar.gov.posadas.mbe.ports.email.IEmailUnreachService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.ETipoContacto;
+import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.common.Response;
+import ar.com.acme.framework.core.logging.IPersistentLogService;
+import ar.com.acme.ports.email.IEmailConfigService;
+import ar.com.acme.ports.email.IEmailReadNotificacionClient;
+import ar.com.acme.ports.email.IEmailReadNotificacionServer;
+import ar.com.acme.ports.email.IEmailTemplateService;
+import ar.com.acme.ports.email.IEmailUnreachService;
 
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.javamail.JavaMailSenderImpl;

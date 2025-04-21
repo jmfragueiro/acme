@@ -1,9 +1,9 @@
-package ar.gov.posadas.mbe.framework.core.token;
+package ar.com.acme.framework.core.token;
 
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 
 import java.util.Collection;
 

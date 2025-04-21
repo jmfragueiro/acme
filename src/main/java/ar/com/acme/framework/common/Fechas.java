@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.common;
+package ar.com.acme.framework.common;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -7,12 +7,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
- * Esta clase debe ser utilizada como un punto focal para todas los metodos genericos para trabajo con fechas
- * del framework, de manera de tener encasulada, en una sola clase, todas las cuestiones asociadas a este
- * tipo de necesidades.
- *
+ * Esta clase debe ser utilizada como un punto focal para todas los metodos genericos de trabajo con fechas
+ * del sistema, de manera de tener encasulada, en una sola clase, todas las cuestiones asociadas a estas.
+ * 
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250421
  */
 public abstract class Fechas {
     public static LocalDate sumarRestarDias(LocalDate fecha, Long dias) {

@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.core.token.ITokenAuthority;
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.token.ITokenAuthority;
+import ar.com.acme.framework.core.token.ITokenPayload;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.utils.codes;
+package ar.com.acme.framework.utils.codes;
 
 import java.io.IOException;
 

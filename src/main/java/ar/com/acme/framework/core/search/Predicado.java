@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.framework.core.search;
+package ar.com.acme.framework.core.search;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
+import ar.com.acme.framework.common.Constantes;
 
 import java.time.LocalDate;
 

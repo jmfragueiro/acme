@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.ports.apirest;
+package ar.com.acme.ports.apirest;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;

@@ -1,6 +1,6 @@
-package ar.gov.posadas.mbe.ports.entity;
+package ar.com.acme.ports.entity;
 
-import ar.gov.posadas.mbe.framework.core.exception.MessageException;
+import ar.com.acme.framework.core.exception.MessageException;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema

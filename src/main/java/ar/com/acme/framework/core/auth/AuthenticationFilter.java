@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.auth;
+package ar.com.acme.framework.core.auth;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -9,8 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import ar.gov.posadas.mbe.framework.core.extradata.IReqScopeExtraDataService;
-import ar.gov.posadas.mbe.framework.core.security.SecurityService;
+import ar.com.acme.framework.core.extradata.IReqScopeExtraDataService;
+import ar.com.acme.framework.core.security.SecurityService;
 
 import java.io.IOException;
 

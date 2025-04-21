@@ -1,12 +1,12 @@
-package ar.gov.posadas.mbe.sistema.seguridad.usuario;
+package ar.com.acme.sistema.seguridad.usuario;
 
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.framework.core.token.ITokenPayloadService;
-import ar.gov.posadas.mbe.ports.service.IServicio;
-import ar.gov.posadas.mbe.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
-import ar.gov.posadas.mbe.sistema.seguridad.permiso.Permiso;
-import ar.gov.posadas.mbe.sistema.persona.persona.Persona;
-import ar.gov.posadas.mbe.sistema.tramite.areausuario.Areausuariovista;
+import ar.com.acme.framework.common.Response;
+import ar.com.acme.framework.core.token.ITokenPayloadService;
+import ar.com.acme.ports.service.IServicio;
+import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
+import ar.com.acme.sistema.seguridad.permiso.Permiso;
+import ar.com.acme.sistema.persona.persona.Persona;
+import ar.com.acme.sistema.tramite.areausuario.Areausuariovista;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

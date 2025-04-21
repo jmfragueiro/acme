@@ -1,11 +1,12 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Propiedades;
-import ar.gov.posadas.mbe.framework.core.auth.IAuthenticationService;
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
-import ar.gov.posadas.mbe.framework.core.http.IHttpRequestAuthorizationValueDecoder;
-import ar.gov.posadas.mbe.framework.core.token.*;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.core.auth.IAuthenticationService;
+import ar.com.acme.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
+import ar.com.acme.framework.core.jws.IJwsService;
+import ar.com.acme.framework.core.token.*;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Arrays;
@@ -21,15 +22,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class DefaultAuthenticationService implements IAuthenticationService {
     private final ITokenPayloadService<? extends ITokenPayload> tokenPayloadService;
-    private final DefaultTokenService tokenService;
+    private final ITokenService<String, IToken<String, ITokenPayload>, ITokenRepo<String, IToken<String, ITokenPayload>>> tokenService;
     private final IHttpRequestAuthorizationValueDecoder httpRequestAuthorizationValueDecoder;
     private final RequestMatcher publicPaths;
-    private final DefaultJwsService jwsService;
+    private final IJwsService jwsService;
 
-    public DefaultAuthenticationService(DefaultTokenService tokenService,
+    public DefaultAuthenticationService(
+            ITokenService<String, IToken<String, ITokenPayload>, ITokenRepo<String, IToken<String, ITokenPayload>>> tokenService,
             List<ITokenPayloadService<? extends ITokenPayload>> tokenPayloadServicesList,
             IHttpRequestAuthorizationValueDecoder httpRequestAuthorizationValueDecoder,
-            DefaultJwsService jwsService,
+            IJwsService jwsService,
             Propiedades propiedades) {
         this.tokenService = tokenService;
         this.httpRequestAuthorizationValueDecoder = httpRequestAuthorizationValueDecoder;
@@ -49,7 +51,7 @@ public class DefaultAuthenticationService implements IAuthenticationService {
     public Authentication authenticateFromLogginRequest(HttpServletRequest request, String username, String password) throws AuthenticationException {
         httpRequestAuthorizationValueDecoder.validateAuthorizationValueFromRequest(request);
 
-        var repoUser = tokenPayloadService.findByName(username).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_INF_BADCREDENTIAL));
+        var repoUser = tokenPayloadService.findByName(username).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_BADCREDENTIAL));
 
         var token = tokenService.createToken(repoUser).getTokenIfUseful();
 
@@ -62,7 +64,7 @@ public class DefaultAuthenticationService implements IAuthenticationService {
 
         var tokenId = jwsService.getIdFromJws(requestAuthorizationJws);
 
-        var token = tokenService.getToken(tokenId).orElseThrow(() -> new AuthException(Constantes.MSJ_SEC_ERR_NOTOKEN)).getTokenIfUseful();
+        var token = tokenService.getToken(tokenId).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_NOTOKEN)).getTokenIfUseful();
 
         return authenticate(new DefaultTokenAuthentication(token, requestAuthorizationJws));
     }

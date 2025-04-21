@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.framework.utils.email;
+package ar.com.acme.framework.utils.email;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Response;
-import ar.gov.posadas.mbe.ports.control.CtrlResponse;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Response;
+import ar.com.acme.ports.control.CtrlResponse;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.ports.filemanager;
+package ar.com.acme.ports.filemanager;
 
 import org.springframework.web.multipart.MultipartFile;
 

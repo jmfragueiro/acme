@@ -1,8 +1,8 @@
-package ar.gov.posadas.mbe.impldefault;
+package ar.com.acme.impldefault;
 
-import ar.gov.posadas.mbe.framework.common.Constantes;
-import ar.gov.posadas.mbe.framework.common.Logging;
-import ar.gov.posadas.mbe.framework.core.extradata.IExtraDataService;
+import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.common.Logging;
+import ar.com.acme.framework.core.extradata.IExtraDataService;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;

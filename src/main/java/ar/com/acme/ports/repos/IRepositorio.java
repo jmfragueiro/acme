@@ -1,13 +1,13 @@
-package ar.gov.posadas.mbe.ports.repos;
+package ar.com.acme.ports.repos;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import ar.gov.posadas.mbe.framework.core.search.CustomFilter;
-import ar.gov.posadas.mbe.framework.core.search.Predicado;
-import ar.gov.posadas.mbe.ports.entity.IEntidad;
+import ar.com.acme.framework.core.search.CustomFilter;
+import ar.com.acme.framework.core.search.Predicado;
+import ar.com.acme.ports.entity.IEntidad;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 

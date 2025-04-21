@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.search;
+package ar.com.acme.framework.core.search;
 
 public enum EPredicadoOperador {
     EQUAL,

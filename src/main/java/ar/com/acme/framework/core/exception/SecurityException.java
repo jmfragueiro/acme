@@ -1,4 +1,4 @@
-package ar.gov.posadas.mbe.framework.core.exception;
+package ar.com.acme.framework.core.exception;
 
 /**
  * Esta clase de excepcion es la base de la jerarquia de excepciones del framework que PUEDEN

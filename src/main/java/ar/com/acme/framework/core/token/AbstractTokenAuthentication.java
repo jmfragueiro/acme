@@ -1,11 +1,11 @@
-package ar.gov.posadas.mbe.framework.core.token;
+package ar.com.acme.framework.core.token;
 
 import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import ar.gov.posadas.mbe.framework.core.exception.AuthException;
+import ar.com.acme.framework.core.exception.AuthException;
 
 public abstract class AbstractTokenAuthentication implements ITokenAuthentication<String, ITokenPayload, IToken<String, ITokenPayload>> {
     private final String name;
