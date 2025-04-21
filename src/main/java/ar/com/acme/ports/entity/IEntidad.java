@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  *
  * @param <TKI> El tipo de la clave de identificacion para la entidad
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250421
  */
 public interface IEntidad<TKI> {
     /**
@@ -44,22 +44,6 @@ public interface IEntidad<TKI> {
     boolean isNew();
 
     /**
-     * Toda entidad persistente debe poseer un modo de ejecutar ciertas acciones requeridas para ser persistida.
-     * Es este metodo el encargado de ejecutar dichas acciones durante la persistencia de la instancia, de manera
-     * de que, para el sistema, dicha instancia, con su estado al momento de llamar a este metodo, debe quedar
-     * durable, es decir que debe poder recuperarse multiples veces en el futuro.
-     */
-    void onPersist();
-
-    /**
-     * Este metodo deberia desactivar a una instancia de una entidad identificable. Esto simplemente nos
-     * dice que se espera que se implemente algun mecanismo que asegure que a partir de una llamada al
-     * presente metodo, la instancia retorne el valor falso para el isAlive(). Si existe agun problema con
-     * la accion, deberia lanzarse una excepcion de entidad.
-     */
-    void onDelete();
-
-    /**
      * Este metodo deberia ser capaz de devolver la fecha en la que una instancia ha sido 'creada' y ha sido
      * efectivamente persistida o bien deberia devolver nulo unicamente si la instancia en cuestion no ha sido
      * persistida (si isNew() retorna true).
@@ -78,11 +62,11 @@ public interface IEntidad<TKI> {
     LocalDateTime getFechaumod();
 
     /**
-     * Este metodo deberia ser capaz de devolver la fecha en la que una instancia ha sido modificada por ultima
-     * vez, y cuyas modificaciones han sido efectivamente persistidas o bien deberia devolver nulo unicamente si
-     * la instancia en cuestion no ha sido persistida (si isNew() retorna true).
+     * Este metodo deberia ser capaz de 'desactivar' una instancia de esta entidad y devolver la fecha en la que
+     * dicha desactivacion. Esto implica que, posterior a la invocacion de este metodo, la instancia debe retornar
+     * false al metodo isAlive().
      *
-     * @return Retorna la fecha de ultima modificacion persitida de la instancia o null si es una nueva.
+     * @return Retorna la fecha de 'dsactivacion' persitida de la instancia.
      */
-    LocalDateTime getFechabaja();
+    LocalDateTime kill();
 }

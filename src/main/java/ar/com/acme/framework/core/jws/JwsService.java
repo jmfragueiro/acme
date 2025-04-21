@@ -1,7 +1,6 @@
 package ar.com.acme.framework.core.jws;
 
 import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.common.Fechas;
 import ar.com.acme.framework.core.exception.AuthException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -10,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
+
 import javax.crypto.SecretKey;
 
 @Service
@@ -26,9 +27,9 @@ public class JwsService implements IJwsService {
                       .header()
                         .keyId(this.realm)
                         .and()
-                      .id(source.getId().toString())
+                      .id(UUID.randomUUID().toString())
                       .subject(source.getSubject())
-                      .issuedAt(Fechas.toDate(source.getIssuedAt()))
+                      .issuedAt(java.sql.Date.valueOf(source.getIssuedAt().toLocalDate()))
                       .claim("authorities", source.authClaim())
                       .signWith(getSecretKey())
                       .compact();

@@ -55,12 +55,10 @@ public abstract class Entidad implements IEntidad<Long>, Serializable, Cloneable
     }
 
     @Override
-    public void onPersist() {
-    }
-
-    @Override
-    public void onDelete() {
+    public LocalDateTime kill() {
         fechabaja = LocalDateTime.now();
+
+        return fechabaja;
     }
 
     @Override
@@ -81,11 +79,6 @@ public abstract class Entidad implements IEntidad<Long>, Serializable, Cloneable
     @Override
     public LocalDateTime getFechaumod() {
         return fechaumod;
-    }
-
-    @Override
-    public LocalDateTime getFechabaja() {
-        return fechabaja;
     }
 
     @Override

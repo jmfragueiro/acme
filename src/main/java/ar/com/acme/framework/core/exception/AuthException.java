@@ -22,7 +22,7 @@ public class AuthException extends AuthenticationException {
      * @see Constants
      */
     public AuthException() {
-        this(Constantes.MSJ_SES_ERR_NOAUTH);
+        this(Constantes.MSJ_SES_ERR_USERNOAUTH);
     }
 
     /**

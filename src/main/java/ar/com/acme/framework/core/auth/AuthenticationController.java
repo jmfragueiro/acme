@@ -45,13 +45,13 @@ public class AuthenticationController {
         try {
             var authtentication = authenticationService.authenticateFromLoggedRequest(request);
 
-            var logoutSuccessJws = sessionService.logout(authtentication);
+            sessionService.logout(authtentication);
 
             return ResponseEntity.ok(
                     new HttpResponseBody(
                         LocalDateTime.now().toString(),
                         HttpStatus.OK,
-                        logoutSuccessJws,
+                        null,
                         Constantes.MSJ_SES_INF_LOGGOFF));
         } catch (Exception e) {
             throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGOFF, e.getMessage(), null));

@@ -1,9 +1,9 @@
 package ar.com.acme.sistema.seguridad.usuario;
 
 import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.token.TokenAuthority;
 import ar.com.acme.framework.core.token.ITokenAuthority;
 import ar.com.acme.ports.entity.Entidad;
-import ar.com.acme.impldefault.DefaultTokenAuthority;
 import ar.com.acme.ports.security.ITokenUser;
 import ar.com.acme.sistema.seguridad.grupo.Grupo;
 import ar.com.acme.sistema.seguridad.grupopermiso.GrupoPermiso;
@@ -110,7 +110,7 @@ public class Usuario extends Entidad implements ITokenUser {
                                 .map(Grupo::getPermisos)
                                 .flatMap(Collection::stream)
                                 .map(GrupoPermiso::getPermiso)
-                                .map(p -> new DefaultTokenAuthority(p.getPermiso()))
+                                .map(p -> new TokenAuthority(p.getPermiso()))
                                 .collect(Collectors.toList());
 
         return this.auths;

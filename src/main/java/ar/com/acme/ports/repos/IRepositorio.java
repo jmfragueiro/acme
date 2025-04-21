@@ -5,10 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import ar.com.acme.framework.core.search.CustomFilter;
-import ar.com.acme.framework.core.search.Predicado;
 import ar.com.acme.ports.entity.IEntidad;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -40,9 +37,5 @@ public interface IRepositorio<U extends IEntidad<TKI>, TKI> extends JpaRepositor
 
     default Long countAllAlive() {
         return Integer.toUnsignedLong(findAllAlive().size());
-    }
-
-    default Page<U> getDataFromCustomFilter(List<Predicado> conditions, Pageable page, EntityManager em, Class<U> clase) {
-        return new CustomFilter<U>().getDataFromCustomFilter(conditions, page, em, clase);
     }
 }

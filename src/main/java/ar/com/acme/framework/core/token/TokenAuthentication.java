@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.core.exception.AuthException;
-import ar.com.acme.framework.core.security.SecurityService;
 
 public class TokenAuthentication implements Authentication, CredentialsContainer {
     private final ITokenPrincipal principal;
@@ -53,7 +52,7 @@ public class TokenAuthentication implements Authentication, CredentialsContainer
 
     @Override
     public final String getName() {
-        return (this.isAuthenticated() && this.principal != null) ? this.principal.getName() : Constantes.SYS_CAD_UNSESION;
+        return (this.isAuthenticated() && this.principal != null) ? this.principal.toString() : Constantes.SYS_CAD_UNSESION;
     }
 
     @Override

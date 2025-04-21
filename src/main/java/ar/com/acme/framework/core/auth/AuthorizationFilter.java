@@ -1,4 +1,4 @@
-package ar.com.acme.impldefault;
+package ar.com.acme.framework.core.auth;
 
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Supplier;
 
 @Component
-public class DefaultAuthorizationFilter implements AuthorizationManager<RequestAuthorizationContext> {
+public class AuthorizationFilter implements AuthorizationManager<RequestAuthorizationContext> {
     @Override
     public AuthorizationDecision check(Supplier<Authentication> authentication, RequestAuthorizationContext object) {
         return new AuthorizationDecision(

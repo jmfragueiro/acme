@@ -1,16 +1,11 @@
 package ar.com.acme.framework.core.errors;
 
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.core.http.EHttpAuthType;
 import ar.com.acme.framework.core.http.HttpResponseBody;
-import ar.com.acme.framework.core.security.SecurityService;
 import ar.com.acme.framework.core.exception.ItemNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -33,11 +28,8 @@ public class GlobalResponseErrorHandler {
 
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.BAD_REQUEST,
-                                    Constantes.MSJ_ERR_REST_VALIDATE,
-                                    ex.getClass().getName(),
-                                    errors,
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    errors.values().stream().map(v -> v.toString()).findFirst().orElse(ex.getClass().getName()),
+                                    ex.getClass().getName());
     }
 
     @ExceptionHandler(AccessDeniedException.class)
@@ -45,11 +37,8 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody AccessExceptionHandler(AccessDeniedException ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.UNAUTHORIZED,
-                                    Constantes.MSJ_SEC_INF_NOACCES,
-                                    Optional.of(SecurityService.getAuthentication().getName()).orElse(Constantes.SYS_CAD_UNKNOW),
-                                    ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                     ex.getMessage(),
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 
     @ExceptionHandler(AuthenticationException.class)
@@ -57,11 +46,8 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody AuthenticationExceptionHandler(AuthenticationException ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.UNAUTHORIZED,
-                                    Constantes.MSJ_ERR_UNAUTHORIZED,
-                                    Optional.of(SecurityService.getAuthentication().getName()).orElse(Constantes.SYS_CAD_UNKNOW),
                                     ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 
     @ExceptionHandler(SecurityException.class)
@@ -69,11 +55,8 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody SecurityExceptionHandler(SecurityException ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.UNAUTHORIZED,
-                                    Constantes.MSJ_SEC_ERR_USERCANTOP,
-                                    Optional.of(SecurityService.getAuthentication().getName()).orElse(Constantes.SYS_CAD_UNKNOW),
                                     ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 
     @ExceptionHandler(ItemNotFoundException.class)
@@ -81,11 +64,8 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody ItemNotFoundExceptionHandler(Exception ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.NOT_FOUND,
-                                    Constantes.MSJ_ERR_DB_NOITEM,
-                                    null,
                                     ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
@@ -93,11 +73,8 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody ConverterErrorsHandler(MethodArgumentTypeMismatchException ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.BAD_REQUEST,
-                                    Constantes.MSJ_ERR_BADFORMATREQUEST,
-                                    null,
                                     ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 
     @ExceptionHandler(Exception.class)
@@ -105,10 +82,7 @@ public class GlobalResponseErrorHandler {
     public final HttpResponseBody OtherExceptionHandler(Exception ex, WebRequest req) {
         return new HttpResponseBody(LocalDateTime.now().toString(),
                                     HttpStatus.INTERNAL_SERVER_ERROR,
-                                    Constantes.MSJ_ERR_EXCEPCION,
-                                    null,
                                     ex.getMessage(),
-                                    ((ServletWebRequest) req).getRequest().getServletPath(),
-                                    EHttpAuthType.BEARER);
+                                    ((ServletWebRequest) req).getRequest().getServletPath());
     }
 }

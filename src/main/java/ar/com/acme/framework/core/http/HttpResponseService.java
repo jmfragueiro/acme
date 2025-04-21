@@ -24,7 +24,7 @@ public final class HttpResponseService {
      * @param body   el cuerpo de la respuesta como un HttpResponse
      */
     public static void respondHandler(HttpServletResponse response, HttpResponseBody body) throws IOException {
-        response.setContentType(Constantes.SYS_APP_MIMETYPE_JSON);
+        response.setContentType(Constantes.SYS_CAD_APP_MIMETYPE_JSON);
         response.setStatus(body.status().value());
 
         new ObjectMapper().writeValue(response.getOutputStream(), getJsonResponse(body));
@@ -38,6 +38,6 @@ public final class HttpResponseService {
      * @return un string JSON con el cuerpo de respuesta formateado
      */
     public static String getJsonResponse(HttpResponseBody response) throws IOException {
-        return new ObjectMapper().writeValueAsString(response);
+        return new ObjectMapper().writeValueAsString(HttpResponseError.of(response.mensaje()));
     }
 }

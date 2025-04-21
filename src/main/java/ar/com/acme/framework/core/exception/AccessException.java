@@ -22,7 +22,7 @@ public class AccessException extends AccessDeniedException {
      * @see Constants
      */
     public AccessException() {
-        this(Constantes.MSJ_SEC_INF_NOACCES);
+        this(Constantes.MSJ_USR_ERR_NOACCES);
     }
 
     /**

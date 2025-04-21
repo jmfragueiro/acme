@@ -10,7 +10,7 @@ import org.springframework.security.core.Authentication;
  * de spring.
  *
  * @author jmfragueiro
- * @version 20250108
+ * @version 20250421
  */
 public interface ISessionService {
     /**
@@ -24,11 +24,7 @@ public interface ISessionService {
 
     /**
      * Registra el final de una sesión de usuario a partir de un "ticket" de Autnenticación
-     * que debería permitir encontrar dicha sesión en el lugar en el que fuera registada. Se
-     * espera que el método genere un JSON Web Signature (JWS) con información sobre la
-     * sesión finalizada.
-     *
-     * @return una cadena JWS con información sobre la sesión finalizada.
+     * que debería permitir encontrar dicha sesión en el lugar en el que fuera registada.
      */
-    String logout(Authentication authentication);
+    void logout(Authentication authentication);
 }

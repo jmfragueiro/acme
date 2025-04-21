@@ -1,7 +1,5 @@
 package ar.com.acme.framework.core.errors;
 
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.core.http.EHttpAuthType;
 import ar.com.acme.framework.core.http.HttpResponseBody;
 import ar.com.acme.framework.core.http.HttpResponseService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,10 +20,7 @@ public class AccessErrorHandler implements AccessDeniedHandler {
             new HttpResponseBody(
                 LocalDateTime.now().toString(),
 				HttpStatus.UNAUTHORIZED,
-                Constantes.MSJ_SEC_INF_NOACCES,
-				null,
 				aex.getMessage(),
-				request.getServletPath(),
-				EHttpAuthType.BEARER));
+				request.getServletPath()));
     }
 }

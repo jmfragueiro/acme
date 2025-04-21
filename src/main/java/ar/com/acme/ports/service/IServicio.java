@@ -1,13 +1,9 @@
 package ar.com.acme.ports.service;
 
-import ar.com.acme.framework.common.Response;
 import ar.com.acme.ports.entity.EntityException;
 import ar.com.acme.ports.entity.IEntidad;
+import ar.com.acme.ports.repos.IRepositorio;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -26,23 +22,13 @@ import java.util.Optional;
  */
 public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, Cloneable {
     /**
-     * Toda instancia de un servicio debe poder expresar el nombre simple de la Clase de la Entidad que se
-     * encuentra bajo su control, lo que puede ser usado por distintas herramientas o vistas dentro del proceso
-     * de implementacion. Este metodo debe entonces retornar el nombre de la clase concreta de la instancia que
-     * esta siendo servida por este.
-     *
-     * @return El nombre de la clase concreta de la instancia servida.
-     */
-    String getNombreEntidadAsociada();
-
-    /**
      * Todas las implementaciones de Servicio de Repositorio deben tener un repositorio
      * por detrás que es el que efectivamente se comunica con la base de datos. Este es
      * el metodo que debe utilizarse para obtener una referencia a ese repositorio.
      *
      * @return una referencia al repositorio subyacente al servicio de repositorio.
      */
-    //IRepositorio<U, TKI> getRepo();
+    IRepositorio<U, TKI> getRepo();
 
     /**
      * Este metodo debe establecer el hecho de que la instancia pasada como argumento ha sido seleccionada
@@ -57,16 +43,7 @@ public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, C
      * @return Retorna la propia instancia persistida (o marcada como tal).
      */
     U persist(U instancia) throws ServiceException;
-
-    /**
-     * Este metodo deberia realizar un "reinicio" de un objeto persistido contra el mecanismo de persistencia
-     * para asegurarse de que lo que se "esta viendo" (en memoria) es realmente lo ultimisimo persisitdo.
-     *
-     * @param instancia la instancia a ser refrescada.
-     * @return Retorna la propia instancia refrescada.
-     */
-    U refresh(U instancia) throws ServiceException;
-
+    
     /**
      * Este metodo deberia 'eliminar' una instancia de una entidad persistente del repositorio de entidades
      * persistentes. Dentro del framework, lo que se entienda por eliminar deberá estar dado por, AL MENOS,
@@ -106,56 +83,4 @@ public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, C
      * @returns Retorna la cantidad de instancias eliminadas
      */
     Long countAllAlive() throws EntityException;
-
-    /**
-     * Este metodo permite ralizar una normalizacion de los datos de una instancia antes de ser persistidos.
-     * Este metodo sera llamado siempre antes de la persistencia final de una instancia y se espera tambien
-     * aqui se realicen todos los controles previos necesarios (que no hayan podido realizarse antes por la
-     * razón que sea).
-     *
-     * @param instancia la instancia con los datos a ser persistidos
-     * @return la instancia con los datos normalizados (lo que sea que signifique en cada caso)
-     */
-    U normalizarDatos(U instancia);
-
-    /**
-     * Este metodo se ejecuta con anterioridad al persist de la Entidad y eventualmente es usado para validar
-     * los datos a persistir. El parametro "metodo" viene cargado desde el controlador base, puede recibir add,
-     * update, delete ... o cualquier otro indicador para que la implementacion de prePersist, en los services
-     * que implementan esta clase, sepa que hacer.
-     *
-     * @param instancia la instancia con los datos a ser persistidos
-     * @param instanciaoriginal la instancia original con los datos antes de la modificación
-     * @param metodo el metodo a utilizarse que ejecuta los cambios a persistirse
-     * @return el resultado de la operación de prepersist (lo que sea que signifique en cada caso)
-     */
-    Response prePersist(U instancia, U instanciaoriginal, String metodo);
-
-    /**
-     * Este metodo se ejecuta con anterioridad al persist de la Entidad y eventualmente es usado para validar
-     * los datos a persistir. El parametro "metodo" viene cargado desde el controlador base, puede recibir add,
-     * update, delete ... o cualquier otro indicador para que la implementacion de prePersist, en los services
-     * que implementan esta clase, sepa que hacer.
-     *
-     * @param instancia la instancia con los datos a ser persistidos
-     * @param instanciaoriginal la instancia original con los datos antes de la modificación
-     * @param metodo el metodo a utilizarse que ejecuta los cambios a persistirse
-     * @return el resultado de la operación de prepersist (lo que sea que signifique en cada caso)
-     */
-    void postPersist(U instancia, U instanciaoriginal, String metodo) throws IOException;
-
-    /**
-     * Este metodo devuelve un objeto Page como resultado de una busqueda general
-     * con un filtro determinado (pasado como una cadena con un formato que cada
-     * implementacion debera conocer y utilizar), de manera de permitir paginacion
-     * contra una busqueda particular y a partir de un objeto Pageable que tiene
-     * la informacion sobre que pagina obtener. NOTA: a efectos de compatibilidad,
-     * la implementación por defecto deberia traer todos los objetos vivos, sin
-     * preocuparse por el filtro.
-     *
-     * @param filtro la cadena de filtro a interpretarse
-     * @param pager el objeto pageable para tomar como base
-     * @returns El objeto Page con la pagina de datos resultado
-     */
-    Page<U> findGeneral(String filtro, Pageable pager);
 }

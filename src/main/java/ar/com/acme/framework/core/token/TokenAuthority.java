@@ -1,11 +1,9 @@
-package ar.com.acme.impldefault;
+package ar.com.acme.framework.core.token;
 
-import ar.com.acme.framework.core.token.ITokenAuthority;
-
-public class DefaultTokenAuthority implements ITokenAuthority {
+public class TokenAuthority implements ITokenAuthority {
     private final String role;
 
-    public DefaultTokenAuthority(String role) {
+    public TokenAuthority(String role) {
         if (role == null || role.length() == 0) {
             throw new IllegalArgumentException("A granted authority textual representation is required");
         }
@@ -19,8 +17,8 @@ public class DefaultTokenAuthority implements ITokenAuthority {
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        } else if (obj instanceof DefaultTokenAuthority) {
-            DefaultTokenAuthority sga = (DefaultTokenAuthority)obj;
+        } else if (obj instanceof TokenAuthority) {
+            TokenAuthority sga = (TokenAuthority)obj;
             return this.role.equals(sga.getAuthority());
         } else {
             return false;

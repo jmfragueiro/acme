@@ -7,7 +7,6 @@ import jakarta.xml.bind.DatatypeConverter;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.List;
 
 /**
  * Esta clase debe ser utilizada como un punto focal para todos los metodos utilitarios genéricos
@@ -34,19 +33,6 @@ public abstract class Tools {
                 .concat(Constantes.SYS_CAD_LOGSEP)
                 .concat(String.valueOf(ste.getLineNumber()))
                 .concat(Constantes.SYS_CAD_CLOSETPE);
-    }
-
-    /**
-     * Este metodo permite determinar si una lista contiene al menos un item (el primero) de una
-     * clase determinada, pasada como argumento. Para esto verifica la clase del primer elemento
-     * de la lista.
-     *
-     * @param lista, la lista sobre la cua quiere verificarse la clase.
-     * @param clase, la clase contra la cual veririfcar la lista.
-     * @return retorna verdadero si el primer elemento de la lista es de la clase a verificar de lo contrario retorna false.
-     */
-    public static boolean isListInstanceOf(List<?> lista, Class<?> clase) {
-        return lista != null && lista.size() > 0 && lista.get(0).getClass().equals(clase);
     }
 
     /**
@@ -87,5 +73,16 @@ public abstract class Tools {
         }
 
         return sb;
+    }
+
+    /**
+     * Este metodo permite obtener un String vacio ('') si el String
+     * pasado como parametro es nulo, si no, devuelve el String parametro.
+     *
+     * @param objeto
+     * @return un objeto para controlar si es nulo
+     */
+    public static String getEmptyStringOnNull(String objeto) {
+        return ((objeto == null) ? Constantes.SYS_CAD_NULL : objeto);
     }
 }

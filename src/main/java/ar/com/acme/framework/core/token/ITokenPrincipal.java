@@ -4,6 +4,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 
 import ar.com.acme.framework.common.Constantes;
+import ar.com.acme.framework.core.jws.IJwsDataHelper;
 
 import java.util.Collection;
 
@@ -15,7 +16,23 @@ import java.util.Collection;
  * @author jmfragueiro
  * @version 20250421
  */
-public interface ITokenPrincipal {
+public interface ITokenPrincipal extends IJwsDataHelper {
+    ///////////////////////////////////////////////////////
+    // ESTO ES PARA GENERAR USUARIOS Y CLAVES Y PROBAR:  //
+    // (hay que debuggear y parar en la captura de pass  //
+    //  y guardar el pass generado en la base de datos)  //
+    ///////////////////////////////////////////////////////
+    // @Autowired                                        //
+    // private BCryptPasswordEncoder passEncoder;        //
+    //                                                   //
+    // Usuario us = new Usuario();                       //
+    // us.setUsername("jmfragueiro");                    //
+    // us.setPassword(passEncoder.encode("fito"));       //
+    // String pass = us.getPassword();                   //
+    ///////////////////////////////////////////////////////
+
+    void setToken(String token);
+
     String getToken();
 
     String getCredential();

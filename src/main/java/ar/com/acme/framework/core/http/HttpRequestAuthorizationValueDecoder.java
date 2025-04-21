@@ -1,4 +1,4 @@
-package ar.com.acme.impldefault;
+package ar.com.acme.framework.core.http;
 
 import java.util.Base64;
 import java.util.List;
@@ -8,19 +8,16 @@ import org.springframework.stereotype.Component;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Propiedades;
 import ar.com.acme.framework.core.exception.AuthException;
-import ar.com.acme.framework.core.http.EHttpAuthType;
-import ar.com.acme.framework.core.http.HttpRequestAuthorizationHeader;
-import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
 import ar.com.acme.framework.core.jws.IJwsService;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Component
-public class DefaultHttpRequestAuthorizationValueDecoder implements IHttpRequestAuthorizationValueDecoder {
+public class HttpRequestAuthorizationValueDecoder implements IHttpRequestAuthorizationValueDecoder {
     private final String clientid;
     private final String clientsecret;
     private final IJwsService jwsService;
 
-    public DefaultHttpRequestAuthorizationValueDecoder(Propiedades propiedades, IJwsService jwsService) {
+    public HttpRequestAuthorizationValueDecoder(Propiedades propiedades, IJwsService jwsService) {
         this.clientid = propiedades.getSecurity().get("jwt_client-id");
         this.clientsecret = propiedades.getSecurity().get("jwt_client-secret");
         this.jwsService = jwsService;
@@ -46,32 +43,32 @@ public class DefaultHttpRequestAuthorizationValueDecoder implements IHttpRequest
         switch (authCad.type()) {
             case BASIC -> validateBasicAuthCad(authCad.value());
             case BEARER -> validateBearerAuthCad(authCad.value());
-            default -> throw new AuthException(Constantes.MSJ_SEC_ERR_BADREQUESTVALUE);
+            default -> throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUESTVALUE);
         };
     }
 
     private HttpRequestAuthorizationHeader getAuthorizationValueFromRequest(HttpServletRequest request) {
-        String reqauth = request.getHeader(Constantes.SYS_APP_HTTP_AUTH_CAD);
+        String reqauth = request.getHeader(Constantes.SYS_CAD_HTTP_AUTH);
         if (reqauth == null) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_BADREQUEST);
+            throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUEST);
         }
 
         var split = reqauth.split(Constantes.SYS_CAD_SPACE);
         if (split.length < 2) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_BADREQUEST);
+            throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUEST);
         }
 
         String authtype = split[0].trim();
         String authcad = split[1].trim();
 
         if (authtype.isBlank() || authcad.isBlank()) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_BADREQUEST);
+            throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUEST);
         }
 
         var type = List.of(EHttpAuthType.values())
                 .stream()
                 .filter(e -> e.name().equalsIgnoreCase(authtype))
-                .findFirst().orElseThrow(() -> new AuthException(Constantes.MSJ_SEC_ERR_BADREQUESTVALUE));
+                .findFirst().orElseThrow(() -> new AuthException(Constantes.MSJ_REQ_ERR_BADREQUESTVALUE));
 
         return new HttpRequestAuthorizationHeader(type, authcad);
     }
@@ -88,7 +85,7 @@ public class DefaultHttpRequestAuthorizationValueDecoder implements IHttpRequest
         String authUser = new String(Base64.getDecoder().decode(authcad)).split(":")[0];
         String authSecret = new String(Base64.getDecoder().decode(authcad)).split(":")[1];
         if (!(authUser.equals(clientid) && authSecret.equals(clientsecret))) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_BADREQUESTVALUE);
+            throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUESTVALUE);
         }
     }
 

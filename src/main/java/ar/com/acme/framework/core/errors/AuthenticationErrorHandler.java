@@ -1,7 +1,5 @@
 package ar.com.acme.framework.core.errors;
 
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.core.http.EHttpAuthType;
 import ar.com.acme.framework.core.http.HttpResponseBody;
 import ar.com.acme.framework.core.http.HttpResponseService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,10 +20,7 @@ public class AuthenticationErrorHandler implements AuthenticationEntryPoint {
             new HttpResponseBody(
                 LocalDateTime.now().toString(),
 				HttpStatus.UNAUTHORIZED,
-                Constantes.MSJ_SES_ERR_BADREQAUTH,
-				null,
 				aex.getMessage(),
-				request.getServletPath(),
-				EHttpAuthType.BASIC));
+				request.getServletPath()));
     }
 }
