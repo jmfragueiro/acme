@@ -2,8 +2,6 @@ package ar.com.acme.framework.core.token;
 
 import java.time.LocalDateTime;
 
-import ar.com.acme.framework.core.jws.IJwsDataHelper;
-
 /**
  * Un TOKEN es un elemento que permite mantener "registrado" otro objeto cualquiera denominado
  * PAYLOAD o carga útil (el cual deberia ser "conectado" al crearse el TOKEN -por ejem. en su
@@ -17,7 +15,7 @@ import ar.com.acme.framework.core.jws.IJwsDataHelper;
  * @param <K> la clase de un identificador posible para el tipo de ITOKEN
  * @param <U> la clase del objeto (payload) a ser mantenido por el ITOKEN
  */
-public interface IToken<K, U extends ITokenPayload> extends IJwsDataHelper {
+public interface IToken<K, U extends ITokenPayload> {
     /**
      * Permite obtener un identificador posible para el tipo de TOKEN,
      * de manera que un tipo determinado pueda establecer un mecanismo
@@ -70,5 +68,5 @@ public interface IToken<K, U extends ITokenPayload> extends IJwsDataHelper {
      *
      * @return retorna el token en caso de ser mantener un objeto útil
      */
-    IToken<K, U> getTokenIfUseful();
+    IToken<K, U> getTokenIfIsUseful();
 }

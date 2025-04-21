@@ -53,7 +53,7 @@ public class DefaultAuthenticationService implements IAuthenticationService {
 
         var repoUser = tokenPayloadService.findByName(username).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_BADCREDENTIAL));
 
-        var token = tokenService.createToken(repoUser).getTokenIfUseful();
+        var token = tokenService.createToken(repoUser).getTokenIfIsUseful();
 
         return authenticate(new DefaultTokenAuthentication(token, username, password));
     }
@@ -64,7 +64,7 @@ public class DefaultAuthenticationService implements IAuthenticationService {
 
         var tokenId = jwsService.getIdFromJws(requestAuthorizationJws);
 
-        var token = tokenService.getToken(tokenId).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_NOTOKEN)).getTokenIfUseful();
+        var token = tokenService.getToken(tokenId).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_NOTOKEN)).getTokenIfIsUseful();
 
         return authenticate(new DefaultTokenAuthentication(token, requestAuthorizationJws));
     }

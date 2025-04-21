@@ -21,6 +21,4 @@ public interface IJwsService {
     String getIdFromJws(String jws);
 
     String getNameFromJws(String jws);
-
-    Object getExtraDataFromJws(String jws);
 }
