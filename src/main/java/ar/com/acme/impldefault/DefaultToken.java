@@ -13,22 +13,22 @@ import ar.com.acme.framework.common.Tools;
 import ar.com.acme.framework.core.exception.AuthException;
 import ar.com.acme.framework.core.jws.IJwsDataHelper;
 import ar.com.acme.framework.core.token.IToken;
-import ar.com.acme.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.core.token.ITokenPrincipal;
 
-public class DefaultToken implements IToken<String, ITokenPayload>, IJwsDataHelper {
+public class DefaultToken implements IToken<String, ITokenPrincipal>, IJwsDataHelper {
     private final Long min_interval = 60L;
-    private final ITokenPayload payload;
+    private final ITokenPrincipal payload;
     private final LocalDateTime issuedAt = LocalDateTime.now();
     private LocalDateTime expiration;
 
-    public DefaultToken(ITokenPayload payload) {
+    public DefaultToken(ITokenPrincipal payload) {
         this.payload = payload;
         this.expiration = this.nextTerm(issuedAt, min_interval);
         payload.reinitAuthorities();
     }
 
     @Override
-    public ITokenPayload getPayload() {
+    public ITokenPrincipal getPayload() {
         return payload;
     }
 

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Propiedades;
-import ar.com.acme.framework.core.auth.HttpRequestAuthorizationHeader;
 import ar.com.acme.framework.core.exception.AuthException;
 import ar.com.acme.framework.core.http.EHttpAuthType;
+import ar.com.acme.framework.core.http.HttpRequestAuthorizationHeader;
 import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
 import ar.com.acme.framework.core.jws.IJwsService;
 import jakarta.servlet.http.HttpServletRequest;

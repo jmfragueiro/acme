@@ -14,7 +14,6 @@ import ar.com.acme.framework.core.auth.AuthenticationFilter;
 import ar.com.acme.framework.core.auth.IAuthenticationService;
 import ar.com.acme.framework.core.errors.AccessErrorHandler;
 import ar.com.acme.framework.core.errors.AuthenticationErrorHandler;
-import ar.com.acme.framework.core.extradata.IReqScopeExtraDataService;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +22,6 @@ public class SecureServerConfig {
     private final AuthenticationErrorHandler authenticationErrorHandler;
     private final AccessErrorHandler accessErrorHandler;
     private final IAuthenticationService authenticationService;
-    private final IReqScopeExtraDataService reqSDEService;
     private final CorsConfig corsConfig;
 
     @Bean
@@ -44,7 +42,7 @@ public class SecureServerConfig {
             // no utiliza, por ello no genera, default logout
             .logout(LogoutConfigurer::disable)
             // reemplaza el fitro de autenticación por el nuestro
-            .addFilterAt(new AuthenticationFilter(authenticationService, reqSDEService), UsernamePasswordAuthenticationFilter.class)
+            .addFilterAt(new AuthenticationFilter(authenticationService), UsernamePasswordAuthenticationFilter.class)
             // establece el gestor de error de autenticación
             .exceptionHandling(exhand -> exhand.authenticationEntryPoint(authenticationErrorHandler))
             // establece el gestor de error de autorización de acceso

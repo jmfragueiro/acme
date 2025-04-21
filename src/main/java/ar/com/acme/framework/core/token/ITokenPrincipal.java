@@ -15,10 +15,8 @@ import java.util.Collection;
  * @author jmfragueiro
  * @version 20250421
  */
-public interface ITokenPayload {
-    Long getId();
-
-    String getName();
+public interface ITokenPrincipal {
+    String getToken();
 
     String getCredential();
 

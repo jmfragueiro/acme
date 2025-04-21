@@ -1,26 +1,28 @@
-package ar.com.acme.impldefault;
+package ar.com.acme.framework.core.session;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.core.exception.AuthException;
-import ar.com.acme.framework.core.session.ISessionService;
+import ar.com.acme.framework.core.jws.JwsService;
+import ar.com.acme.impldefault.DefaultToken;
+import ar.com.acme.impldefault.DefaultTokenService;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DefaultSessionService implements ISessionService {
-    private final DefaultJwsService jwsService;
+public class SessionService implements ISessionService {
+    private final JwsService jwsService;
     private final DefaultTokenService tokenService;
 
-    public DefaultSessionService(DefaultJwsService jwsService, DefaultTokenService tokenService) {
+    public SessionService(JwsService jwsService, DefaultTokenService tokenService) {
         this.jwsService = jwsService;
         this.tokenService = tokenService;
     }
 
     @Override
-    public String loggin(Authentication authentication) {
+    public String login(Authentication authentication) {
         if (!authentication.isAuthenticated()) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_USERNOAUTH);
+            throw new AuthException(Constantes.MSJ_SES_ERR_USERNOAUTH);
         }
 
         DefaultToken token = (DefaultToken) authentication.getPrincipal();
@@ -31,9 +33,9 @@ public class DefaultSessionService implements ISessionService {
     }
 
     @Override
-    public String loggout(Authentication authentication) {
+    public String logout(Authentication authentication) {
         if (!authentication.isAuthenticated()) {
-            throw new AuthException(Constantes.MSJ_SEC_ERR_USERNOAUTH);
+            throw new AuthException(Constantes.MSJ_SES_ERR_USERNOAUTH);
         }
 
         DefaultToken token = (DefaultToken) authentication.getPrincipal();

@@ -2,7 +2,7 @@ package ar.com.acme.impldefault;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.core.token.ITokenAuthority;
-import ar.com.acme.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.core.token.ITokenPrincipal;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public record RDefaultUser(
         String password,
         Boolean locked,
         Boolean enabled,
-        Boolean expired) implements ITokenPayload {
+        Boolean expired) implements ITokenPrincipal {
     private static Collection<ITokenAuthority> auths;
 
     public RDefaultUser {

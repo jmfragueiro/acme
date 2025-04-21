@@ -2,7 +2,7 @@ package ar.com.acme.impldefault;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.core.exception.TokenException;
-import ar.com.acme.framework.core.token.ITokenPayload;
+import ar.com.acme.framework.core.token.ITokenPrincipal;
 import ar.com.acme.framework.core.token.ITokenService;
 
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class DefaultTokenService implements ITokenService<String, DefaultToken, 
     }
 
     @Override
-    public DefaultToken createToken(ITokenPayload source) {
+    public DefaultToken createToken(ITokenPrincipal source) {
         return new DefaultToken(source);
     }
 

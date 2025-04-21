@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public abstract class AbstractTokenRepo<K, T extends IToken<K, ITokenPayload>> implements ITokenRepo<K, T> {
+public abstract class AbstractTokenRepo<K, T extends IToken<K, ITokenPrincipal>> implements ITokenRepo<K, T> {
     private final Map<K, T> tokens = getRepo();
 
     protected abstract Map<K, T> getRepo();

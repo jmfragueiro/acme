@@ -1,10 +1,8 @@
-package ar.com.acme.impldefault;
+package ar.com.acme.framework.core.jws;
 
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Fechas;
 import ar.com.acme.framework.core.exception.AuthException;
-import ar.com.acme.framework.core.jws.IJwsDataHelper;
-import ar.com.acme.framework.core.jws.IJwsService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
@@ -15,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import javax.crypto.SecretKey;
 
 @Service
-public class DefaultJwsService implements IJwsService {
+public class JwsService implements IJwsService {
     @Value("${security.signing-key}")
     private String signingKey;
 

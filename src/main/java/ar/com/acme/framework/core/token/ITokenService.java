@@ -16,8 +16,8 @@ import java.util.Optional;
  * @param <T> la clase que implementa el ITOKEN
  * @param <R> la clase que implementa el repositorio de tokens
  */
-public interface ITokenService<K, T extends IToken<K, ITokenPayload>, R extends ITokenRepo<K, T>> {
-    T createToken(ITokenPayload payload);
+public interface ITokenService<K, T extends IToken<K, ITokenPrincipal>, R extends ITokenRepo<K, T>> {
+    T createToken(ITokenPrincipal payload);
 
     T initToken(T token);
 

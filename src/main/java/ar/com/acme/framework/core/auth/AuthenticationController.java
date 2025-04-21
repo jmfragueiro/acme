@@ -23,18 +23,18 @@ public class AuthenticationController {
     private final ISessionService sessionService;
 
     @PostMapping(value = Constantes.SYS_CAD_LOGGIN_URL, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<HttpResponseBody> loggin(HttpServletRequest request, String username, String password) {
+    public ResponseEntity<HttpResponseBody> login(HttpServletRequest request, String username, String password) {
         try {
-            var authtenticationToken = authenticationService.authenticateFromLogginRequest(request, username, password);
+            var authtentication = authenticationService.authenticateFromLogginRequest(request, username, password);
 
-            var logginSuccessJws = sessionService.loggin(authtenticationToken);
+            var loginSuccessJws = sessionService.login(authtentication);
 
             return ResponseEntity.ok(
                     new HttpResponseBody(
                         LocalDateTime.now().toString(),
                         HttpStatus.OK,
                         Constantes.MSJ_SES_INF_LOGGON,
-                        logginSuccessJws));
+                        loginSuccessJws));
         } catch (Exception e) {
             throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGIN, e.getMessage(), username));
         }
@@ -43,15 +43,15 @@ public class AuthenticationController {
     @PostMapping(Constantes.SYS_CAD_LOGGOUT_URL)
     public ResponseEntity<HttpResponseBody> logout(HttpServletRequest request) {
         try {
-            var authtenticationToken = authenticationService.authenticateFromLoggedRequest(request);
+            var authtentication = authenticationService.authenticateFromLoggedRequest(request);
 
-            var loggoutSuccessJws = sessionService.loggout(authtenticationToken);
+            var logoutSuccessJws = sessionService.logout(authtentication);
 
             return ResponseEntity.ok(
                     new HttpResponseBody(
                         LocalDateTime.now().toString(),
                         HttpStatus.OK,
-                        loggoutSuccessJws,
+                        logoutSuccessJws,
                         Constantes.MSJ_SES_INF_LOGGOFF));
         } catch (Exception e) {
             throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGOFF, e.getMessage(), null));

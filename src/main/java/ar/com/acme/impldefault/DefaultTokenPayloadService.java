@@ -2,12 +2,12 @@ package ar.com.acme.impldefault;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.framework.core.token.ITokenPayloadService;
+import ar.com.acme.framework.core.token.ITokenPrincipalService;
 
 import java.util.Optional;
 
 @Service
-public class DefaultTokenPayloadService implements ITokenPayloadService<RDefaultUser> {
+public class DefaultTokenPayloadService implements ITokenPrincipalService<RDefaultUser> {
     @Override
     public Optional<RDefaultUser> findByName(String name) {
         ///////////////////////////////////////////////////////

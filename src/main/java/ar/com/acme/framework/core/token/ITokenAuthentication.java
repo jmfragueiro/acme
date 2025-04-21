@@ -14,4 +14,4 @@ import org.springframework.security.core.CredentialsContainer;
  * @param <U> la clase del objeto (payload) a ser mantenido por el ITOKEN
  * @param <T> la clase que implementa el ITOKEN
  */
-public interface ITokenAuthentication<K, U extends ITokenPayload, T extends IToken<K, U>> extends Authentication, CredentialsContainer { }
+public interface ITokenAuthentication<K, U extends ITokenPrincipal, T extends IToken<K, U>> extends Authentication, CredentialsContainer { }

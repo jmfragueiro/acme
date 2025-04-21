@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * @param <K> la clase de un identificador posible para el tipo de ITOKEN
  * @param <U> la clase del objeto (payload) a ser mantenido por el ITOKEN
  */
-public interface IToken<K, U extends ITokenPayload> {
+public interface IToken<K, U extends ITokenPrincipal> {
     /**
      * Permite obtener un identificador posible para el tipo de TOKEN,
      * de manera que un tipo determinado pueda establecer un mecanismo

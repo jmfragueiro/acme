@@ -20,7 +20,7 @@ public interface ISessionService {
      *
      * @return una cadena JWS con información sobre la sesión iniciada.
      */
-    String loggin(Authentication authentication);
+    String login(Authentication authentication);
 
     /**
      * Registra el final de una sesión de usuario a partir de un "ticket" de Autnenticación
@@ -30,5 +30,5 @@ public interface ISessionService {
      *
      * @return una cadena JWS con información sobre la sesión finalizada.
      */
-    String loggout(Authentication authentication);
+    String logout(Authentication authentication);
 }
