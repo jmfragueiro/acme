@@ -1,4 +1,4 @@
-package ar.com.acme.sistema.seguridad.usuario;
+package ar.com.acme.system.usuario;
 
 import java.time.LocalDate;
 

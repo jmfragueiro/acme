@@ -17,10 +17,8 @@ import jakarta.servlet.http.HttpServletRequest;
  * @version 20230601
  */
 public interface IAuthenticationService extends AuthenticationManager {
-    Authentication authenticateFromLogginRequest(HttpServletRequest request, String username, String password) throws AuthenticationException;
-
-    Authentication authenticateFromLoggedRequest(HttpServletRequest request) throws AuthenticationException;
-
+    Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException;
+    
     RequestMatcher getPublicPaths();
 
     boolean thisRequestRequireAuthentication(HttpServletRequest request);

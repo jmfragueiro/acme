@@ -23,9 +23,9 @@ public class AuthenticationController {
     private final ISessionService sessionService;
 
     @PostMapping(value = Constantes.SYS_CAD_LOGGIN_URL, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<HttpResponseBody> login(HttpServletRequest request, String username, String password) {
+    public ResponseEntity<HttpResponseBody> login(HttpServletRequest request) {
         try {
-            var authtentication = authenticationService.authenticateFromLogginRequest(request, username, password);
+            var authtentication = authenticationService.authenticateFromRequest(request);
 
             var loginSuccessJws = sessionService.login(authtentication);
 
@@ -36,14 +36,14 @@ public class AuthenticationController {
                         Constantes.MSJ_SES_INF_LOGGON,
                         loginSuccessJws));
         } catch (Exception e) {
-            throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGIN, e.getMessage(), username));
+            throw new AuthException(Tools.getCadenaErrorFormateada(Constantes.MSJ_SES_ERR_LOGIN, e.getMessage(), request.getParameter("username")));
         }
     }
 
     @PostMapping(Constantes.SYS_CAD_LOGGOUT_URL)
     public ResponseEntity<HttpResponseBody> logout(HttpServletRequest request) {
         try {
-            var authtentication = authenticationService.authenticateFromLoggedRequest(request);
+            var authtentication = authenticationService.authenticateFromRequest(request);
 
             sessionService.logout(authtentication);
 

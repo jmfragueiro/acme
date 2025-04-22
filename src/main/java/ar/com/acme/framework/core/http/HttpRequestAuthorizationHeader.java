@@ -1,3 +1,5 @@
 package ar.com.acme.framework.core.http;
 
-public record HttpRequestAuthorizationHeader(EHttpAuthType type, String value) { }
+import ar.com.acme.framework.core.auth.AuthenticationType;
+
+public record HttpRequestAuthorizationHeader(AuthenticationType type, String value) { }

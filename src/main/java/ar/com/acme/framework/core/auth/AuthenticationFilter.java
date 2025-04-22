@@ -26,7 +26,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        return ((IAuthenticationService)getAuthenticationManager()).authenticateFromLoggedRequest(request);
+        return ((IAuthenticationService)getAuthenticationManager()).authenticateFromRequest(request);
     }
 
     @Override

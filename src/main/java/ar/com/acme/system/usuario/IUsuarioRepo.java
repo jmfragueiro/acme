@@ -1,4 +1,4 @@
-package ar.com.acme.sistema.seguridad.usuario;
+package ar.com.acme.system.usuario;
 
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.seguridad.permiso.Permiso;

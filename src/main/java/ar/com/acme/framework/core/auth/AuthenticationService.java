@@ -3,16 +3,11 @@ package ar.com.acme.framework.core.auth;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Propiedades;
 import ar.com.acme.framework.core.exception.AuthException;
-import ar.com.acme.framework.core.http.IHttpRequestAuthorizationValueDecoder;
-import ar.com.acme.framework.core.jws.JwsService;
-import ar.com.acme.framework.core.jws.IJwsService;
 import ar.com.acme.framework.core.security.SecurityService;
 import ar.com.acme.framework.core.token.*;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -21,20 +16,12 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService implements IAuthenticationService {
-    private final ITokenPrincipalService<? extends ITokenPrincipal> tokenPrincipalService;
-    private final IHttpRequestAuthorizationValueDecoder httpRequestAuthorizationValueDecoder;
-    private final IJwsService jwsService;
+    private final IAuthenticationHelper authenticationHelper;
     private final RequestMatcher publicPaths;
 
-    public AuthenticationService(ITokenPrincipalService<? extends ITokenPrincipal> tokenPrincipalService,
-        IHttpRequestAuthorizationValueDecoder httpRequestAuthorizationValueDecoder,
-        JwsService jwsService,
-        Propiedades propiedades) {
-        this.tokenPrincipalService = tokenPrincipalService;
-        this.httpRequestAuthorizationValueDecoder = httpRequestAuthorizationValueDecoder;
-        this.jwsService = jwsService;
+    public AuthenticationService(IAuthenticationHelper authenticationHelper, Propiedades propiedades) {
+        this.authenticationHelper = authenticationHelper;
         this.publicPaths = new OrRequestMatcher(
                                     Arrays.stream(propiedades.getSecurity().get("public_paths").split(","))
                                           .map(AntPathRequestMatcher::new)
@@ -42,23 +29,12 @@ public class AuthenticationService implements IAuthenticationService {
     }
 
     @Override
-    public Authentication authenticateFromLogginRequest(HttpServletRequest request, String username, String password) throws AuthenticationException {
-        httpRequestAuthorizationValueDecoder.validateAuthorizationValueFromRequest(request);
+    public Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException {
+        var authcad = AuthenticationType.getAuthorizationValueFromRequest(request);
 
-        var repoUser = tokenPrincipalService.findByName(username).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_BADCREDENTIAL));
+        var auth = authcad.type().authenticate(request, authenticationHelper, authcad.value());
 
-        return authenticate(new TokenAuthentication(repoUser, password));
-    }
-
-    @Override
-    public Authentication authenticateFromLoggedRequest(HttpServletRequest request) throws AuthenticationException {
-        var requestAuthorizationJws = httpRequestAuthorizationValueDecoder.getValidAuthorizationValueFromRequest(request);
-
-        var token = jwsService.getIdFromJws(requestAuthorizationJws);
-
-        var repoUser = tokenPrincipalService.findByToken(token).orElseThrow(() -> new AuthException(Constantes.MSJ_SES_ERR_NOTOKEN));
-
-        return authenticate(new TokenAuthentication(repoUser));
+        return authenticate(auth);
     }
 
     @Override
