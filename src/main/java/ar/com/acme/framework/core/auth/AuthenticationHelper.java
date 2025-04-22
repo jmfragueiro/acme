@@ -2,7 +2,7 @@ package ar.com.acme.framework.core.auth;
 
 import org.springframework.stereotype.Component;
 
-import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.common.Properties;
 import ar.com.acme.framework.core.jws.IJwsService;
 import ar.com.acme.framework.core.token.ITokenPrincipal;
 import ar.com.acme.framework.core.token.ITokenPrincipalService;
@@ -15,7 +15,7 @@ public class AuthenticationHelper implements IAuthenticationHelper {
         private final String clientsecret;
 
 
-        public AuthenticationHelper(ITokenPrincipalService<? extends ITokenPrincipal> principalService, IJwsService jwsService, Propiedades propiedades) {
+        public AuthenticationHelper(ITokenPrincipalService<? extends ITokenPrincipal> principalService, IJwsService jwsService, Properties propiedades) {
             this.clientid = propiedades.getSecurity().get("jwt_client-id");
             this.clientsecret = propiedades.getSecurity().get("jwt_client-secret");
             this.principalService = principalService;

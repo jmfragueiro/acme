@@ -17,7 +17,7 @@ import lombok.Getter;
 @Component
 @ConfigurationProperties(prefix = "framework")
 @Getter
-public class Propiedades {
+public class Properties {
     private Map<String, String> security;
     private Map<String, String> token;
 }

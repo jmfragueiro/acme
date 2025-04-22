@@ -7,7 +7,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.common.Properties;
 
 import static java.util.Collections.singletonList;
 
@@ -17,7 +17,7 @@ public class CorsConfig {
     private final String corsAllowMethod;
     private final String corsAllowHeader;
 
-    public CorsConfig(Propiedades propiedades) {
+    public CorsConfig(Properties propiedades) {
         this.corsAllowOrigin = propiedades.getSecurity().get("cors_allow_origin");
         this.corsAllowMethod = propiedades.getSecurity().get("cors_allow_method");
         this.corsAllowHeader = propiedades.getSecurity().get("cors_allow_header");

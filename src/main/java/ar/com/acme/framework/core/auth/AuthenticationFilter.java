@@ -9,8 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import ar.com.acme.framework.core.security.SecurityService;
-
 import java.io.IOException;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -34,7 +32,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         HttpServletResponse response,
         FilterChain chain,
         Authentication authenticationResult) throws IOException, ServletException {
-        SecurityService.setContextAuthentication(authenticationResult);
+        AutenticationContextService.setContextAuthentication(authenticationResult);
 
         chain.doFilter(request, response);
     }
@@ -43,7 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void unsuccessfulAuthentication(HttpServletRequest request,
         HttpServletResponse response,
         AuthenticationException failed) throws IOException, ServletException {
-        SecurityService.clearContextAuthentication();
+        AutenticationContextService.clearContextAuthentication();
 
         response.sendError(HttpStatus.UNAUTHORIZED.value(), failed.getMessage());
     }

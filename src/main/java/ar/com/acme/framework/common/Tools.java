@@ -1,7 +1,5 @@
 package ar.com.acme.framework.common;
 
-import org.springframework.stereotype.Service;
-
 import io.jsonwebtoken.lang.Strings;
 import jakarta.xml.bind.DatatypeConverter;
 
@@ -15,7 +13,6 @@ import java.security.MessageDigest;
  * @author jmfragueiro
  * @version 20250421
  */
-@Service
 public abstract class Tools {
     /**
      * Este metodo retorna el lugar exacto desde donde es llamado como una cadena presentada como:

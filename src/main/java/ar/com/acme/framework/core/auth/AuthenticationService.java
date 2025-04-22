@@ -1,11 +1,11 @@
 package ar.com.acme.framework.core.auth;
 
 import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.common.Propiedades;
+import ar.com.acme.framework.common.Encoder;
+import ar.com.acme.framework.common.Properties;
 import ar.com.acme.framework.core.auth.types.IAuthenticationType;
 import ar.com.acme.framework.core.exception.AuthException;
 import ar.com.acme.framework.core.http.HttpRequestAuthorizationHeader;
-import ar.com.acme.framework.core.security.SecurityService;
 import ar.com.acme.framework.core.token.*;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -26,7 +26,7 @@ public class AuthenticationService implements IAuthenticationService {
     private final Map<String, IAuthenticationType> authTypesMap;
 
     public AuthenticationService(IAuthenticationHelper authenticationHelper
-        , Propiedades propiedades
+        , Properties propiedades
         , Map<String, IAuthenticationType> authTypesMap) {
         this.authenticationHelper = authenticationHelper;
         this.publicPaths = new OrRequestMatcher(
@@ -39,7 +39,7 @@ public class AuthenticationService implements IAuthenticationService {
     @Override
     public Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException {
         var authHeader = getAuthorizationValueFromRequest(request);
-        
+
         if (!authTypesMap.containsKey(authHeader.type())) {
             throw new AuthException(Constantes.MSJ_REQ_ERR_BADREQUEST);
         }
@@ -56,7 +56,7 @@ public class AuthenticationService implements IAuthenticationService {
         }
 
         if (auth.getCredentials() != null
-            && !SecurityService.passwordsMatch(
+            && !Encoder.passwordsMatch(
                 auth.getCredentials().toString(),
                 ((ITokenPrincipal)auth.getPrincipal()).getCredential())) {
             throw new AuthException(Constantes.MSJ_SES_ERR_BADCREDENTIAL);
