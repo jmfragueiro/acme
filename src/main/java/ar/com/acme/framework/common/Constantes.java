@@ -254,7 +254,7 @@ public abstract class Constantes {
     public static final String MSJ_TOK_ERR_BADTOKEN = "FORMATO DE TOKEN INVALIDO";
     public static final String MSJ_TOK_ERR_TOKENUSERNOOP = "EL ESTADO DEL USUARIO NO PERMITE GENERAR UN TOKEN VALIDO";
     public static final String MSJ_TOK_ERR_TOKENREINIT = "ERROR AL INTENTAR REVALIDAR UN TOKEN";
-    // public static final String MSJ_SES_ERR_NOTOKENVALUEINFO = "NO SE HA PROPORCIONADO EL USUARIO PARA VALIDAR LA SESION";
+    public static final String MSJ_TOK_ERR_NOAUTHCAD = "SE REQUIERE UNA CADENA QUE REPRESENTE EL PERMISO ASIGNADO";
 
     // /**********************************************************
     //  * Cadenas asociadas al envio de correo desde el sistema

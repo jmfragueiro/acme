@@ -1,11 +1,13 @@
 package ar.com.acme.framework.core.token;
 
+import ar.com.acme.framework.common.Constantes;
+
 public class TokenAuthority implements ITokenAuthority {
     private final String role;
 
     public TokenAuthority(String role) {
         if (role == null || role.length() == 0) {
-            throw new IllegalArgumentException("A granted authority textual representation is required");
+            throw new IllegalArgumentException(Constantes.MSJ_TOK_ERR_NOAUTHCAD);
         }
         this.role = role;
     }
