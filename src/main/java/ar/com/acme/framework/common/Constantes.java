@@ -105,6 +105,10 @@ public abstract class Constantes {
     // public static final String SYS_CAD_PREFIJOCLASE_CLASE = "clase";
     // public static final String SYS_CAD_NO_MD5 = "IMPOSIBLEOBTENER";
     // public static final String SYS_CAD_MAIL_NORESPONDER = "noresponder@posadas.gov.ar";
+    public static final String SYS_CAD_HTTPAUTH_BASIC = "BASIC";
+    public static final String SYS_CAD_HTTPAUTH_BEARER = "BEARER";
+    public static final String SYS_CAD_TXTLOGGIN_USER = "username";
+    public static final String SYS_CAD_TXTLOGGIN_PASS = "password";
 
     // /**********************************************************
     //  * Cadenas asociadas a entornos disponibles
@@ -158,8 +162,7 @@ public abstract class Constantes {
     //  **********************************************************/
     // public static final String SYS_APP_HTTP_VALI_CAD = "Validation";
     public static final String SYS_CAD_HTTP_AUTH = "Authorization";
-    // public static final String SYS_APP_TXTLOGGIN_USER = "username";
-    // public static final String SYS_APP_TXTLOGGIN_PASS = "password";
+
     // public static final String SYS_APP_TXTLOGGIN_EMAIL = "Correo Electronico";
     // public static final String SYS_APP_TXTLOGGIN_SIGNIN = "INGRESAR";
     // public static final String SYS_APP_TXTLOGGIN_REMEM = "Recordarme";
