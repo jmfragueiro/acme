@@ -2,9 +2,9 @@ package ar.com.acme.system.usuario;
 
 import ar.com.acme.adapter.entity.Entity;
 import ar.com.acme.adapter.entity.IEntityToken;
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.core.token.TokenAuthority;
-import ar.com.acme.framework.core.token.ITokenAuthority;
+import ar.com.acme.bootstrap.common.Constantes;
+import ar.com.acme.bootstrap.core.token.ITokenAuthority;
+import ar.com.acme.bootstrap.core.token.TokenAuthority;
 import ar.com.acme.sistema.seguridad.grupo.Grupo;
 import ar.com.acme.sistema.seguridad.grupopermiso.GrupoPermiso;
 import ar.com.acme.sistema.seguridad.usuariogrupo.UsuarioGrupo;

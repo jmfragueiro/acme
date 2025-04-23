@@ -2,10 +2,10 @@ package ar.com.acme.system.usuario;
 
 import ar.com.acme.adapter.controller.Controller;
 import ar.com.acme.adapter.repository.ItemNotFoundException;
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.common.Fechas;
-import ar.com.acme.framework.common.Response;
-import ar.com.acme.framework.core.exception.SecurityException;
+import ar.com.acme.bootstrap.common.Constantes;
+import ar.com.acme.bootstrap.common.Fechas;
+import ar.com.acme.bootstrap.common.Response;
+import ar.com.acme.bootstrap.core.exception.SecurityException;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.notificacion.direccionenvio.NaIDireccionenvioService;
 import ar.com.acme.sistema.notificacion.medio.NaMedio;

@@ -1,9 +1,8 @@
 package ar.com.acme.adapter.entity;
 
-import ar.com.acme.framework.common.Constantes;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import ar.com.acme.bootstrap.common.Constantes;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;

@@ -1,10 +1,10 @@
 package ar.com.acme.system.usuario;
 
 import ar.com.acme.adapter.service.Service;
-import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.framework.common.Logging;
-import ar.com.acme.framework.common.Numeros;
-import ar.com.acme.framework.core.extradata.IExtraDataService;
+import ar.com.acme.bootstrap.common.Constantes;
+import ar.com.acme.bootstrap.common.Logging;
+import ar.com.acme.bootstrap.common.Numeros;
+import ar.com.acme.bootstrap.core.extradata.IExtraDataService;
 import ar.com.acme.impldefault.DefaultToken;
 
 import com.fasterxml.jackson.core.JsonProcessingException;

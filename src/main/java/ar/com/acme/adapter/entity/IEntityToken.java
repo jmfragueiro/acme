@@ -1,5 +1,5 @@
 package ar.com.acme.adapter.entity;
 
-import ar.com.acme.framework.core.token.ITokenPrincipal;
+import ar.com.acme.bootstrap.core.token.ITokenPrincipal;
 
 public interface IEntityToken extends ITokenPrincipal { }

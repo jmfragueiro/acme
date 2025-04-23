@@ -1,6 +1,6 @@
 package ar.com.acme.adapter.repository;
 
-import ar.com.acme.framework.core.exception.MessageException;
+import ar.com.acme.bootstrap.core.exception.MessageException;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema

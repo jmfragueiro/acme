@@ -2,7 +2,7 @@ package ar.com.acme.adapter.controller;
 
 import ar.com.acme.adapter.entity.IEntity;
 import ar.com.acme.adapter.repository.IRepository;
-import ar.com.acme.framework.core.exception.ItemNotFoundException;
+import ar.com.acme.bootstrap.core.exception.ItemNotFoundException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

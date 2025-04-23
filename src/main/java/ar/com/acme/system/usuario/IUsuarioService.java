@@ -1,8 +1,8 @@
 package ar.com.acme.system.usuario;
 
 import ar.com.acme.adapter.service.IService;
-import ar.com.acme.framework.common.Response;
-import ar.com.acme.framework.core.token.ITokenPrincipalService;
+import ar.com.acme.bootstrap.common.Response;
+import ar.com.acme.bootstrap.core.token.ITokenPrincipalService;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.seguridad.permiso.Permiso;
 import ar.com.acme.sistema.persona.persona.Persona;
