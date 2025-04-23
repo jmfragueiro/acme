@@ -1,7 +1,7 @@
 package ar.com.acme.system.usuario;
 
 import ar.com.acme.adapter.controller.Controller;
-import ar.com.acme.adapter.repos.ItemNotFoundException;
+import ar.com.acme.adapter.repository.ItemNotFoundException;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Fechas;
 import ar.com.acme.framework.common.Response;

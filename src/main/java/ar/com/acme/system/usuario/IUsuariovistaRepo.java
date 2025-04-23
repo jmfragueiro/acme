@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import ar.com.acme.adapter.repos.IRepository;
+import ar.com.acme.adapter.repository.IRepository;
 
 import java.util.Optional;
 

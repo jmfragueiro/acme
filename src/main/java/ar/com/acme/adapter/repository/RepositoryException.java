@@ -1,4 +1,4 @@
-package ar.com.acme.adapter.repos;
+package ar.com.acme.adapter.repository;
 
 import ar.com.acme.framework.core.exception.MessageException;
 

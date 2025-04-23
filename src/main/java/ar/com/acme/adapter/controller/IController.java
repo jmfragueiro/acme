@@ -3,7 +3,7 @@ package ar.com.acme.adapter.controller;
 import org.springframework.validation.BindingResult;
 
 import ar.com.acme.adapter.entity.IEntity;
-import ar.com.acme.adapter.repos.IRepository;
+import ar.com.acme.adapter.repository.IRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Collection;
