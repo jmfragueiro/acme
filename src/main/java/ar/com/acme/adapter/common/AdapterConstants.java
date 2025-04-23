@@ -1,11 +1,6 @@
 package ar.com.acme.adapter.common;
 
-public class Constantes {
-    //  ******************************************************************************************
-    //  ** CONSTANTES GENERALES DEL SISTEMA A REALIZARSE
-    //  ******************************************************************************************
-    public static final String SYS_APP_REGEXP_EMAIL = ".{3,}@acme.cl$";
-
+public class AdapterConstants {
     //  **********************************************************
     //  * CADENAS DE MENSAJES DEL PROCESAMIENTO DE PERSISTENCIA
     //  **********************************************************

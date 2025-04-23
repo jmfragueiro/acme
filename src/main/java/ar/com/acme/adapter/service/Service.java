@@ -6,7 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.*;
 
-import ar.com.acme.adapter.common.Constantes;
+import ar.com.acme.adapter.common.AdapterConstants;
 import ar.com.acme.adapter.entity.IEntity;
 import ar.com.acme.adapter.repository.IRepository;
 
@@ -39,7 +39,7 @@ public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> 
         try {
             return repo.save(instancia);
         } catch (Exception ex) {
-            throw new ServiceException(Constantes.MSJ_REP_ERR_ATSAVEDATA, instancia.toString());
+            throw new ServiceException(AdapterConstants.MSJ_REP_ERR_ATSAVEDATA, instancia.toString());
         }
     }
 

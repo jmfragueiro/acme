@@ -1,8 +1,5 @@
 package ar.com.acme.adapter.token;
 
-import org.springframework.security.authentication.DisabledException;
-import ar.com.acme.bootstrap.common.Constants;
-
 import java.util.Collection;
 
 /**
@@ -13,7 +10,7 @@ import java.util.Collection;
  * @author jmfragueiro
  * @version 20250421
  */
-public interface ITokenPrincipal {
+public interface IEntityToken {
     ///////////////////////////////////////////////////////
     // ESTO ES PARA GENERAR USUARIOS Y CLAVES Y PROBAR:  //
     // (hay que debuggear y parar en la captura de pass  //
@@ -35,13 +32,7 @@ public interface ITokenPrincipal {
 
     String getCredential();
 
-    Collection<? extends ITokenAuthority> getAuthorities();
+    Collection<? extends IEntityTokenAuthority> getAuthorities();
 
-    boolean isEnabled();
-
-    default void verifyCanOperate() {
-        if (!isEnabled()) {
-            throw new DisabledException(Constants.MSJ_USR_ERR_USERNOTENABLED);
-        }
-    }
+    void verifyCanOperate();
 }

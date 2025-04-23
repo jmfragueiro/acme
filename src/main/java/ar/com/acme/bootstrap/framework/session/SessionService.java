@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.token.ITokenPrincipal;
+import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.jws.JwsService;
@@ -19,7 +19,7 @@ public class SessionService implements ISessionService {
     public String login(Authentication authentication) {
         validateAuthentication(authentication);
 
-        var principal = (ITokenPrincipal)authentication.getPrincipal();
+        var principal = (IEntityToken)authentication.getPrincipal();
 
         var token = jwsService.generateJws(principal);
 
@@ -32,7 +32,7 @@ public class SessionService implements ISessionService {
     public void logout(Authentication authentication) {
         validateAuthentication(authentication);
 
-        ((ITokenPrincipal)authentication.getPrincipal()).setToken(null);
+        ((IEntityToken)authentication.getPrincipal()).setToken(null);
     }
 
     private void validateAuthentication(Authentication authentication) {
@@ -40,7 +40,7 @@ public class SessionService implements ISessionService {
             throw new AuthException(Constants.MSJ_SES_ERR_USERNOAUTH);
         }
 
-        if ((ITokenPrincipal)authentication.getPrincipal() == null) {
+        if ((IEntityToken)authentication.getPrincipal() == null) {
             throw new AuthException(Constants.MSJ_SES_ERR_ONAUTH);
         }
     }

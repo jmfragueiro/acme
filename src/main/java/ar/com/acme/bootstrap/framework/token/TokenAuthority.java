@@ -1,9 +1,9 @@
 package ar.com.acme.bootstrap.framework.token;
 
-import ar.com.acme.adapter.token.ITokenAuthority;
+import ar.com.acme.adapter.token.IEntityTokenAuthority;
 import ar.com.acme.bootstrap.common.Constants;
 
-public class TokenAuthority implements ITokenAuthority {
+public class TokenAuthority implements IEntityTokenAuthority {
     private final String role;
 
     public TokenAuthority(String role) {

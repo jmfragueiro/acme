@@ -2,7 +2,7 @@ package ar.com.acme.adapter.token;
 
 import java.util.Optional;
 
-public interface ITokenPrincipalService<U extends ITokenPrincipal> {
+public interface IEntityTokenService<U extends IEntityToken> {
     Optional<U> findByName(String name);
 
     Optional<U> findByToken(String token);

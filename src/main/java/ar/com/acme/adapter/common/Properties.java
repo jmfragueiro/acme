@@ -1,4 +1,4 @@
-package ar.com.acme.bootstrap.common;
+package ar.com.acme.adapter.common;
 
 import java.util.Map;
 

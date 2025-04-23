@@ -1,5 +1,7 @@
 package ar.com.acme.bootstrap.framework.exception;
 
+import ar.com.acme.adapter.exception.MessageException;
+
 /**
  * Esta clase de excepcion es la base de la jerarquia de excepciones del framework que PUEDEN
  * NO SER CAPTURADAS dentro de la aplicación sino que se espera que lleguen al usuario con un

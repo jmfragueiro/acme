@@ -12,10 +12,10 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.token.ITokenPrincipal;
+import ar.com.acme.adapter.common.Properties;
+import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.common.Encoder;
-import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.framework.auth.types.IAuthenticationType;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.http.HttpRequestAuthorizationHeader;
@@ -59,11 +59,11 @@ public class AuthenticationService implements IAuthenticationService {
         if (auth.getCredentials() != null
             && !Encoder.passwordsMatch(
                 auth.getCredentials().toString(),
-                ((ITokenPrincipal)auth.getPrincipal()).getCredential())) {
+                ((IEntityToken)auth.getPrincipal()).getCredential())) {
             throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
         }
 
-        ((ITokenPrincipal)auth.getPrincipal()).verifyCanOperate();
+        ((IEntityToken)auth.getPrincipal()).verifyCanOperate();
 
         auth.setAuthenticated(true);
 

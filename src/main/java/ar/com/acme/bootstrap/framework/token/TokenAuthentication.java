@@ -7,24 +7,24 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 
-import ar.com.acme.adapter.token.ITokenPrincipal;
+import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 
 public class TokenAuthentication implements Authentication, CredentialsContainer {
-    private final ITokenPrincipal principal;
+    private final IEntityToken principal;
     private final String details;
     private String credential;
     private boolean authenticated;
 
-    public TokenAuthentication(ITokenPrincipal principal, String password) {
+    public TokenAuthentication(IEntityToken principal, String password) {
         this.credential = password;
         this.principal = principal;
         this.details = null;
         this.authenticated = false;
     }
 
-    public TokenAuthentication(ITokenPrincipal principal) {
+    public TokenAuthentication(IEntityToken principal) {
         this.credential = null;
         this.principal = principal;
         this.details = null;

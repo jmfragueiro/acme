@@ -1,4 +1,4 @@
-package ar.com.acme.bootstrap.framework.exception;
+package ar.com.acme.adapter.exception;
 
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.common.Logging;
