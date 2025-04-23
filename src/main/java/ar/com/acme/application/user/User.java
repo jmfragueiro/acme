@@ -7,7 +7,10 @@ import ar.com.acme.adapter.common.AdapterConstants;
 import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.adapter.token.IEntityTokenAuthority;
 import ar.com.acme.application.common.AppConstants;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -60,16 +63,9 @@ public class User extends ar.com.acme.adapter.entity.Entity implements IEntityTo
     @Column(name = "token")
     private String token;
 
-    @Transient
-    private Collection<? extends IEntityTokenAuthority> auths;
-
     @Override
     public Collection<? extends IEntityTokenAuthority> getAuthorities() {
-        if (auths == null) {
-            auths = new ArrayList<>(); // todo: llenar con permisos
-        }
-
-        return auths;
+        return new ArrayList<>(); // todo: llenar con permisos
     }
 
     @Override
