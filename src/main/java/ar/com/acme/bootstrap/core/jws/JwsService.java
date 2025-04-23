@@ -10,6 +10,7 @@ import ar.com.acme.bootstrap.common.Constantes;
 import ar.com.acme.bootstrap.core.exception.AuthException;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.crypto.SecretKey;
@@ -30,7 +31,7 @@ public class JwsService implements IJwsService {
                         .and()
                       .id(UUID.randomUUID().toString())
                       .subject(source.getSubject())
-                      .issuedAt(java.sql.Date.valueOf(source.getIssuedAt().toLocalDate()))
+                      .issuedAt(java.sql.Date.valueOf(LocalDate.now()))
                       .claim("authorities", source.authClaim())
                       .signWith(getSecretKey())
                       .compact();

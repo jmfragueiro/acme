@@ -390,20 +390,20 @@ public abstract class Constantes {
     // /**********************************************************
     //  * Cadenas de Mensajes de Errores de campos de base de datos
     //  **********************************************************/
-    // public static final String MSJ_ERR_DB_FIELD_EMPTY = "DEBEN CARGARSE DATOS PARA EL CAMPO OBLIGATORIO: ";
-    // public static final String MSJ_ERR_DB_FIELD_NOK = "DEBEN CARGARSE DATOS VALIDOS PARA EL CAMPO: ";
-    // public static final String MSJ_ERR_DB_FIELD_LONGNOK = "LA LONGITUD DE DATOS INGRESADOS ES INVALIDA PARA EL CAMPO: ";
-    // public static final String MSJ_ERR_DB_ADDFIELD_NULL = "EL ELEMENTO QUE DESEA AGREGAR ES NULO!";
-    // public static final String MSJ_ERR_DB_EDITFIELD_NULL = "EL ELEMENTO QUE DESEA EDITAR ES NULO!";
-    // public static final String MSJ_ERR_DB_DELFIELD_NULL = "EL ELEMENTO QUE DESEA QUITAR ES NULO!";
-    // public static final String MSJ_ERR_DB_ATT_EXIST = "EL ELEMENTO QUE SE DESEA AGREGAR YA SE ENCUENTRA AGREGADO!";
-    // public static final String MSJ_ERR_DB_PARAMTYPE = "EL ATRIBUTO QUE DESEA APLICAR NO TIENE EL TIPO CORRECTO!";
-    // public static final String MSJ_ERR_DB_PARAMVALUE = "EL ATRIBUTO QUE DESEA APLICAR NO TIENE EL VALOR CORRECTO!";
-    // public static final String MSJ_ERR_DB_EDITFIELD = "NO SE PUEDE ELIMINAR EL ELEMENTO DE LA BASE DE DATOS!";
-    // public static final String MSJ_ERR_DB_REFRESHITEM = "ERROR AL REFRESCAR LA INFORMACION DEL ELEMENTO SELECCIONADO!";
-    // public static final String MSJ_ERR_DB_VERIFYFIELD = "SE HAN DETECTADO ERRORES VALIDANDO LA CARGA DE DATOS!";
-    // public static final String MSJ_ERR_DB_ATSAVEDATA = "SE HAN DETECTADO ERRORES GUARDANDO LOS DATOS!";
-    // public static final String MSJ_ERR_DB_CANTVERIFYFIELD = "NO SE HA PODIDO VERIFICAR LA CARGA DE DATOS!";
+    public static final String MSJ_DB_ERR_FIELD_EMPTY = "DEBEN CARGARSE DATOS PARA EL CAMPO OBLIGATORIO: ";
+    public static final String MSJ_DB_ERR_FIELD_NOK = "DEBEN CARGARSE DATOS VALIDOS PARA EL CAMPO: ";
+    public static final String MSJ_DB_ERR_FIELD_LONG_NOK = "LA LONGITUD DE DATOS INGRESADOS ES INVALIDA PARA EL CAMPO: ";
+    // public static final String MSJ_DB_ERR_ADDFIELD_NULL = "EL ELEMENTO QUE DESEA AGREGAR ES NULO!";
+    // public static final String MSJ_DB_ERR_EDITFIELD_NULL = "EL ELEMENTO QUE DESEA EDITAR ES NULO!";
+    // public static final String MSJ_DB_ERR_DELFIELD_NULL = "EL ELEMENTO QUE DESEA QUITAR ES NULO!";
+    // public static final String MSJ_DB_ERR_ATT_EXIST = "EL ELEMENTO QUE SE DESEA AGREGAR YA SE ENCUENTRA AGREGADO!";
+    // public static final String MSJ_DB_ERR_PARAMTYPE = "EL ATRIBUTO QUE DESEA APLICAR NO TIENE EL TIPO CORRECTO!";
+    // public static final String MSJ_DB_ERR_PARAMVALUE = "EL ATRIBUTO QUE DESEA APLICAR NO TIENE EL VALOR CORRECTO!";
+    // public static final String MSJ_DB_ERR_EDITFIELD = "NO SE PUEDE ELIMINAR EL ELEMENTO DE LA BASE DE DATOS!";
+    // public static final String MSJ_DB_ERR_REFRESHITEM = "ERROR AL REFRESCAR LA INFORMACION DEL ELEMENTO SELECCIONADO!";
+    // public static final String MSJ_DB_ERR_VERIFYFIELD = "SE HAN DETECTADO ERRORES VALIDANDO LA CARGA DE DATOS!";
+    // public static final String MSJ_DB_ERR_ATSAVEDATA = "SE HAN DETECTADO ERRORES GUARDANDO LOS DATOS!";
+    // public static final String MSJ_DB_ERR_CANTVERIFYFIELD = "NO SE HA PODIDO VERIFICAR LA CARGA DE DATOS!";
     public static final String MSJ_REP_ERR_NOITEM = "NO PUDO OBTENERSE EL ITEM DESEADO!";
     public static final String MSJ_REP_ERR_TOOMANY = "SE OBTUVIERON MAS ITEMS QUE LOS DESEADOS!";
 

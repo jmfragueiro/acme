@@ -1,10 +1,7 @@
 package ar.com.acme.adapter.controller;
 
-import org.springframework.validation.BindingResult;
-
 import ar.com.acme.adapter.entity.IEntity;
 import ar.com.acme.adapter.repository.IRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -29,13 +26,13 @@ public interface IController<U extends IEntity<TKI>, TKI, W> {
      */
     IRepository<U, TKI> getRepo();
 
-    ControllerResponse<W> view(TKI key, HttpServletRequest req);
+    ControllerResponse<W> view(TKI key);
 
-    ControllerResponse<Collection<W>> list(HttpServletRequest req);
+    ControllerResponse<Collection<W>> list();
 
-    ControllerResponse<W> add(W objeto, BindingResult result, HttpServletRequest req) throws IOException;
+    ControllerResponse<W> add(W objeto) throws IOException;
 
-    ControllerResponse<W> update(W objeto, BindingResult result) throws IOException;
+    ControllerResponse<W> update(W objeto) throws IOException;
 
     ControllerResponse<Object> delete(TKI key) throws IOException;
 }

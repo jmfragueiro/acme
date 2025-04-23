@@ -1,8 +1,6 @@
 package ar.com.acme.bootstrap.core.token;
 
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.LockedException;
-
 import ar.com.acme.bootstrap.common.Constantes;
 import ar.com.acme.bootstrap.core.jws.IJwsDataHelper;
 
@@ -41,16 +39,9 @@ public interface ITokenPrincipal extends IJwsDataHelper {
 
     Collection<? extends ITokenAuthority> getAuthorities();
 
-    boolean isNonExpired();
-
-    boolean isNonLocked();
-
     boolean isEnabled();
 
     default void verifyCanOperate() {
-        if (!isNonLocked()) {
-            throw new LockedException(Constantes.MSJ_USR_ERR_USERLOCKED);
-        }
         if (!isEnabled()) {
             throw new DisabledException(Constantes.MSJ_USR_ERR_USERNOTENABLED);
         }

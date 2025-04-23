@@ -59,16 +59,16 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
     }
 
     @PostMapping(consumes = "application/json")
-    public ControllerResponse<Object> add(@Valid @RequestBody U object) throws IOException {
-        U added = getRepo().save(object);
+    public ControllerResponse<W> add(@Valid @RequestBody W object) throws IOException {
+        U added = getRepo().save(toEntityModel(object));
         URI location = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(added.getId()).toUri();
 
         return ControllerResponse.of(ResponseEntity.created(location).body(toWebModel(added)));
     }
 
     @PutMapping(consumes = "application/json")
-    public ControllerResponse<W> update(@Valid @RequestBody U object) throws IOException {
-        U updated = getRepo().save(object);
+    public ControllerResponse<W> update(@Valid @RequestBody W object) throws IOException {
+        U updated = getRepo().save(toEntityModel(object));
 
         return ControllerResponse.of(ResponseEntity.accepted().body(toWebModel(updated)));
     }

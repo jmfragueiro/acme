@@ -1,6 +1,5 @@
 package ar.com.acme.bootstrap.core.jws;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -15,8 +14,6 @@ public interface IJwsDataHelper {
     Object getId();
 
     String getSubject();
-
-    LocalDateTime getIssuedAt();
 
     List<String> authClaim();
 }

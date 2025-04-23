@@ -1,19 +1,10 @@
 package ar.com.acme.system.usuario;
 
-import ar.com.acme.adapter.entity.Entity;
 import ar.com.acme.adapter.entity.IEntityToken;
 import ar.com.acme.bootstrap.common.Constantes;
 import ar.com.acme.bootstrap.core.token.ITokenAuthority;
-import ar.com.acme.bootstrap.core.token.TokenAuthority;
-import ar.com.acme.sistema.seguridad.grupo.Grupo;
-import ar.com.acme.sistema.seguridad.grupopermiso.GrupoPermiso;
-import ar.com.acme.sistema.seguridad.usuariogrupo.UsuarioGrupo;
-import ar.com.acme.sistema.persona.persona.Persona;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-import org.hibernate.annotations.SQLRestriction;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -23,15 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Entity
-@Table(name = "sg_user")
+@Table(name = "usuario")
 @SequenceGenerator(name = "id_generator", sequenceName = "sg_user_seq", allocationSize = 1)
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -40,78 +28,41 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Usuario extends Entity implements IEntityToken {
+public class Usuario extends ar.com.acme.adapter.entity.Entity implements IEntityToken {
     public static final String F_USR_USUARIO = "Usuario";
     public static final String F_USR_PASSWORD = "Password";
     public static final String F_USR_NOMBRE = "Nombre";
     public static final String F_USR_EMAIL = "Email";
 
-    @OneToOne()
-    @JoinColumn(name = "pe_persona_id", nullable = true)
-    private Persona persona;
-
     @Column(name = "username", unique = true)
-    @NotNull(message = Constantes.MSJ_ERR_DB_FIELD_EMPTY + F_USR_USUARIO)
-    @Size(min = 4, max = 255, message = Constantes.MSJ_ERR_DB_FIELD_LONGNOK + F_USR_USUARIO)
+    @NotNull(message = Constantes.MSJ_DB_ERR_FIELD_EMPTY + F_USR_USUARIO)
+    @Size(min = 4, max = 255, message = Constantes.MSJ_DB_ERR_FIELD_LONG_NOK + F_USR_USUARIO)
     private String username;
 
     @Column(name = "email", unique = true)
-    @Size(min = 4, max = 255, message = Constantes.MSJ_ERR_DB_FIELD_LONGNOK + F_USR_EMAIL)
-    @Pattern(regexp = ".+@.+\\.[a-z]+", message = Constantes.MSJ_ERR_DB_FIELD_NOK + F_USR_EMAIL)
-    @NotNull(message = Constantes.MSJ_ERR_DB_FIELD_EMPTY + F_USR_EMAIL)
+    @Size(min = 4, max = 255, message = Constantes.MSJ_DB_ERR_FIELD_LONG_NOK + F_USR_EMAIL)
+    @Pattern(regexp = ".+@.+\\.[a-z]+", message = Constantes.MSJ_DB_ERR_FIELD_NOK + F_USR_EMAIL)
+    @NotNull(message = Constantes.MSJ_DB_ERR_FIELD_EMPTY + F_USR_EMAIL)
     private String email;
-
-    private LocalDateTime emailcheckAt;
-
-    private String emailchecktoken;
-
-    private String password;
-
-    private String foto;
 
     private Boolean enabled;
 
     private LocalDateTime lastLogin;
 
-    private Boolean locked;
-
-    private Boolean expired;
-
-    private LocalDate expiresAt;
-
-    private String tokenresetpassword;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OrderBy("grupo")
-    @SQLRestriction("fechabaja is null")
-    private Set<UsuarioGrupo> grupos = new HashSet<>();
+    private String token;
 
     @Transient
     private Collection<? extends ITokenAuthority> auths;
 
-    public void onLogin() {
-        setLastLogin(LocalDateTime.now());
-    }
-
-    @Override
-    public String getName() {
-        return getUsername();
-    }
-
-    @Override
-    public String getCredential() {
-        return password;
-    }
-
     @Override
     public Collection<? extends ITokenAuthority> reinitAuthorities() {
-        this.auths = getGrupos().stream()
-                                .map(UsuarioGrupo::getGrupo)
-                                .map(Grupo::getPermisos)
-                                .flatMap(Collection::stream)
-                                .map(GrupoPermiso::getPermiso)
-                                .map(p -> new TokenAuthority(p.getPermiso()))
-                                .collect(Collectors.toList());
+        // this.auths = getGrupos().stream()
+        //                         .map(UsuarioGrupo::getGrupo)
+        //                         .map(Grupo::getPermisos)
+        //                         .flatMap(Collection::stream)
+        //                         .map(GrupoPermiso::getPermiso)
+        //                         .map(p -> new TokenAuthority(p.getPermiso()))
+        //                         .collect(Collectors.toList());
 
         return this.auths;
     }
@@ -122,17 +73,26 @@ public class Usuario extends Entity implements IEntityToken {
     }
 
     @Override
-    public boolean isNonExpired() {
-        return (expired == null || !expired);
-    }
-
-    @Override
-    public boolean isNonLocked() {
-        return (locked == null || !locked);
+    public String getCredential() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCredential'");
     }
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEnabled'");
+    }
+
+    @Override
+    public String getSubject() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSubject'");
+    }
+
+    @Override
+    public List<String> authClaim() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'authClaim'");
     }
 }
