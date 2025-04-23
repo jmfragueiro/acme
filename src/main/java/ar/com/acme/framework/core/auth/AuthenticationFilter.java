@@ -32,7 +32,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         HttpServletResponse response,
         FilterChain chain,
         Authentication authenticationResult) throws IOException, ServletException {
-        AutenticationContextService.setContextAuthentication(authenticationResult);
+        AutenticationContext.setContextAuthentication(authenticationResult);
 
         chain.doFilter(request, response);
     }
@@ -41,7 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void unsuccessfulAuthentication(HttpServletRequest request,
         HttpServletResponse response,
         AuthenticationException failed) throws IOException, ServletException {
-        AutenticationContextService.clearContextAuthentication();
+        AutenticationContext.clearContextAuthentication();
 
         response.sendError(HttpStatus.UNAUTHORIZED.value(), failed.getMessage());
     }

@@ -6,7 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AutenticationContextService {
+public class AutenticationContext {
     public static void setContextAuthentication(Authentication auth) {
         clearContextAuthentication();
         SecurityContext context = SecurityContextHolder.createEmptyContext();
