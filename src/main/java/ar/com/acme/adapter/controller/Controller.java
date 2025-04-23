@@ -1,15 +1,13 @@
 package ar.com.acme.adapter.controller;
 
 import ar.com.acme.adapter.entity.IEntity;
-import ar.com.acme.adapter.service.IService;
+import ar.com.acme.adapter.repos.IRepository;
 import ar.com.acme.framework.core.exception.ItemNotFoundException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.io.Serializable;
@@ -26,57 +24,58 @@ import java.util.Optional;
  * @author jmfragueiro
  * @version 20200201
  */
-public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable> implements IController<U, TKI> {
-    private final IService<U, TKI> servicio;
+public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, W> implements IController<U, TKI, W> {
+    private final IRepository<U, TKI> repo;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    protected Controller(IService<U, TKI> servicio) {
-        this.servicio = servicio;
+    protected Controller(IRepository<U, TKI> repo) {
+        this.repo = repo;
     }
 
+    protected abstract W toWebModel(U source);
+
+    protected abstract U toEntityModel(W source);
+
     @Override
-    public IService<U, TKI> getServicio() {
-        return servicio;
+    public IRepository<U, TKI> getRepo() {
+        return repo;
     }
 
     @GetMapping(path = "/{key}")
-    public ControllerResponse<U> view(@PathVariable("key") TKI key) {
+    public ControllerResponse<W> view(@PathVariable("key") TKI key) {
         return ControllerResponse.of(
                 ResponseEntity.of(
                     Optional.of(
-                        servicio.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString())))));
+                        toWebModel(repo.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString()))))));
     }
 
     @GetMapping
-    public ControllerResponse<Collection<U>> list() {
-        var lista = getServicio().findAllAlive();
+    public ControllerResponse<Collection<W>> list() {
+        var lista = getRepo().findAllAlive();
 
         return ControllerResponse.of(
                 !lista.isEmpty()
-                    ? ResponseEntity.of(Optional.of(lista))
+                    ? ResponseEntity.of(Optional.of(lista.stream().map(this::toWebModel).toList()))
                     : ResponseEntity.noContent().build());
     }
 
     @PostMapping(consumes = "application/json")
     public ControllerResponse<Object> add(@Valid @RequestBody U object) throws IOException {
-        U added = getServicio().persist(object);
+        U added = getRepo().save(object);
         URI location = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(added.getId()).toUri();
 
-        return ControllerResponse.of(ResponseEntity.created(location).body(added));
+        return ControllerResponse.of(ResponseEntity.created(location).body(toWebModel(added)));
     }
 
     @PutMapping(consumes = "application/json")
-    public ControllerResponse<Object> update(@Valid @RequestBody U object) throws IOException {
-        U updated = getServicio().persist(object);
+    public ControllerResponse<W> update(@Valid @RequestBody U object) throws IOException {
+        U updated = getRepo().save(object);
 
-        return ControllerResponse.of(ResponseEntity.accepted().body(updated));
+        return ControllerResponse.of(ResponseEntity.accepted().body(toWebModel(updated)));
     }
 
     @DeleteMapping(path = "/{key}")
     public ControllerResponse<Object> delete(@PathVariable("key") TKI key) throws IOException {
-        getServicio().findById(key).ifPresent(servicio::delete);
+        getRepo().findById(key).ifPresent(repo::delete);
 
         return ControllerResponse.of(ResponseEntity.ok().build());
     }

@@ -66,7 +66,7 @@ public class UsuarioController extends Controller<Usuario, Long> {
          * En el repositorio se respetará esta critério
          */
         var parametro = key.toLowerCase();
-        return viewdit(((IUsuarioService) getServicio())
+        return viewdit(((IUsuarioService) getRepo())
                 .findByUsernameOrEmail(parametro)
                 .orElseThrow(() -> new ItemNotFoundException(getNombreEntidadAsociada(), parametro)).getId(), req)
                 .body();
@@ -77,7 +77,7 @@ public class UsuarioController extends Controller<Usuario, Long> {
      */
     @GetMapping(path = "/tramitearea/{key}", produces = "application/json")
     public List<Areausuariovista> viewPorAreaTramite(@PathVariable("key") String key, HttpServletRequest req) {
-        return ((IUsuarioService) getServicio()).findTramiteAreaByUsername(key);
+        return ((IUsuarioService) getRepo()).findTramiteAreaByUsername(key);
     }
 
     @PutMapping(path = "/{key}/chpass")
@@ -86,7 +86,7 @@ public class UsuarioController extends Controller<Usuario, Long> {
                                              @Valid @Size(min = 3) @RequestParam String newPassword,
                                              @RequestParam String metodo) {
         try {
-            Usuario usuario = ((IUsuarioService) getServicio())
+            Usuario usuario = ((IUsuarioService) getRepo())
                     .findByUsername(key)
                     .orElseThrow(() -> new ItemNotFoundException(getNombreEntidadAsociada(), key));
 
@@ -113,7 +113,7 @@ public class UsuarioController extends Controller<Usuario, Long> {
                     usuario.setExpiresAt(null);
                 }
 
-                getServicio().persist(usuario);
+                getRepo().persist(usuario);
 
                 if (metodo.equals("RESET") || metodo.equals("ALTAUSUARIO")) {
                     /**
@@ -179,7 +179,7 @@ public class UsuarioController extends Controller<Usuario, Long> {
 
                     if (resultado.success()) {
                         /* Si se cumplen todos los pasos, Persisto definitivamente el Token de Solicitud Confirmacion */
-                        ((IUsuarioService) getServicio()).persist(usuario);
+                        ((IUsuarioService) getRepo()).persist(usuario);
                     }
                 }
 
@@ -187,9 +187,9 @@ public class UsuarioController extends Controller<Usuario, Long> {
                  * Audito el Cambio de Password
                  */
                 if (metodo.equals("RESET")) {
-                    getServicio().postPersist(usuario, null, "chpassreset");
+                    getRepo().postPersist(usuario, null, "chpassreset");
                 } else {
-                    getServicio().postPersist(usuario, null, "chpass");
+                    getRepo().postPersist(usuario, null, "chpass");
                 }
 
                 return ResponseEntity.ok().build();
@@ -209,19 +209,19 @@ public class UsuarioController extends Controller<Usuario, Long> {
                                               @Valid @Size(min = 4, max = 255) @RequestParam String email) {
         try {
             /* Obtengo Usuario Original y lo saco del entity manager, ya que es requerido en la Auditoria */
-            Usuario usuarioOriginal = ((IUsuarioService) getServicio())
+            Usuario usuarioOriginal = ((IUsuarioService) getRepo())
                     .findByUsername(key)
                     .orElseThrow(() -> new ItemNotFoundException(getNombreEntidadAsociada(), key));
             entityManager.detach(usuarioOriginal);
 
-            Usuario usuario = ((IUsuarioService) getServicio())
+            Usuario usuario = ((IUsuarioService) getRepo())
                     .findByUsername(key)
                     .orElseThrow(() -> new ItemNotFoundException(getNombreEntidadAsociada(), key));
 
             if (passwordEncoder.matches(oldPassword, usuario.getPassword())) {
                 usuario.setEmail(email);
-                getServicio().persist(usuario);
-                getServicio().postPersist(usuario, usuarioOriginal, "chmail");
+                getRepo().persist(usuario);
+                getRepo().postPersist(usuario, usuarioOriginal, "chmail");
                 return ResponseEntity.accepted().build();
             } else {
                 throw new SecurityException(Constantes.MSJ_APP_CHANGEEMAIL_ERR_ONCHANGE, Constantes.SYS_APP_CHANGEEMAIL_ERR_BADEMAIL);
@@ -235,25 +235,25 @@ public class UsuarioController extends Controller<Usuario, Long> {
 
     @GetMapping(path = "/auditoria/{key}", produces = "application/json")
     public List<AuditoriausuarioDTO> auditoriaPorUsuario(@PathVariable("key") Long key) {
-        return ((IUsuarioService) getServicio()).auditoriaPorUsuario(key);
+        return ((IUsuarioService) getRepo()).auditoriaPorUsuario(key);
     }
 
     @GetMapping(path = "/notificaciones/{key}", produces = "application/json")
     public List<NotificacionusuarioDTO> notificacionesPorUsuario(@PathVariable("key") Long usuarioId) {
-        return ((IUsuarioService) getServicio()).notificacionesPorUsuario(usuarioId);
+        return ((IUsuarioService) getRepo()).notificacionesPorUsuario(usuarioId);
     }
 
     @GetMapping(path = "/actividades/{key}/{key1}", produces = "application/json")
     public List<Usuariovistaactividad> actividadesPorUsuarioFecha(@PathVariable("key") Long usuarioId,
                                                                   @PathVariable("key1") String fecha) {
-        return ((IUsuarioService) getServicio()).actividadesPorUsuarioFecha(usuarioId, fecha);
+        return ((IUsuarioService) getRepo()).actividadesPorUsuarioFecha(usuarioId, fecha);
     }
 
     @PostMapping(path = "/{key}/{key1}/solicitacheckemail")
     public ResponseEntity<Response> registrarSolicitudCheckEmail(@PathVariable("key") String username,
                                                                          @PathVariable("key1") String email) {
 
-        Response resultado = ((IUsuarioService) getServicio()).registrarSolicitudCheckEmail(username, email);
+        Response resultado = ((IUsuarioService) getRepo()).registrarSolicitudCheckEmail(username, email);
 
         if (resultado.success()) {
             return ResponseEntity.ok().body(resultado);
