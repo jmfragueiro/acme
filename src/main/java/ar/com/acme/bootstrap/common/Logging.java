@@ -48,10 +48,10 @@ public abstract class Logging {
 
     private static String reduce(String mensaje, Object extra) {
         return new StringBuilder(mensaje)
-                        .append(Constantes.SYS_CAD_SPACE)
-                        .append(Constantes.SYS_CAD_OPENTYPE)
+                        .append(Constants.SYS_CAD_SPACE)
+                        .append(Constants.SYS_CAD_OPENTYPE)
                         .append(extra.toString())
-                        .append(Constantes.SYS_CAD_CLOSETPE)
+                        .append(Constants.SYS_CAD_CLOSETPE)
                         .toString();
     }
 }
