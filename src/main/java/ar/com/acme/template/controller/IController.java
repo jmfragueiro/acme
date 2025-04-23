@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 import ar.com.acme.template.entity.IEntity;
-import ar.com.acme.template.repository.IRepository;
+import ar.com.acme.template.service.IService;
 
 /**
  * Esta interfase representa el comprotamiento deseable de un controlador de servicios REST
@@ -25,7 +25,7 @@ public interface IController<U extends IEntity<TKI>, TKI, W> {
      *
      * @return una referencia al repositorio subyacente al controlador.
      */
-    IRepository<U, TKI> getRepo();
+    IService<U, TKI> getService();
 
     ControllerResponse<W> view(TKI key);
 

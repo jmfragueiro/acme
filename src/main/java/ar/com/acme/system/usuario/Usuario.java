@@ -36,14 +36,14 @@ public class Usuario extends ar.com.acme.template.entity.Entity implements IEnti
     public static final String F_USR_EMAIL = "Email";
 
     @Column(name = "username", unique = true)
-    @NotNull(message = Constantes.MSJ_DB_ERR_FIELD_EMPTY + F_USR_USUARIO)
-    @Size(min = 4, max = 255, message = Constantes.MSJ_DB_ERR_FIELD_LONG_NOK + F_USR_USUARIO)
+    @NotNull(message = Constantes.MSJ_REP_ERR_FIELD_EMPTY + F_USR_USUARIO)
+    @Size(min = 4, max = 255, message = Constantes.MSJ_REP_ERR_FIELD_LONG_NOK + F_USR_USUARIO)
     private String username;
 
     @Column(name = "email", unique = true)
-    @Size(min = 4, max = 255, message = Constantes.MSJ_DB_ERR_FIELD_LONG_NOK + F_USR_EMAIL)
-    @Pattern(regexp = ".+@.+\\.[a-z]+", message = Constantes.MSJ_DB_ERR_FIELD_NOK + F_USR_EMAIL)
-    @NotNull(message = Constantes.MSJ_DB_ERR_FIELD_EMPTY + F_USR_EMAIL)
+    @Size(min = 4, max = 255, message = Constantes.MSJ_REP_ERR_FIELD_LONG_NOK + F_USR_EMAIL)
+    @Pattern(regexp = ".+@.+\\.[a-z]+", message = Constantes.MSJ_REP_ERR_FIELD_NOK + F_USR_EMAIL)
+    @NotNull(message = Constantes.MSJ_REP_ERR_FIELD_EMPTY + F_USR_EMAIL)
     private String email;
 
     private Boolean enabled;

@@ -24,7 +24,7 @@ public class UsuarioController extends Controller<Usuario, Long, UsuarioWVO> {
     }
 
     @Override
-    protected Usuario toEntityModel(UsuarioWVO source) {
+    protected Usuario toAppModel(UsuarioWVO source) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toEntityModel'");
     }

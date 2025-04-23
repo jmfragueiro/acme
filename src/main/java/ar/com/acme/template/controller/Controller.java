@@ -2,7 +2,7 @@ package ar.com.acme.template.controller;
 
 import ar.com.acme.bootstrap.core.exception.ItemNotFoundException;
 import ar.com.acme.template.entity.IEntity;
-import ar.com.acme.template.repository.IRepository;
+import ar.com.acme.template.service.IService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,19 +25,19 @@ import java.util.Optional;
  * @version 20200201
  */
 public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, W> implements IController<U, TKI, W> {
-    private final IRepository<U, TKI> repo;
+    private final IService<U, TKI> service;
 
-    protected Controller(IRepository<U, TKI> repo) {
-        this.repo = repo;
+    protected Controller(IService<U, TKI> service) {
+        this.service = service;
     }
 
     protected abstract W toWebModel(U source);
 
-    protected abstract U toEntityModel(W source);
+    protected abstract U toAppModel(W source);
 
     @Override
-    public IRepository<U, TKI> getRepo() {
-        return repo;
+    public IService<U, TKI> getService() {
+        return service;
     }
 
     @GetMapping(path = "/{key}")
@@ -45,12 +45,12 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
         return ControllerResponse.of(
                 ResponseEntity.of(
                     Optional.of(
-                        toWebModel(repo.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString()))))));
+                        toWebModel(service.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString()))))));
     }
 
     @GetMapping
     public ControllerResponse<Collection<W>> list() {
-        var lista = getRepo().findAllAlive();
+        var lista = getService().findAllAlive();
 
         return ControllerResponse.of(
                 !lista.isEmpty()
@@ -60,7 +60,7 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
     @PostMapping(consumes = "application/json")
     public ControllerResponse<W> add(@Valid @RequestBody W object) throws IOException {
-        U added = getRepo().save(toEntityModel(object));
+        U added = getService().persist(toAppModel(object));
         URI location = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(added.getId()).toUri();
 
         return ControllerResponse.of(ResponseEntity.created(location).body(toWebModel(added)));
@@ -68,14 +68,14 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
     @PutMapping(consumes = "application/json")
     public ControllerResponse<W> update(@Valid @RequestBody W object) throws IOException {
-        U updated = getRepo().save(toEntityModel(object));
+        U updated = getService().persist(toAppModel(object));
 
         return ControllerResponse.of(ResponseEntity.accepted().body(toWebModel(updated)));
     }
 
     @DeleteMapping(path = "/{key}")
     public ControllerResponse<Object> delete(@PathVariable("key") TKI key) throws IOException {
-        getRepo().findById(key).ifPresent(repo::delete);
+        getService().findById(key).ifPresent(service::delete);
 
         return ControllerResponse.of(ResponseEntity.ok().build());
     }
