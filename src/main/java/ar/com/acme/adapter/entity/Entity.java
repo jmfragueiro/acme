@@ -1,4 +1,4 @@
-package ar.com.acme.ports.entity;
+package ar.com.acme.adapter.entity;
 
 import ar.com.acme.framework.common.Constantes;
 
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * @version 20200201
  */
 @MappedSuperclass
-public abstract class Entidad implements IEntidad<Long>, Serializable, Cloneable {
+public abstract class Entity implements IEntity<Long>, Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
     //Luis 04-03-21
@@ -83,7 +83,7 @@ public abstract class Entidad implements IEntidad<Long>, Serializable, Cloneable
 
     @Override
     public boolean equals(Object other) {
-        return ((id != null) && (this == other || ((other instanceof Entidad) && id.equals(((Entidad) other).getId()))));
+        return ((id != null) && (this == other || ((other instanceof Entity) && id.equals(((Entity) other).getId()))));
     }
 
     @Override

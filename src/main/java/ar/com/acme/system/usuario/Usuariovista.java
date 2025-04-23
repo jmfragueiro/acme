@@ -10,7 +10,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-import ar.com.acme.ports.entity.Entidad;
+import ar.com.acme.adapter.entity.Entity;
 
 @Entity
 @Table(name = "view_sg_usuario")
@@ -18,7 +18,7 @@ import ar.com.acme.ports.entity.Entidad;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuariovista extends Entidad {
+public class Usuariovista extends Entity {
     @Column(name = "username")
     private String username;
 

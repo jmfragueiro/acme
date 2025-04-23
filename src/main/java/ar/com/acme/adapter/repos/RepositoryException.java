@@ -1,4 +1,4 @@
-package ar.com.acme.ports.repos;
+package ar.com.acme.adapter.repos;
 
 import ar.com.acme.framework.core.exception.MessageException;
 
@@ -10,12 +10,12 @@ import ar.com.acme.framework.core.exception.MessageException;
  * @author jmfragueiro
  * @version 20200201
  */
-public class RepoException extends MessageException {
-    public RepoException(String mensaje) {
+public class RepositoryException extends MessageException {
+    public RepositoryException(String mensaje) {
         super(mensaje);
     }
 
-    public RepoException(String mensaje, String extra) {
+    public RepositoryException(String mensaje, String extra) {
         super(mensaje, extra);
     }
 }

@@ -2,7 +2,7 @@ package ar.com.acme.system.usuario;
 
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.seguridad.permiso.Permiso;
-import ar.com.acme.ports.repos.IRepositorio;
+import ar.com.acme.adapter.repos.IRepository;
 import ar.com.acme.sistema.persona.persona.Persona;
 import ar.com.acme.sistema.tramite.areausuario.Areausuariovista;
 
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface IUsuarioRepo extends IRepositorio<Usuario, Long> {
+public interface IUsuarioRepo extends IRepository<Usuario, Long> {
     @Query("select u from Usuario u where lower(u.username) like ?1 ")
     Usuario findUsuarioByUsername(String username);
 

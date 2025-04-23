@@ -1,10 +1,10 @@
 package ar.com.acme.system.usuario;
 
+import ar.com.acme.adapter.entity.Entity;
+import ar.com.acme.adapter.entity.IEntityToken;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.core.token.TokenAuthority;
 import ar.com.acme.framework.core.token.ITokenAuthority;
-import ar.com.acme.ports.entity.Entidad;
-import ar.com.acme.ports.security.ITokenUser;
 import ar.com.acme.sistema.seguridad.grupo.Grupo;
 import ar.com.acme.sistema.seguridad.grupopermiso.GrupoPermiso;
 import ar.com.acme.sistema.seguridad.usuariogrupo.UsuarioGrupo;
@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Usuario extends Entidad implements ITokenUser {
+public class Usuario extends Entity implements IEntityToken {
     public static final String F_USR_USUARIO = "Usuario";
     public static final String F_USR_PASSWORD = "Password";
     public static final String F_USR_NOMBRE = "Nombre";

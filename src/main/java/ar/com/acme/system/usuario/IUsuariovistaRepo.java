@@ -5,12 +5,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import ar.com.acme.ports.repos.IRepositorio;
+import ar.com.acme.adapter.repos.IRepository;
 
 import java.util.Optional;
 
 @Repository
-public interface IUsuariovistaRepo extends IRepositorio<Usuariovista, Long> {
+public interface IUsuariovistaRepo extends IRepository<Usuariovista, Long> {
     @Query("select uv" +
             " FROM Usuariovista uv " +
             " WHERE LOWER(uv.username) like %?1%" +

@@ -1,10 +1,10 @@
 package ar.com.acme.system.usuario;
 
+import ar.com.acme.adapter.service.Service;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Logging;
 import ar.com.acme.framework.common.Numeros;
 import ar.com.acme.framework.core.extradata.IExtraDataService;
-import ar.com.acme.ports.service.Servicio;
 import ar.com.acme.impldefault.DefaultToken;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 @Service
-public class UsuariovistaService extends Servicio<Usuariovista, Long> implements IUsuariovistaService, IExtraDataService {
+public class UsuariovistaService extends Service<Usuariovista, Long> implements IUsuariovistaService, IExtraDataService {
     private final ObjectMapper om = new ObjectMapper();
 
     public UsuariovistaService(IUsuariovistaRepo repo) {

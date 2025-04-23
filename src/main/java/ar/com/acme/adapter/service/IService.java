@@ -1,12 +1,12 @@
-package ar.com.acme.ports.service;
-
-import ar.com.acme.ports.entity.EntityException;
-import ar.com.acme.ports.entity.IEntidad;
-import ar.com.acme.ports.repos.IRepositorio;
+package ar.com.acme.adapter.service;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+
+import ar.com.acme.adapter.entity.EntityException;
+import ar.com.acme.adapter.entity.IEntity;
+import ar.com.acme.adapter.repos.IRepository;
 
 /**
  * Esta interfase representa el comprotamiento deseable de un servicio de persistencia para el modelo
@@ -20,7 +20,7 @@ import java.util.Optional;
  * @author jmfragueiro
  * @version 20200201
  */
-public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, Cloneable {
+public interface IService<U extends IEntity<TKI>, TKI> extends Serializable, Cloneable {
     /**
      * Todas las implementaciones de Servicio de Repositorio deben tener un repositorio
      * por detrás que es el que efectivamente se comunica con la base de datos. Este es
@@ -28,7 +28,7 @@ public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, C
      *
      * @return una referencia al repositorio subyacente al servicio de repositorio.
      */
-    IRepositorio<U, TKI> getRepo();
+    IRepository<U, TKI> getRepo();
 
     /**
      * Este metodo debe establecer el hecho de que la instancia pasada como argumento ha sido seleccionada
@@ -43,7 +43,7 @@ public interface IServicio<U extends IEntidad<TKI>, TKI> extends Serializable, C
      * @return Retorna la propia instancia persistida (o marcada como tal).
      */
     U persist(U instancia) throws ServiceException;
-    
+
     /**
      * Este metodo deberia 'eliminar' una instancia de una entidad persistente del repositorio de entidades
      * persistentes. Dentro del framework, lo que se entienda por eliminar deberá estar dado por, AL MENOS,

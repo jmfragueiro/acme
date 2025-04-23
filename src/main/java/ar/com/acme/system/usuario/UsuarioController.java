@@ -1,11 +1,11 @@
 package ar.com.acme.system.usuario;
 
+import ar.com.acme.adapter.controller.Controller;
+import ar.com.acme.adapter.repos.ItemNotFoundException;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Fechas;
 import ar.com.acme.framework.common.Response;
 import ar.com.acme.framework.core.exception.SecurityException;
-import ar.com.acme.ports.control.Controlador;
-import ar.com.acme.ports.repos.ItemNotFoundException;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.notificacion.direccionenvio.NaIDireccionenvioService;
 import ar.com.acme.sistema.notificacion.medio.NaMedio;
@@ -30,7 +30,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioController extends Controlador<Usuario, Long> {
+public class UsuarioController extends Controller<Usuario, Long> {
     private final String frontendhostbasico;
     private final String empresanombre;
     private final String sistemanombre;

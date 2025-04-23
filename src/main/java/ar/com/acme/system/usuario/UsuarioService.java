@@ -1,16 +1,16 @@
 package ar.com.acme.system.usuario;
 
+import ar.com.acme.adapter.filemanager.FilemanagerRequest;
+import ar.com.acme.adapter.filemanager.FilemanagerResponse;
+import ar.com.acme.adapter.filemanager.IFilemanagerOnActionClient;
+import ar.com.acme.adapter.filemanager.FilemanagerRequest.EFilemanagerAction;
+import ar.com.acme.adapter.filemanager.FilemanagerRequest.EFilemanagerSubtipo;
+import ar.com.acme.adapter.service.Service;
 import ar.com.acme.framework.common.Constantes;
 import ar.com.acme.framework.common.Fechas;
 import ar.com.acme.framework.common.Response;
 import ar.com.acme.framework.common.Tools;
 import ar.com.acme.framework.core.extradata.ReqScopeExtraData;
-import ar.com.acme.ports.service.Servicio;
-import ar.com.acme.ports.filemanager.FilemanagerRequest;
-import ar.com.acme.ports.filemanager.FilemanagerResponse;
-import ar.com.acme.ports.filemanager.IFilemanagerOnActionClient;
-import ar.com.acme.ports.filemanager.FilemanagerRequest.EFilemanagerAction;
-import ar.com.acme.ports.filemanager.FilemanagerRequest.EFilemanagerSubtipo;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioService;
 import ar.com.acme.sistema.seguridad.permiso.Permiso;
@@ -39,7 +39,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService extends Servicio<Usuario, Long> implements IUsuarioService, IFilemanagerOnActionClient {
+public class UsuarioService extends Service<Usuario, Long> implements IUsuarioService, IFilemanagerOnActionClient {
     private final String urlconsultaqr;
     private final String empresanombre;
     private final String sistemanombre;

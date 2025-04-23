@@ -1,4 +1,4 @@
-package ar.com.acme.ports.entity;
+package ar.com.acme.adapter.entity;
 
 import ar.com.acme.framework.core.exception.MessageException;
 

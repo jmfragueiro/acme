@@ -1,9 +1,8 @@
-package ar.com.acme.ports.service;
+package ar.com.acme.adapter.service;
 
+import ar.com.acme.adapter.entity.IEntity;
+import ar.com.acme.adapter.repos.IRepository;
 import ar.com.acme.framework.common.Constantes;
-import ar.com.acme.ports.entity.IEntidad;
-import ar.com.acme.ports.repos.IRepositorio;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -20,17 +19,17 @@ import java.util.*;
  * @author jmfragueiro
  * @version 20250421
  */
-public abstract class Servicio<U extends IEntidad<TKI>, TKI extends Serializable> implements IServicio<U, TKI> {
-    protected final IRepositorio<U, TKI> repo;
+public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> implements IService<U, TKI> {
+    protected final IRepository<U, TKI> repo;
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    protected EntityManager entityManagerrrr;
 
-    protected Servicio(IRepositorio<U, TKI> repo) {
+    protected Service(IRepository<U, TKI> repo) {
         this.repo = repo;
     }
 
-    public IRepositorio<U, TKI> getRepo() {
+    public IRepository<U, TKI> getRepo() {
         return repo;
     }
 

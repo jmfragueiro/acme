@@ -1,11 +1,12 @@
-package ar.com.acme.ports.repos;
+package ar.com.acme.adapter.repos;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import ar.com.acme.ports.entity.IEntidad;
+import ar.com.acme.adapter.entity.IEntity;
+
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
  * @version 20200201
  */
 @NoRepositoryBean
-public interface IRepositorio<U extends IEntidad<TKI>, TKI> extends JpaRepository<U, TKI> {
+public interface IRepository<U extends IEntity<TKI>, TKI> extends JpaRepository<U, TKI> {
     Page<U> findByFechabajaIsNull(Pageable pageable);
 
     List<U> findByFechabajaIsNull();

@@ -1,11 +1,11 @@
-package ar.com.acme.ports.control;
+package ar.com.acme.adapter.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 
-import ar.com.acme.ports.entity.IEntidad;
-import ar.com.acme.ports.service.IServicio;
+import ar.com.acme.adapter.entity.IEntity;
+import ar.com.acme.adapter.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author jmfragueiro
  * @version 20200201
  */
-public interface IControlador<U extends IEntidad<TKI>, TKI> {
+public interface IController<U extends IEntity<TKI>, TKI> {
     /**
      * Todas las implementaciones de Controlador de Servicio deben tener un servicio
      * por detrás que es el que efectivamente se comunica con los repositorios. Este
@@ -29,7 +29,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      *
      * @return una referencia al servicio subyacente al controlador.
      */
-    IServicio<U, TKI> getServicio();
+    IService<U, TKI> getServicio();
 
     /**
      * Toda instancia de un controlador debe poder expresar el nombre simple de la Clase de la Entidad qye se
@@ -52,7 +52,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req un objeto utilizado para dar información del requierimiento al sistema de seguridad.
      * @return El objeto de la clase U requerido (en HATEOAS).
      */
-    CtrlResponse<U> viewdit(TKI key, HttpServletRequest req);
+    ControllerResponse<U> viewdit(TKI key, HttpServletRequest req);
 
     /**
      * Toda instancia de un controlador debe poder responder a un pedido REST GET "puro"
@@ -64,7 +64,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req un objeto utilizado para dar información del requierimiento al sistema de seguridad.
      * @return La colección JSON (en HATEOAS) de todos los objetos persistidos de la clase U 'vivos'.
      */
-    CtrlResponse<Collection<U>> list(HttpServletRequest req);
+    ControllerResponse<Collection<U>> list(HttpServletRequest req);
 
     /**
      * Toda instancia de un controlador debe poder responder a un pedido REST GET "/listar"
@@ -76,7 +76,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req un objeto utilizado para dar información del requierimiento al sistema de seguridad.
      * @return La colección JSON de todos los objetos persistidos de la clase U 'vivos'.
      */
-    CtrlResponse<List<U>> listar(HttpServletRequest req);
+    ControllerResponse<List<U>> listar(HttpServletRequest req);
 
     /**
      * Toda instancia de un controlador debe poder responder a un pedido REST GET '/filtrar', con
@@ -92,7 +92,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @return La colección (en HATEOAS) de objetos persistidos de la clase U 'vivos' que responden a
      * las condiciones pasadas y en función de la página y el orden solicitado.
      */
-    CtrlResponse<Page<U>> filtrar(String filtro, Pageable pageable, HttpServletRequest req);
+    ControllerResponse<Page<U>> filtrar(String filtro, Pageable pageable, HttpServletRequest req);
 
     /**
      * Toda instancia de un ayudante de controlador debe poder responder a un pedido REST
@@ -107,7 +107,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req
      * @return El objeto de la clase U requerido (en HATEOAS).
      */
-    CtrlResponse<Object> add(U objecto, BindingResult result, HttpServletRequest req) throws IOException;
+    ControllerResponse<Object> add(U objecto, BindingResult result, HttpServletRequest req) throws IOException;
 
     /**
      * Toda instancia de un ayudante de controlador debe poder responder a un pedido REST
@@ -123,7 +123,7 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req
      * @return El JSON del objeto de la clase U actualizado (en HATEOAS).
      */
-    CtrlResponse<Object> update(U objecto, BindingResult result, HttpServletRequest req) throws IOException;
+    ControllerResponse<Object> update(U objecto, BindingResult result, HttpServletRequest req) throws IOException;
 
     /**
      * Toda instancia de un ayudante de controlador debe poder responder a un pedido REST
@@ -138,5 +138,5 @@ public interface IControlador<U extends IEntidad<TKI>, TKI> {
      * @param req
      * @return El objeto de la clase U requerido (en HATEOAS).
      */
-    CtrlResponse<Object> delete(TKI key, HttpServletRequest req) throws IOException;
+    ControllerResponse<Object> delete(TKI key, HttpServletRequest req) throws IOException;
 }

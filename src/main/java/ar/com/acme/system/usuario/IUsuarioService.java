@@ -1,8 +1,8 @@
 package ar.com.acme.system.usuario;
 
+import ar.com.acme.adapter.service.IService;
 import ar.com.acme.framework.common.Response;
 import ar.com.acme.framework.core.token.ITokenPrincipalService;
-import ar.com.acme.ports.service.IServicio;
 import ar.com.acme.sistema.seguridad.auditoriausuario.AuditoriausuarioDTO;
 import ar.com.acme.sistema.seguridad.permiso.Permiso;
 import ar.com.acme.sistema.persona.persona.Persona;
@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-public interface IUsuarioService extends IServicio<Usuario, Long>, ITokenPrincipalService<Usuario> {
+public interface IUsuarioService extends IService<Usuario, Long>, ITokenPrincipalService<Usuario> {
     Optional<Usuario> findById(Long id);
 
     Optional<Usuario> findByUsername(String usename);

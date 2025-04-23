@@ -1,4 +1,4 @@
-package ar.com.acme.ports.entity;
+package ar.com.acme.adapter.entity;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @author jmfragueiro
  * @version 20250421
  */
-public interface IEntidad<TKI> {
+public interface IEntity<TKI> {
     /**
      * Identificador unico (como una clave primaria) para los objetos de una entidad identificable. Todos
      * los objetos de una entidad identificable deben poseer un identificador único de tipo long int. La

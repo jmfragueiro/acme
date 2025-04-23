@@ -1,8 +1,9 @@
-package ar.com.acme.ports.control;
+package ar.com.acme.adapter.controller;
 
+import ar.com.acme.adapter.entity.IEntity;
+import ar.com.acme.adapter.service.IService;
 import ar.com.acme.framework.core.exception.ItemNotFoundException;
-import ar.com.acme.ports.entity.IEntidad;
-import ar.com.acme.ports.service.IServicio;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -25,59 +26,58 @@ import java.util.Optional;
  * @author jmfragueiro
  * @version 20200201
  */
-@RestController
-public abstract class Controlador<U extends IEntidad<TKI>, TKI extends Serializable> implements IControlador<U, TKI> {
-    private final IServicio<U, TKI> servicio;
+public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable> implements IController<U, TKI> {
+    private final IService<U, TKI> servicio;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    protected Controlador(IServicio<U, TKI> servicio) {
+    protected Controller(IService<U, TKI> servicio) {
         this.servicio = servicio;
     }
 
     @Override
-    public IServicio<U, TKI> getServicio() {
+    public IService<U, TKI> getServicio() {
         return servicio;
     }
 
     @GetMapping(path = "/{key}")
-    public CtrlResponse<U> view(@PathVariable("key") TKI key) {
-        return CtrlResponse.of(
+    public ControllerResponse<U> view(@PathVariable("key") TKI key) {
+        return ControllerResponse.of(
                 ResponseEntity.of(
                     Optional.of(
                         servicio.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString())))));
     }
 
     @GetMapping
-    public CtrlResponse<Collection<U>> list() {
+    public ControllerResponse<Collection<U>> list() {
         var lista = getServicio().findAllAlive();
 
-        return CtrlResponse.of(
+        return ControllerResponse.of(
                 !lista.isEmpty()
                     ? ResponseEntity.of(Optional.of(lista))
                     : ResponseEntity.noContent().build());
     }
 
     @PostMapping(consumes = "application/json")
-    public CtrlResponse<Object> add(@Valid @RequestBody U object) throws IOException {
+    public ControllerResponse<Object> add(@Valid @RequestBody U object) throws IOException {
         U added = getServicio().persist(object);
         URI location = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(added.getId()).toUri();
 
-        return CtrlResponse.of(ResponseEntity.created(location).body(added));
+        return ControllerResponse.of(ResponseEntity.created(location).body(added));
     }
 
     @PutMapping(consumes = "application/json")
-    public CtrlResponse<Object> update(@Valid @RequestBody U object) throws IOException {
+    public ControllerResponse<Object> update(@Valid @RequestBody U object) throws IOException {
         U updated = getServicio().persist(object);
 
-        return CtrlResponse.of(ResponseEntity.accepted().body(updated));
+        return ControllerResponse.of(ResponseEntity.accepted().body(updated));
     }
 
     @DeleteMapping(path = "/{key}")
-    public CtrlResponse<Object> delete(@PathVariable("key") TKI key) throws IOException {
+    public ControllerResponse<Object> delete(@PathVariable("key") TKI key) throws IOException {
         getServicio().findById(key).ifPresent(servicio::delete);
 
-        return CtrlResponse.of(ResponseEntity.ok().build());
+        return ControllerResponse.of(ResponseEntity.ok().build());
     }
 }
