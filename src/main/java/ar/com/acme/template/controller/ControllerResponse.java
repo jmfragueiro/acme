@@ -1,4 +1,4 @@
-package ar.com.acme.adapter.controller;
+package ar.com.acme.template.controller;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package ar.com.acme.system.usuario;
 
-import ar.com.acme.adapter.controller.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import ar.com.acme.template.controller.Controller;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 

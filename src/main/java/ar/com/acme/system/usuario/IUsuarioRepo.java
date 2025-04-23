@@ -1,9 +1,9 @@
 package ar.com.acme.system.usuario;
 
-import ar.com.acme.adapter.repository.IRepository;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import ar.com.acme.template.repository.IRepository;
 
 import java.util.Optional;
 

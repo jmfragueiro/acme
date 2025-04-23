@@ -1,9 +1,10 @@
-package ar.com.acme.adapter.controller;
+package ar.com.acme.template.controller;
 
-import ar.com.acme.adapter.entity.IEntity;
-import ar.com.acme.adapter.repository.IRepository;
 import java.io.IOException;
 import java.util.Collection;
+
+import ar.com.acme.template.entity.IEntity;
+import ar.com.acme.template.repository.IRepository;
 
 /**
  * Esta interfase representa el comprotamiento deseable de un controlador de servicios REST

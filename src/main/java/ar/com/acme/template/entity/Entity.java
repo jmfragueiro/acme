@@ -1,4 +1,4 @@
-package ar.com.acme.adapter.entity;
+package ar.com.acme.template.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

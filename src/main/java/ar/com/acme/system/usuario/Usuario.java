@@ -1,8 +1,9 @@
 package ar.com.acme.system.usuario;
 
-import ar.com.acme.adapter.entity.IEntityToken;
 import ar.com.acme.bootstrap.common.Constantes;
 import ar.com.acme.bootstrap.core.token.ITokenAuthority;
+import ar.com.acme.template.entity.IEntityToken;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -28,7 +29,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Usuario extends ar.com.acme.adapter.entity.Entity implements IEntityToken {
+public class Usuario extends ar.com.acme.template.entity.Entity implements IEntityToken {
     public static final String F_USR_USUARIO = "Usuario";
     public static final String F_USR_PASSWORD = "Password";
     public static final String F_USR_NOMBRE = "Nombre";
