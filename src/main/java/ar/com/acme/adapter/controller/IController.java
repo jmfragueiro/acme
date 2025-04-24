@@ -17,7 +17,7 @@ import ar.com.acme.adapter.service.IService;
  * @author jmfragueiro
  * @version 20200201
  */
-public interface IController<U extends IEntity<TKI>, TKI, W> {
+public interface IController<U extends IEntity<TKI>, TKI, X, W> {
     /**
      * Todas las implementaciones de Controlador de entrada deben tener un repositorio
      * por detrás que es el que efectivamente se comunica con el mecanismo de persistenia.
@@ -31,9 +31,9 @@ public interface IController<U extends IEntity<TKI>, TKI, W> {
 
     ControllerResponse<Collection<W>> list();
 
-    ControllerResponse<W> add(W objeto) throws IOException;
+    ControllerResponse<W> add(X objeto) throws IOException;
 
-    ControllerResponse<W> update(W objeto) throws IOException;
+    ControllerResponse<W> update(X objeto) throws IOException;
 
     ControllerResponse<Object> delete(TKI key) throws IOException;
 }

@@ -23,16 +23,16 @@ import java.util.Optional;
  * @author jmfragueiro
  * @version 20200201
  */
-public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, W> implements IController<U, TKI, W> {
+public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, X, W> implements IController<U, TKI, X, W> {
     private final IService<U, TKI> service;
 
     protected Controller(IService<U, TKI> service) {
         this.service = service;
     }
 
-    protected abstract W toWebModel(U source);
+    protected abstract W toWebOutModel(U source);
 
-    protected abstract U toAppModel(W source);
+    protected abstract U fromWebInModel(X source);
 
     @Override
     public IService<U, TKI> getService() {
@@ -44,7 +44,7 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
         return ControllerResponse.of(
                 ResponseEntity.of(
                     Optional.of(
-                        toWebModel(service.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString()))))));
+                        toWebOutModel(service.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString()))))));
     }
 
     @GetMapping
@@ -53,23 +53,23 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
         return ControllerResponse.of(
                 !lista.isEmpty()
-                    ? ResponseEntity.of(Optional.of(lista.stream().map(this::toWebModel).toList()))
+                    ? ResponseEntity.of(Optional.of(lista.stream().map(this::toWebOutModel).toList()))
                     : ResponseEntity.noContent().build());
     }
 
     @PostMapping(consumes = "application/json")
-    public ControllerResponse<W> add(@Valid @RequestBody W object) throws IOException {
-        U added = getService().persist(toAppModel(object));
+    public ControllerResponse<W> add(@Valid @RequestBody X object) throws IOException {
+        U added = getService().persist(fromWebInModel(object));
         URI location = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(added.getId()).toUri();
 
-        return ControllerResponse.of(ResponseEntity.created(location).body(toWebModel(added)));
+        return ControllerResponse.of(ResponseEntity.created(location).body(toWebOutModel(added)));
     }
 
     @PutMapping(consumes = "application/json")
-    public ControllerResponse<W> update(@Valid @RequestBody W object) throws IOException {
-        U updated = getService().persist(toAppModel(object));
+    public ControllerResponse<W> update(@Valid @RequestBody X object) throws IOException {
+        U updated = getService().persist(fromWebInModel(object));
 
-        return ControllerResponse.of(ResponseEntity.accepted().body(toWebModel(updated)));
+        return ControllerResponse.of(ResponseEntity.accepted().body(toWebOutModel(updated)));
     }
 
     @DeleteMapping(path = "/{key}")

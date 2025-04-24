@@ -9,5 +9,6 @@ public class AdapterConstants {
     public static final String MSJ_REP_ERR_FIELD_NOK = "DEBEN CARGARSE DATOS VALIDOS PARA EL CAMPO: ";
     public static final String MSJ_REP_ERR_FIELD_LONG_NOK = "LA LONGITUD DE DATOS INGRESADOS ES INVALIDA PARA EL CAMPO: ";
     public static final String MSJ_REP_ERR_NOITEM = "NO PUDO OBTENERSE EL ELEMENTO DESEADO!";
-    public static final String MSJ_REP_ERR_TOOMANY = "SE OBTUVIERON MAS ITEMS QUE LOS DESEADOS!";
+    public static final String MSJ_REP_ERR_TOOMANY = "SE OBTUVIERON MAS ELEMENTOS QUE LOS DESEADOS!";
+    public static final String MSJ_REP_ERR_NULLITEM = "NO SE HA INFORMADO EL ELEMENTO DESEADO!";
 }
