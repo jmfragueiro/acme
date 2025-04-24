@@ -1,15 +1,32 @@
 package ar.com.acme.application.user;
 
-public record UserWVO(String user, String password, String nombre, String email, Collection<PhoneWVO> phones) {
-    public static from(User user) {
-        return new UserWVO(user.getUser(),
-                           user.getPassword(),
-                           user.getNombre(),
-                           user.getEmail(),
-                           user.getPhones().stream().map(PhoneWVO::from).collect(Collectors.toList()));
-    }
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-    public User toUser() {
-        return new User(user, password, nombre, email, phones.stream().map(PhoneWVO::toPhone).collect(Collectors.toList()));
+import ar.com.acme.application.phone.PhoneWVO;
+
+public record UserWVO(UUID id,
+                      String name,
+                      String email,
+                      String password,
+                      LocalDateTime created,
+                      LocalDateTime modified,
+                      Boolean active,
+                      String token,
+                      LocalDateTime lastLogin,
+                      Collection<PhoneWVO> phones) {
+    public static UserWVO fromUser(User user) {
+        return new UserWVO(user.getId(),
+                           user.getName(),
+                           user.getEmail(),
+                           user.getPassword(),
+                           user.getCreated(),
+                           user.getModified(),
+                           user.getActive(),
+                           user.getToken(),
+                           user.getLastLogin(),
+                           user.getPhones().stream().map(PhoneWVO::fromPhone).collect(Collectors.toList()));
     }
  }
