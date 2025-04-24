@@ -2,8 +2,12 @@ package ar.com.acme.application.user;
 
 import ar.com.acme.adapter.common.AdapterConstants;
 import ar.com.acme.adapter.token.IEntityToken;
+import ar.com.acme.application.phone.Phone;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,6 +16,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -49,6 +55,9 @@ public class User extends ar.com.acme.adapter.entity.Entity implements IEntityTo
 
     @Column(name = "token")
     private String token;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Phone> phones = new HashSet<>();
 
     @Override
     public String getCredential() {
