@@ -36,9 +36,12 @@ public class BasicAuthenticationType implements IAuthenticationType {
             }
 
             var repoUser = authHelper.getPrincipalService()
-                                               .findByName(username)
-                                               .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL));
+                                     .findByName(username)
+                                     .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL));
 
-            return new TokenAuthentication(repoUser, password);
+            var authorities = authHelper.getPrincipalService()
+                                        .getAuthorities(repoUser);
+
+            return new TokenAuthentication(repoUser, password, authorities);
         }
 }

@@ -17,9 +17,12 @@ public class BearerAuthenticationType implements IAuthenticationType {
             var token = authHelper.getJwsService().getIdFromJws(authcad);
 
             var repoUser = authHelper.getPrincipalService()
-                                               .findByToken(token)
-                                               .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_NOACTIVETOKEN));
+                                     .findByToken(token)
+                                     .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_NOACTIVETOKEN));
 
-            return new TokenAuthentication(repoUser);
+            var authorities = authHelper.getPrincipalService()
+                                        .getAuthorities(repoUser);
+
+            return new TokenAuthentication(repoUser, authorities);
         }
 }

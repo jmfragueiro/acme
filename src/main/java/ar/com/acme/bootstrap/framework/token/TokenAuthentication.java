@@ -10,45 +10,30 @@ import org.springframework.security.core.GrantedAuthority;
 import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
+import lombok.Getter;
 
+@Getter
 public class TokenAuthentication implements Authentication, CredentialsContainer {
     private final IEntityToken principal;
     private final String details;
-    private String credential;
+    private final Collection<? extends GrantedAuthority> authorities;
+    private String credentials;
     private boolean authenticated;
 
-    public TokenAuthentication(IEntityToken principal, String password) {
-        this.credential = password;
+    public TokenAuthentication(IEntityToken principal, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.credentials = password;
         this.principal = principal;
         this.details = null;
         this.authenticated = false;
+        this.authorities = authorities != null ? authorities : Collections.emptyList();
     }
 
-    public TokenAuthentication(IEntityToken principal) {
-        this.credential = null;
+    public TokenAuthentication(IEntityToken principal, Collection<? extends GrantedAuthority> authorities) {
+        this.credentials = null;
         this.principal = principal;
         this.details = null;
         this.authenticated = false;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return (principal != null) ? principal.getAuthorities() : Collections.emptyList();
-    }
-
-    @Override
-    public final Object getCredentials() {
-        return credential;
-    }
-
-    @Override
-    public final Object getDetails() {
-        return details;
-    }
-
-    @Override
-    public final Object getPrincipal() {
-        return principal;
+        this.authorities = authorities != null ? authorities : Collections.emptyList();
     }
 
     @Override
@@ -58,7 +43,7 @@ public class TokenAuthentication implements Authentication, CredentialsContainer
 
     @Override
     public final void eraseCredentials() {
-        this.credential = null;
+        this.credentials = null;
     }
 
     @Override

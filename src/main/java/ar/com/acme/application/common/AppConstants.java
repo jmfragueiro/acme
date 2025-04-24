@@ -5,11 +5,5 @@ public class AppConstants {
     //  ** CONSTANTES GENERALES DEL SISTEMA A REALIZARSE
     //  **********************************************************
     public static final String MSJ_EXCEPTION_SEPARATOR = ".{3,32}@acme.cl$";
-    public static final String REGEXP_EMAIL = ".{3,32}@acme.cl$";
     public static final String ADD_FORMATTER_STRING = " (%S)";
-
-    //  **********************************************************
-    //  * CADENAS DE NOMBRES DE ATRIBUTOS DE ENTIDADES
-    //  **********************************************************
-
 }

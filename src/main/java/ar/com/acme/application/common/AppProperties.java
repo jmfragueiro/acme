@@ -1,4 +1,4 @@
-package ar.com.acme.adapter.common;
+package ar.com.acme.application.common;
 
 import java.util.Map;
 
@@ -15,9 +15,8 @@ import lombok.Getter;
  * @version 20250421
  */
 @Component
-@ConfigurationProperties(prefix = "framework")
+@ConfigurationProperties(prefix = "application")
 @Getter
-public class Properties {
-    private Map<String, String> security;
-    private Map<String, String> token;
+public class AppProperties {
+    private Map<String, String> regexp;
 }

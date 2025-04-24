@@ -13,12 +13,15 @@ import java.time.LocalDateTime;
  */
 public interface IEntity<TKI> {
     /**
-     * Identificador unico (como una clave primaria) para los objetos de una entidad identificable. Todos
-     * los objetos de una entidad identificable deben poseer un identificador único de tipo long int. La
-     * entidad debe establecer un mecanismo automatico de asignacion de ID, de manera de que no existe un
-     * seter para este atributo.
+     * Toda entidad persistente debe poseer un modo de determinar si una instancia ya ha sido marcada para
+     * ser persistida o aun se encuentra unicamente en memoria. Es este metodo el encargado de anunciar si la
+     * instancia de la entidad persistente en cuestion se encuentra marcada para ser persistida o no. Recordar
+     * que, bajo ciertas implementaciones, el hecho de que sea marcada para persistirse no significa que
+     * efectivamente lo haya sido.
+     *
+     * @returns Retorna false si el objeto ya ha sido persistido, o true si no lo ha sido.
      */
-    TKI getId();
+    boolean isNew();
 
     /**
      * Toda entidad identificable debe poseer un modo de determinar si una instancia se encuentra 'viva', o
@@ -33,15 +36,21 @@ public interface IEntity<TKI> {
     boolean isAlive();
 
     /**
-     * Toda entidad persistente debe poseer un modo de determinar si una instancia ya ha sido marcada para
-     * ser persistida o aun se encuentra unicamente en memoria. Es este metodo el encargado de anunciar si la
-     * instancia de la entidad persistente en cuestion se encuentra marcada para ser persistida o no. Recordar
-     * que, bajo ciertas implementaciones, el hecho de que sea marcada para persistirse no significa que
-     * efectivamente lo haya sido.
+     * Este metodo deberia ser capaz de 'desactivar' una instancia de esta entidad y devolver la fecha en la que
+     * dicha desactivacion. Esto implica que, posterior a la invocacion de este metodo, la instancia debe retornar
+     * false al metodo isAlive().
      *
-     * @returns Retorna false si el objeto ya ha sido persistido, o true si no lo ha sido.
+     * @return Retorna la fecha de 'dsactivacion' persitida de la instancia.
      */
-    boolean isNew();
+    LocalDateTime kill();
+
+    /**
+     * Identificador unico (como una clave primaria) para los objetos de una entidad identificable. Todos
+     * los objetos de una entidad identificable deben poseer un identificador único de tipo long int. La
+     * entidad debe establecer un mecanismo automatico de asignacion de ID, de manera de que no existe un
+     * seter para este atributo.
+     */
+    TKI getId();
 
     /**
      * Este metodo deberia ser capaz de devolver la fecha en la que una instancia ha sido 'creada' y ha sido
@@ -50,7 +59,7 @@ public interface IEntity<TKI> {
      *
      * @return Retorna la fecha de 'creacion' persitida de la instancia o null si es una nueva.
      */
-    LocalDateTime getFechaalta();
+    LocalDateTime getCreated();
 
     /**
      * Este metodo deberia ser capaz de devolver la fecha en la que una instancia ha sido modificada por ultima
@@ -59,14 +68,5 @@ public interface IEntity<TKI> {
      *
      * @return Retorna la fecha de ultima modificacion persitida de la instancia o null si es una nueva.
      */
-    LocalDateTime getFechaumod();
-
-    /**
-     * Este metodo deberia ser capaz de 'desactivar' una instancia de esta entidad y devolver la fecha en la que
-     * dicha desactivacion. Esto implica que, posterior a la invocacion de este metodo, la instancia debe retornar
-     * false al metodo isAlive().
-     *
-     * @return Retorna la fecha de 'dsactivacion' persitida de la instancia.
-     */
-    LocalDateTime kill();
+    LocalDateTime getModified();
 }

@@ -1,7 +1,5 @@
 package ar.com.acme.adapter.token;
 
-import java.util.Collection;
-
 /**
  * Un TOKENPAYLOAD es un elemento que puede ser "registrado" dentro de otro objeto denominado
  * ITOKEN, representando su carga útil . Esta interface permite establecer el comportamiento de
@@ -31,8 +29,6 @@ public interface IEntityToken {
     String getToken();
 
     String getCredential();
-
-    Collection<? extends IEntityTokenAuthority> getAuthorities();
 
     void verifyCanOperate();
 }

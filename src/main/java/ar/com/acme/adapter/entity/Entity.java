@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import ar.com.acme.bootstrap.common.Constants;
 import jakarta.persistence.*;
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * Esta clase abstracta representa el concepto de una Entidad que posee mecanismos que
@@ -18,34 +21,33 @@ import java.time.LocalDateTime;
  * @version 20200201
  */
 @MappedSuperclass
-public abstract class Entity implements IEntity<Long>, Serializable, Cloneable {
+@Getter
+public abstract class Entity implements IEntity<UUID>, Serializable, Cloneable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    //Luis 04-03-21
-    //El nombre de la secuencia de redefine en cada entidad que hereda la presente clase abstracta
-    //@SequenceGenerator(name = "id_generator", sequenceName = "seq_entidad", allocationSize = 1)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
-    @Column(name = "fechaalta")
+    @Column(name = "created")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime fechaalta;
+    private LocalDateTime created;
 
-    @Column(name = "fechaumod")
+    @Column(name = "modified")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime fechaumod;
+    private LocalDateTime modified;
 
-    @Column(name = "fechabaja")
+    @Column(name = "deleted")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime fechabaja;
+    private LocalDateTime deleted;
 
     @PrePersist
-    protected void setAltaData() {
-        fechaalta = fechaumod = LocalDateTime.now();
+    protected void setCreatedData() {
+        created = modified = LocalDateTime.now();
     }
 
     @PreUpdate
-    protected void setUmodData() {
-        fechaumod = LocalDateTime.now();
+    protected void setModifiedData() {
+        modified = LocalDateTime.now();
     }
 
     @Override
@@ -55,29 +57,13 @@ public abstract class Entity implements IEntity<Long>, Serializable, Cloneable {
 
     @Override
     public LocalDateTime kill() {
-        fechabaja = LocalDateTime.now();
-
-        return fechabaja;
+        deleted = LocalDateTime.now();
+        return deleted;
     }
 
     @Override
     public boolean isAlive() {
-        return (fechabaja == null);
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public LocalDateTime getFechaalta() {
-        return fechaalta;
-    }
-
-    @Override
-    public LocalDateTime getFechaumod() {
-        return fechaumod;
+        return (deleted == null);
     }
 
     @Override

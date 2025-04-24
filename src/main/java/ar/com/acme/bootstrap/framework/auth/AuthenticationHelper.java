@@ -2,9 +2,9 @@ package ar.com.acme.bootstrap.framework.auth;
 
 import org.springframework.stereotype.Component;
 
-import ar.com.acme.adapter.common.Properties;
 import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.adapter.token.IEntityTokenService;
+import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.framework.jws.IJwsService;
 
 @Component
