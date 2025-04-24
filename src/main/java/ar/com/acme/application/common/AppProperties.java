@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Esta clase debe ser utilizada como un punto focal para el acceso a las propiedades configurables para
@@ -17,6 +18,7 @@ import lombok.Getter;
 @Component
 @ConfigurationProperties(prefix = "application")
 @Getter
+@Setter
 public class AppProperties {
     private Map<String, String> regexp;
 }

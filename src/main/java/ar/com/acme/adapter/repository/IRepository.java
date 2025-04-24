@@ -24,19 +24,9 @@ import java.util.List;
  */
 @NoRepositoryBean
 public interface IRepository<U extends IEntity<TKI>, TKI> extends JpaRepository<U, TKI> {
-    Page<U> findByFechabajaIsNull(Pageable pageable);
-
-    List<U> findByFechabajaIsNull();
-
-    default Page<U> findAllAlive(Pageable pageable) {
-        return findByFechabajaIsNull(pageable);
-    }
+    List<U> findByDeletedIsNull();
 
     default List<U> findAllAlive() {
-        return findByFechabajaIsNull();
-    }
-
-    default Long countAllAlive() {
-        return Integer.toUnsignedLong(findAllAlive().size());
+        return findByDeletedIsNull();
     }
 }
