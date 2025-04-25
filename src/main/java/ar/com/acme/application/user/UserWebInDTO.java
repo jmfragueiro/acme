@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import ar.com.acme.adapter.common.AdapterConstants;
 import ar.com.acme.application.phone.IPhoneService;
 import ar.com.acme.application.phone.PhoneWebDTO;
+import ar.com.acme.bootstrap.common.Encoder;
 
 public record UserWebInDTO(UUID id,
                            String name,
@@ -24,10 +25,10 @@ public record UserWebInDTO(UUID id,
             user = new User();
         }
 
+        // si no viene en nulo entonces se modifica el password
         if (this.password() != null) {
-            user.setPassword(this.password());
+            user.setPassword(Encoder.encodePassword(this.password()));
         }
-
         user.setName(this.name());
         user.setEmail(this.email());
         user.setActive(this.active());

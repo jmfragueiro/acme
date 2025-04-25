@@ -65,6 +65,6 @@ public class UserService extends ar.com.acme.adapter.service.Service<User, UUID>
 
     @Override
     public void updatePrincipal(IEntityPrincipal principal) {
-        persist((User)principal);
+        super.persist((User)principal);
     }
 }
