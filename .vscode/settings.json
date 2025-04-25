@@ -5,10 +5,6 @@
         {
             "alias": "mvnpnt",
             "command": "clean package -DskipTests=true"
-        },
-        {
-            "alias": "mvnpntdeploy",
-            "command": "clean package tomcat7:deploy -DskipTests=true"
         }
     ],
     "maven.view": "hierarchical",
