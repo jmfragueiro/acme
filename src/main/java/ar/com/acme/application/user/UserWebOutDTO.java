@@ -23,7 +23,7 @@ public record UserWebOutDTO(UUID id,
                                 user.getCreated(),
                                 user.getModified(),
                                 user.getActive(),
-                                user.getToken(),
+                                user.getToken().toString(),
                                 user.getLastLogin(),
                                 user.getPhones().stream().map(PhoneWebDTO::fromPhone).collect(Collectors.toList()));
     }

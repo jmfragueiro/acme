@@ -2,11 +2,12 @@ package ar.com.acme.adapter.token;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface IEntityPrincipalService<U extends IEntityPrincipal> {
     Optional<U> findByName(String name);
 
-    Optional<U> findByToken(String token);
+    Optional<U> findByToken(UUID token);
 
     Collection<IEntityPrincipalAuthority> getAuthorities(IEntityPrincipal principal);
 

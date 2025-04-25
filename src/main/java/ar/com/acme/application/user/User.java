@@ -19,6 +19,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tab_user")
@@ -56,7 +57,7 @@ public class User extends ar.com.acme.adapter.entity.Entity implements IEntityPr
     private LocalDateTime lastLogin;
 
     @Column(name = "token")
-    private String token;
+    private UUID token;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Phone> phones = new HashSet<>();

@@ -3,6 +3,7 @@ package ar.com.acme.bootstrap.framework.session;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class SessionService implements ISessionService {
 
         var token = authenticationHelper.getJwsService().generateJws(principal);
 
-        principal.setToken(token);
+        principal.setToken(UUID.fromString(authenticationHelper.getJwsService().getIdFromJws(token)));
         principal.setLastLogin(LocalDateTime.now());
         authenticationHelper.getPrincipalService().updatePrincipal(principal);
 

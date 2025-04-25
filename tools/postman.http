@@ -8,7 +8,6 @@ Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
 username=jmfragueiro&password=fito
 
 ###
-
 POST http://127.0.0.1:8080/auth/login
 Accept: */*
 Cache-Control: no-cache
@@ -22,12 +21,11 @@ POST http://127.0.0.1:8080/auth/login
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
+Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
 
 username=lschwegler&password=Damasco004
 
 ###
-
 POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
@@ -48,3 +46,8 @@ Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJkYWZkZD
  }
 
 ###
+POST http://127.0.0.1:8080/auth/logout
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlMzE3OTZmYS1hZGRkLTQ2NmItOTFhZS01ZjA4ODJhMzZiNzQiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTU1MDAwMH0.Z_fLbtHDnAY3m_fuVjxf92rZIXnMdtdxx0ntv8RPrp1OjeSgRhCG4AReZ1oP4AbTisr9GCsPtdQ2sFATy748IA

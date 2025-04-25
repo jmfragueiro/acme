@@ -1,6 +1,7 @@
 package ar.com.acme.adapter.token;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * Un TOKENPAYLOAD es un elemento que puede ser "registrado" dentro de otro objeto denominado
@@ -26,9 +27,9 @@ public interface IEntityPrincipal {
     ///////////////////////////////////////////////////////
     String getName();
 
-    void setToken(String token);
+    void setToken(UUID token);
 
-    String getToken();
+    UUID getToken();
 
     void setLastLogin(LocalDateTime lastLogin);
 

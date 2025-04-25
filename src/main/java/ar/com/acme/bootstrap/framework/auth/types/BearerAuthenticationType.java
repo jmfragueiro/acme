@@ -1,5 +1,7 @@
 package ar.com.acme.bootstrap.framework.auth.types;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.bootstrap.common.Constants;
@@ -17,7 +19,7 @@ public class BearerAuthenticationType implements IAuthenticationType {
             var token = authHelper.getJwsService().getIdFromJws(authcad);
 
             var repoUser = authHelper.getPrincipalService()
-                                     .findByToken(token)
+                                     .findByToken(UUID.fromString(token))
                                      .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_NOACTIVETOKEN));
 
             var authorities = authHelper.getPrincipalService()

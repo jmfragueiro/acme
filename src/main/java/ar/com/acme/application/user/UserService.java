@@ -54,8 +54,8 @@ public class UserService extends ar.com.acme.adapter.service.Service<User, UUID>
     }
 
     @Override
-    public Optional<User> findByToken(String token) {
-        return ((IUserRepo)getRepo()).findById(UUID.fromString(token));
+    public Optional<User> findByToken(UUID token) {
+        return ((IUserRepo)getRepo()).findByToken(token);
     }
 
     @Override

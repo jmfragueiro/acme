@@ -9,6 +9,8 @@ import java.util.UUID;
 
 @Repository
 public interface IUserRepo extends IRepository<User, UUID> {
+    Optional<User> findByToken(UUID token);
+
     Optional<User> findByName(String name);
 
     Optional<User> findByEmail(String name);
