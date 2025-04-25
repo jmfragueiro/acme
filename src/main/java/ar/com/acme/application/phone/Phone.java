@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "phone")
+@Table(name = "tab_phone")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class Phone extends ar.com.acme.adapter.entity.Entity {
     public static final String FIELD_COUNTRYCODE = "Country Code";
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "user_id")
     @NotNull(message = AdapterConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_USER)
     private User user;
 

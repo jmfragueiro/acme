@@ -84,19 +84,19 @@ public class AuthenticationService implements IAuthenticationService {
     private HttpRequestAuthorizationHeader getAuthorizationValueFromRequest(HttpServletRequest request) {
         String reqauth = request.getHeader(Constants.SYS_CAD_HTTP_AUTH);
         if (reqauth == null) {
-            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST);
+            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST, request.getServletPath());
         }
 
         var split = reqauth.split(Constants.SYS_CAD_SPACE);
         if (split.length < 2) {
-            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST);
+            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST, request.getServletPath());
         }
 
         String authtype = split[0].trim().toUpperCase();
         String authcad = split[1].trim();
 
         if (authtype.isBlank() || authcad.isBlank()) {
-            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST);
+            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST, request.getServletPath());
         }
 
         return new HttpRequestAuthorizationHeader(authtype, authcad);

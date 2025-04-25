@@ -8,7 +8,7 @@
             "projectName": "ACME",
             "env": {
                 "SPRING_CONFIG_LOCATION": "classpath:/application.properties,file:${workspaceFolder}\\local\\appext.properties",
-                "LOGGING_HOME":"${workspaceFolder}\\logs",
+                "LOGGING_HOME":"${workspaceFolder}\\logs"
             }
         }
     ]
