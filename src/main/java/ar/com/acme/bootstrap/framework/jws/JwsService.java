@@ -3,11 +3,11 @@ package ar.com.acme.bootstrap.framework.jws;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.adapter.token.IEntityToken;
 import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 
 import java.nio.charset.StandardCharsets;
@@ -18,11 +18,13 @@ import javax.crypto.SecretKey;
 
 @Service
 public class JwsService implements IJwsService {
-    @Value("${security.signing-key}")
-    private String signingKey;
+    private final String signingKey;
+    private final String realm;
 
-    @Value("${security.realm}")
-    private String realm;
+    public JwsService(Properties properties) {
+        this.signingKey = properties.getSecurity().get("signing_key");
+        this.realm = properties.getSecurity().get("realm");
+    }
 
     @Override
     public String generateJws(IEntityToken source) {
