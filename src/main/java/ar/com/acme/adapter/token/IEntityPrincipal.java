@@ -1,5 +1,7 @@
 package ar.com.acme.adapter.token;
 
+import java.time.LocalDateTime;
+
 /**
  * Un TOKENPAYLOAD es un elemento que puede ser "registrado" dentro de otro objeto denominado
  * ITOKEN, representando su carga útil . Esta interface permite establecer el comportamiento de
@@ -8,7 +10,7 @@ package ar.com.acme.adapter.token;
  * @author jmfragueiro
  * @version 20250421
  */
-public interface IEntityToken {
+public interface IEntityPrincipal {
     ///////////////////////////////////////////////////////
     // ESTO ES PARA GENERAR USUARIOS Y CLAVES Y PROBAR:  //
     // (hay que debuggear y parar en la captura de pass  //
@@ -27,6 +29,10 @@ public interface IEntityToken {
     void setToken(String token);
 
     String getToken();
+
+    void setLastLogin(LocalDateTime lastLogin);
+
+    LocalDateTime getLastLogin();
 
     String getCredential();
 

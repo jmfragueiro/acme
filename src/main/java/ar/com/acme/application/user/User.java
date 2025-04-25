@@ -1,7 +1,7 @@
 package ar.com.acme.application.user;
 
 import ar.com.acme.adapter.common.AdapterConstants;
-import ar.com.acme.adapter.token.IEntityToken;
+import ar.com.acme.adapter.token.IEntityPrincipal;
 import ar.com.acme.application.phone.Phone;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -26,7 +26,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.adapter.entity.Entity implements IEntityToken {
+public class User extends ar.com.acme.adapter.entity.Entity implements IEntityPrincipal {
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
     public static final String FIELD_PASSWORD = "Password";

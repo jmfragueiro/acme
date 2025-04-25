@@ -45,10 +45,10 @@ public abstract class Tools {
                 ? error.concat(Constants.SYS_CAD_LOGSEP)
                 : Constants.SYS_CAD_ERROR)
                         .concat(Constants.SYS_CAD_SPACE)
-                        .concat(!Strings.hasText(extra) ? extra : Constants.SYS_CAD_NULL)
+                        .concat(Strings.hasText(extra) ? extra : Constants.SYS_CAD_NULL)
                         .concat(Constants.SYS_CAD_SPACE)
                         .concat(Constants.SYS_CAD_OPENTYPE)
-                        .concat(!Strings.hasText(username) ? username : Constants.SYS_CAD_NULL)
+                        .concat(Strings.hasText(username) ? username : Constants.SYS_CAD_NULL)
                         .concat(Constants.SYS_CAD_CLOSETPE);
     }
 

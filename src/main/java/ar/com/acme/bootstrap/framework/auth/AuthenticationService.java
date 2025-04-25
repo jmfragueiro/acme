@@ -12,7 +12,7 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.token.IEntityToken;
+import ar.com.acme.adapter.token.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.common.Encoder;
 import ar.com.acme.bootstrap.common.Properties;
@@ -41,11 +41,8 @@ public class AuthenticationService implements IAuthenticationService {
     public Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException {
         var authHeader = getAuthorizationValueFromRequest(request);
 
-        if (!authTypesMap.containsKey(authHeader.type())) {
-            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST);
-        }
-
-        var auth = authTypesMap.get(authHeader.type()).generateAuthentication(request, authenticationHelper, authHeader.value());
+        var auth = authTypesMap.get(authHeader.type())
+                               .generateAuthentication(request, authenticationHelper, authHeader.value());
 
         return authenticate(auth);
     }
@@ -56,16 +53,8 @@ public class AuthenticationService implements IAuthenticationService {
             throw new AuthException(Constants.MSJ_SES_ERR_INVALIDTOKEN);
         }
 
-        if (auth.getCredentials() != null
-            && !Encoder.passwordsMatch(
-                auth.getCredentials().toString(),
-                ((IEntityToken)auth.getPrincipal()).getCredential())) {
-            throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
-        }
+        validatePassword(auth);
 
-        ((IEntityToken)auth.getPrincipal()).verifyCanOperate();
-
-        auth.setAuthenticated(false);
         auth.setAuthenticated(true);
 
         return auth;
@@ -99,6 +88,19 @@ public class AuthenticationService implements IAuthenticationService {
             throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST, request.getServletPath());
         }
 
+        if (!authTypesMap.containsKey(authtype)) {
+            throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST);
+        }
+
         return new HttpRequestAuthorizationHeader(authtype, authcad);
+    }
+
+    private void validatePassword(Authentication auth) {
+        if (auth.getCredentials() != null
+            && !Encoder.passwordsMatch(
+                auth.getCredentials().toString(),
+                ((IEntityPrincipal)auth.getPrincipal()).getCredential())) {
+            throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
+        }
     }
 }

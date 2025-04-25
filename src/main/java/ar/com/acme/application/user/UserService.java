@@ -3,8 +3,8 @@ package ar.com.acme.application.user;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.adapter.service.ServiceException;
-import ar.com.acme.adapter.token.IEntityToken;
-import ar.com.acme.adapter.token.IEntityTokenAuthority;
+import ar.com.acme.adapter.token.IEntityPrincipal;
+import ar.com.acme.adapter.token.IEntityPrincipalAuthority;
 import ar.com.acme.application.common.AppProperties;
 
 import java.time.LocalDateTime;
@@ -59,7 +59,12 @@ public class UserService extends ar.com.acme.adapter.service.Service<User, UUID>
     }
 
     @Override
-    public Collection<IEntityTokenAuthority> getAuthorities(IEntityToken entityToken) {
+    public Collection<IEntityPrincipalAuthority> getAuthorities(IEntityPrincipal principal) {
         return Collections.emptyList();
+    }
+
+    @Override
+    public void updatePrincipal(IEntityPrincipal principal) {
+        persist((User)principal);
     }
 }

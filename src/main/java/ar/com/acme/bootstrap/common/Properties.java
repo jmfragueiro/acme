@@ -22,4 +22,5 @@ import lombok.Setter;
 public class Properties {
     private Map<String, String> security;
     private Map<String, String> token;
+    private Map<String, String> database;
 }

@@ -4,17 +4,47 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
-Validation: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
 
-username=vcpires&password=Damasco004
+username=jmfragueiro&password=fito
 
 ###
 
-POST https://sistema.posadas.gov.ar/sigb/oauth/login
+POST http://127.0.0.1:8080/auth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
+
+username=jmfragueiro&password=fito
+
+###
+POST http://127.0.0.1:8080/auth/login
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
-Validation: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
 
 username=lschwegler&password=Damasco004
+
+###
+
+POST http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJkYWZkZDU1OS0yNGRjLTQ0NzEtYTZkOC1lOTkxZDMxZWQ4ZjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTU1MDAwMH0.axcKgftF1tbXKRrTzkXd1zK3lUAsrK3LkR3H7oouF-V52HGu7bU5rTj-GgW6EGrnY52vLejh1iu3zUN1GSUmCg
+
+{
+    "name": "Juan Rodriguez",
+    "email": "juan@acme.cl",
+    "password": "Hunter2@3!",
+    "phones": [
+        {
+        "number": "1234567",
+        "citycode": "1",
+        "contrycode": "57"
+        }
+    ]
+ }
+
+###

@@ -14,14 +14,15 @@ import jakarta.servlet.http.HttpServletRequest;
 public class BasicAuthenticationType implements IAuthenticationType {
         @Override
         public TokenAuthentication generateAuthentication(HttpServletRequest request, IAuthenticationHelper authHelper, String authcad) {
-            ///////////////////////////////////////////////////////////////////
-            // PARA VER/GENERAR CUAL ES EL CODIGO DE CLIENTE QUE DEBE USARSE://
-            // var coded = new String(                                       //
-            //                    Base64.getEncoder()                        //
-            //                          .encode(clientid.concat(":")         //
-            //                          .concat(clientsecret)                //
-            //                          .getBytes()));                       //
-            ///////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////
+            // PARA VER/GENERAR CUAL ES EL CODIGO DE CLIENTE QUE DEBE USARSE:     //
+            // var coded = new String(                                            //
+            //                    Base64.getEncoder()                             //
+            //                          .encode(authHelper                        //
+            //                             .getClientid().concat(":")             //
+            //                             .concat(authHelper.getClientsecret())  //
+            //                             .getBytes()));                         //
+            ////////////////////////////////////////////////////////////////////////
             String authUser = new String(Base64.getDecoder().decode(authcad)).split(":")[0];
             String authSecret = new String(Base64.getDecoder().decode(authcad)).split(":")[1];
             if (!(authUser.equals(authHelper.getClientid()) && authSecret.equals(authHelper.getClientsecret()))) {

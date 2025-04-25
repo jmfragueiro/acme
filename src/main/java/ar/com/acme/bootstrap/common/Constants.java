@@ -59,6 +59,8 @@ public abstract class Constants {
     public static final String MSJ_SES_ERR_ONAUTH = "ERROR EN EL PROCESO DE AUTENTICACION";
     public static final String MSJ_SES_ERR_INVALIDTOKEN = "NO SE HA ENCONTRADO UN TOKEN DE USUARIO VALIDO";
     public static final String MSJ_SES_ERR_NOACTIVETOKEN = "NO SE HA ENCONTRADO UNA SESION DE USUARIO ACTIVA";
+    public static final String MSJ_SES_ERR_USERALREADYLOGGED = "EL USUARIO YA SE ENCUENTRA LOGUEADO EN EL SISTEMA";
+    public static final String MSJ_SES_ERR_USERNOTLOGGED = "EL USUARIO NO SE ENCUENTRA LOGUEADO EN EL SISTEMA";
 
     //  **********************************************************
     //  * CADENAS DE MENSAJES DE USUARIO COMUNES

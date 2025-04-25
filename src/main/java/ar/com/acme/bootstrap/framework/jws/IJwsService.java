@@ -1,6 +1,6 @@
 package ar.com.acme.bootstrap.framework.jws;
 
-import ar.com.acme.adapter.token.IEntityToken;
+import ar.com.acme.adapter.token.IEntityPrincipal;
 
 /**
  * Esta interface implementa el comportamiento necesario aquí para el servicio
@@ -16,7 +16,7 @@ import ar.com.acme.adapter.token.IEntityToken;
  * @version 20230601
  */
 public interface IJwsService {
-    String generateJws(IEntityToken source);
+    String generateJws(IEntityPrincipal source);
 
     void validateJws(String jws);
 

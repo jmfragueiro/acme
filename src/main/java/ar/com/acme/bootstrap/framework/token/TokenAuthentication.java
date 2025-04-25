@@ -7,20 +7,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 
-import ar.com.acme.adapter.token.IEntityToken;
+import ar.com.acme.adapter.token.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.Constants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import lombok.Getter;
 
 @Getter
 public class TokenAuthentication implements Authentication, CredentialsContainer {
-    private final IEntityToken principal;
+    private final IEntityPrincipal principal;
     private final String details;
     private final Collection<? extends GrantedAuthority> authorities;
     private String credentials;
     private boolean authenticated;
 
-    public TokenAuthentication(IEntityToken principal, String password, Collection<? extends GrantedAuthority> authorities) {
+    public TokenAuthentication(IEntityPrincipal principal, String password, Collection<? extends GrantedAuthority> authorities) {
         this.credentials = password;
         this.principal = principal;
         this.details = null;
@@ -28,7 +28,7 @@ public class TokenAuthentication implements Authentication, CredentialsContainer
         this.authorities = authorities != null ? authorities : Collections.emptyList();
     }
 
-    public TokenAuthentication(IEntityToken principal, Collection<? extends GrantedAuthority> authorities) {
+    public TokenAuthentication(IEntityPrincipal principal, Collection<? extends GrantedAuthority> authorities) {
         this.credentials = null;
         this.principal = principal;
         this.details = null;
