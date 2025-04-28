@@ -8,6 +8,6 @@ import ar.com.acme.bootstrap.common.Encoder;
 public class PasswordService implements IPasswordService {
     @Override
     public boolean matches(String rawPassword, String encodedPassword) {
-        return (rawPassword != null && !Encoder.passwordsMatch(rawPassword, encodedPassword));
+        return (rawPassword != null && Encoder.passwordsMatch(rawPassword, encodedPassword));
     }
 }

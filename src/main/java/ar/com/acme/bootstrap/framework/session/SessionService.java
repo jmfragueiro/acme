@@ -11,14 +11,16 @@ import org.springframework.stereotype.Service;
 import ar.com.acme.base.principal.IEntityPrincipal;
 import ar.com.acme.base.principal.IEntityPrincipalService;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
+import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.jws.IJwsService;
 
 @Service
 @RequiredArgsConstructor
 public class SessionService implements ISessionService {
-        private final IEntityPrincipalService<IEntityPrincipal> principalService;
+        private final IEntityPrincipalService<? extends IEntityPrincipal> principalService;
         private final IJwsService jwsService;
+        private final BootstrapProperties properties;
 
     @Override
     public String login(Authentication authentication) {
@@ -60,7 +62,7 @@ public class SessionService implements ISessionService {
     }
 
     private void validateCanCreateSession(IEntityPrincipal principal) {
-        if (principal.getToken() != null) {
+        if (principal.getToken() != null && !properties.getSecurity().get("user_multisession").equalsIgnoreCase("true")) {
             throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERALREADYLOGGED);
         }
 

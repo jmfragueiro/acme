@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service(BootstrapConstants.SYS_CAD_HTTPAUTH_BASIC)
 @RequiredArgsConstructor
 public class BasicAuthenticationType implements IAuthenticationType {
-        private final IEntityPrincipalService<IEntityPrincipal> principalService;
+        private final IEntityPrincipalService<? extends IEntityPrincipal> principalService;
         private final BootstrapProperties properties;
 
         @Override
