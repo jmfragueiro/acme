@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ar.com.acme.base.principal.IEntityPrincipal;
 import ar.com.acme.base.principal.IEntityPrincipalService;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.Properties;
+import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.token.TokenAuthentication;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class BasicAuthenticationType implements IAuthenticationType {
         private final String clientid;
         private final String clientsecret;
 
-        public BasicAuthenticationType(IEntityPrincipalService<IEntityPrincipal> principalService, Properties properties) {
+        public BasicAuthenticationType(IEntityPrincipalService<IEntityPrincipal> principalService, BootstrapProperties properties) {
             this.principalService = principalService;
             this.clientid = properties.getSecurity().get("jwt_client-id");
             this.clientsecret = properties.getSecurity().get("jwt_client-secret");

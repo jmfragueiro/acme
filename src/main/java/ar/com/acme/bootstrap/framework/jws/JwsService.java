@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.base.principal.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.Properties;
+import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 
 import java.nio.charset.StandardCharsets;
@@ -21,7 +21,7 @@ public class JwsService implements IJwsService {
     private final String signingKey;
     private final String realm;
 
-    public JwsService(Properties properties) {
+    public JwsService(BootstrapProperties properties) {
         this.signingKey = properties.getSecurity().get("signing_key");
         this.realm = properties.getSecurity().get("realm");
     }

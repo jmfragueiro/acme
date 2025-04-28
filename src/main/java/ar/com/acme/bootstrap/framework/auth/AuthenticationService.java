@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.base.principal.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.Properties;
+import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.auth.types.IAuthenticationType;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.http.HttpRequestAuthorizationHeader;
@@ -27,7 +27,7 @@ public class AuthenticationService implements IAuthenticationService {
     private final Map<String, IAuthenticationType> authTypesMap;
     private final IPasswordService passwordService;
 
-    public AuthenticationService(Properties propiedades,
+    public AuthenticationService(BootstrapProperties propiedades,
         Map<String, IAuthenticationType> authTypesMap,
         IPasswordService passwordService) {
         this.publicPaths = new OrRequestMatcher(
