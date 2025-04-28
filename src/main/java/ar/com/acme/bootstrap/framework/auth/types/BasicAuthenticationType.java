@@ -17,17 +17,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BasicAuthenticationType implements IAuthenticationType {
         private final IEntityPrincipalService<IEntityPrincipal> principalService;
-        private final String clientid;
-        private final String clientsecret;
-
-        public BasicAuthenticationType(IEntityPrincipalService<IEntityPrincipal> principalService, BootstrapProperties properties) {
-            this.principalService = principalService;
-            this.clientid = properties.getSecurity().get("jwt_client-id");
-            this.clientsecret = properties.getSecurity().get("jwt_client-secret");
-        }
+        private final BootstrapProperties properties;
 
         @Override
         public TokenAuthentication generateAuthentication(HttpServletRequest request, String authcad) {
+            var clientid = properties.getSecurity().get("jwt_client-id");
+            var clientsecret = properties.getSecurity().get("jwt_client-secret");
+
             ////////////////////////////////////////////////////////////////////////
             // PARA VER/GENERAR CUAL ES EL CODIGO DE CLIENTE QUE DEBE USARSE HAY  //
             // QUE DESCOMENTAR Y DEBUGEAR (VIA BREAKPOINT) EL CODIGO:             //
