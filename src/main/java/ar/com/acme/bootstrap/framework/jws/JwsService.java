@@ -5,8 +5,8 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.token.IEntityPrincipal;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 
@@ -43,24 +43,24 @@ public class JwsService implements IJwsService {
     public void validateJws(String jws) {
         try {
             if (jws == null || getBody(jws).isEmpty()) {
-                throw new AuthException(Constants.MSJ_TOK_ERR_BADTOKEN, Constants.MSJ_TOK_ERR_EMPTYCLAIM);
+                throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM);
             }
 
             if (!getKeyId(jws).equals(this.realm)) {
-                throw new AuthException(Constants.MSJ_TOK_ERR_BADJWTSIGN, Constants.MSJ_TOK_ERR_BADJWT);
+                throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, BootstrapConstants.MSJ_TOK_ERR_BADJWT);
             }
         } catch (ExpiredJwtException e) {
             // ACA NO PASA NADA, SE RESUELVE MAS ADELANTE...
         } catch (SignatureException e) {
-            throw new AuthException(Constants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
+            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
         } catch (MalformedJwtException e) {
-            throw new AuthException(Constants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
+            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
         } catch (UnsupportedJwtException e) {
-            throw new AuthException(Constants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
+            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
         } catch (IllegalArgumentException e) {
-            throw new AuthException(Constants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
+            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
         } catch (Exception e) {
-            throw new AuthException(Constants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
+            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
         }
     }
 

@@ -2,9 +2,8 @@ package ar.com.acme.bootstrap.framework.exception;
 
 import org.springframework.security.core.AuthenticationException;
 
-import ar.com.acme.bootstrap.common.Constants;
-import ar.com.acme.bootstrap.common.Logging;
-import ar.com.acme.bootstrap.common.Tools;
+import ar.com.acme.base.common.Logging;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema
@@ -19,10 +18,10 @@ public class AuthException extends AuthenticationException {
      * Esta version del contructor permite crear una excepcion sin mensaje ni datos extras
      * (utiliza en este caso un mensaje generico tomado de la constante MSJ_ERR_EXCEPCION).
      *
-     * @see Constants
+     * @see BootstrapConstants
      */
     public AuthException() {
-        this(Constants.MSJ_SES_ERR_USERNOAUTH);
+        this(BootstrapConstants.MSJ_SES_ERR_USERNOAUTH);
     }
 
     /**
@@ -49,12 +48,6 @@ public class AuthException extends AuthenticationException {
      * Este metodo registra al sistema de Logging la excepcion lanzada
      */
     private void registrarMensaje(String mensaje, String extra) {
-        Logging.error(this.getClass(),
-                new StringBuilder(Constants.SYS_CAD_OPENTYPE)
-                        .append(Tools.getNombreMetodoLlamante(4))
-                        .append(Constants.SYS_CAD_CLOSETPE)
-                        .append(mensaje)
-                        .toString(),
-                Tools.getEmptyStringOnNull(extra));
+        Logging.error(this.getClass(), extra);
     }
 }

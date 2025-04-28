@@ -2,8 +2,8 @@ package ar.com.acme.application.phone;
 
 import java.util.UUID;
 
-import ar.com.acme.adapter.common.AdapterConstants;
 import ar.com.acme.application.user.UserException;
+import ar.com.acme.base.common.BaseConstants;
 
 public record PhoneWebDTO(UUID id, Long number, Integer citycode, Integer countrycode) {
     public static PhoneWebDTO fromPhone(Phone phone) {
@@ -15,7 +15,7 @@ public record PhoneWebDTO(UUID id, Long number, Integer citycode, Integer countr
 
         if (this.id != null) {
             phone = service.findById(this.id())
-                           .orElseThrow(() -> new UserException(AdapterConstants.MSJ_REP_ERR_NOITEM, "Phone"));
+                           .orElseThrow(() -> new UserException(BaseConstants.MSJ_REP_ERR_NOITEM, "Phone"));
         } else {
             phone = new Phone();
         }

@@ -1,6 +1,6 @@
 package ar.com.acme.bootstrap.framework.exception;
 
-import ar.com.acme.adapter.exception.MessageException;
+import ar.com.acme.base.exception.MessageException;
 
 /**
  * Esta clase de excepcion es la base de la jerarquia de excepciones del framework que PUEDEN

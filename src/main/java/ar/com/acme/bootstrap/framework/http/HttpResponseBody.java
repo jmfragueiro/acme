@@ -12,4 +12,4 @@ import org.springframework.http.HttpStatus;
 public record HttpResponseBody(String timestamp,
 							   HttpStatus status,
 							   String mensaje,
-							   Object object) {}
+							   Object object) { }

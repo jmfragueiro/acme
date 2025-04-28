@@ -1,8 +1,8 @@
 package ar.com.acme.application.user;
 
-import ar.com.acme.adapter.common.AdapterConstants;
-import ar.com.acme.adapter.token.IEntityPrincipal;
 import ar.com.acme.application.phone.Phone;
+import ar.com.acme.base.common.BaseConstants;
+import ar.com.acme.base.principal.IEntityPrincipal;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.adapter.entity.Entity implements IEntityPrincipal {
+public class User extends ar.com.acme.base.entity.Entity implements IEntityPrincipal {
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
     public static final String FIELD_PASSWORD = "Password";
@@ -37,20 +37,20 @@ public class User extends ar.com.acme.adapter.entity.Entity implements IEntityPr
     public static final String ERR_BAD_PASSWORD = "EL PASSWORD INGRESADO NO TIENE FORMATO VALIDO";
 
     @Column(name = "name", unique = true)
-    @NotNull(message = AdapterConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_NAME)
-    @Size(min = 4, max = 16, message = AdapterConstants.MSJ_REP_ERR_FIELD_LONG_NOK + FIELD_NAME)
+    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_NAME)
+    @Size(min = 4, max = 16, message = BaseConstants.MSJ_REP_ERR_FIELD_LONG_NOK + FIELD_NAME)
     private String name;
 
     @Column(name = "email", unique = true)
-    @NotNull(message = AdapterConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_EMAIL)
+    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_EMAIL)
     private String email;
 
     @Column(name = "password")
-    @NotNull(message = AdapterConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_PASSWORD)
+    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_PASSWORD)
     private String password;
 
     @Column(name = "active")
-    @NotNull(message = AdapterConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_ACTIVE)
+    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_ACTIVE)
     private Boolean active;
 
     @Column(name = "lastLogin")
@@ -63,7 +63,7 @@ public class User extends ar.com.acme.adapter.entity.Entity implements IEntityPr
     private Set<Phone> phones = new HashSet<>();
 
     @Override
-    public String getCredential() {
+    public Object getCredentials() {
         return password;
     }
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import ar.com.acme.adapter.exception.ItemNotFoundException;
+import ar.com.acme.base.exception.ItemNotFoundException;
 import ar.com.acme.bootstrap.framework.http.HttpResponseError;
 
 @RestControllerAdvice
@@ -25,20 +25,12 @@ public class GlobalResponseErrorHandler {
             errors.put(violation.getPropertyPath().toString(), violation.getMessage())
         );
 
-        // return new HttpResponseBody(LocalDateTime.now().toString(),
-        //                             HttpStatus.BAD_REQUEST,
-        //                             errors.values().stream().map(v -> v.toString()).findFirst().orElse(ex.getClass().getName()),
-        //                             ex.getClass().getName());
         return new HttpResponseError(errors.values().stream().map(v -> v.toString()).findFirst().orElse(ex.getClass().getName()));
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public final HttpResponseError AccessExceptionHandler(AccessDeniedException ex, WebRequest req) {
-        // return new HttpResponseBody(LocalDateTime.now().toString(),
-        //                             HttpStatus.UNAUTHORIZED,
-        //                              ex.getMessage(),
-        //                             ((ServletWebRequest) req).getRequest().getServletPath());
         return new HttpResponseError(ex.getMessage());
     }
 
@@ -51,10 +43,6 @@ public class GlobalResponseErrorHandler {
     @ExceptionHandler(SecurityException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public final HttpResponseError SecurityExceptionHandler(SecurityException ex, WebRequest req) {
-        // return new HttpResponseBody(LocalDateTime.now().toString(),
-        //                             HttpStatus.UNAUTHORIZED,
-        //                             ex.getMessage(),
-        //                             ((ServletWebRequest) req).getRequest().getServletPath());
         return new HttpResponseError(ex.getMessage());
     }
 

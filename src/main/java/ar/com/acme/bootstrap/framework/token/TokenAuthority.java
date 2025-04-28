@@ -1,14 +1,14 @@
 package ar.com.acme.bootstrap.framework.token;
 
-import ar.com.acme.adapter.token.IEntityPrincipalAuthority;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.base.principal.IEntityPrincipalAuthority;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 
 public class TokenAuthority implements IEntityPrincipalAuthority {
     private final String role;
 
     public TokenAuthority(String role) {
         if (role == null || role.length() == 0) {
-            throw new IllegalArgumentException(Constants.MSJ_TOK_ERR_NOAUTHCAD);
+            throw new IllegalArgumentException(BootstrapConstants.MSJ_TOK_ERR_NOAUTHCAD);
         }
         this.role = role;
     }

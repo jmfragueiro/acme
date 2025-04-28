@@ -20,6 +20,4 @@ public interface IAuthenticationService extends AuthenticationManager {
     Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException;
 
     RequestMatcher getPublicPaths();
-
-    boolean thisRequestRequireAuthentication(HttpServletRequest request);
 }

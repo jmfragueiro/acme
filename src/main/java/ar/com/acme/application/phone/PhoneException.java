@@ -1,7 +1,7 @@
 package ar.com.acme.application.phone;
 
-import ar.com.acme.adapter.exception.MessageException;
 import ar.com.acme.application.common.AppConstants;
+import ar.com.acme.base.exception.MessageException;
 
 public class PhoneException extends MessageException {
     public PhoneException(String name, String message) {

@@ -19,7 +19,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected boolean requiresAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        return  ((IAuthenticationService)getAuthenticationManager()).thisRequestRequireAuthentication(request);
+        return !((IAuthenticationService)getAuthenticationManager()).getPublicPaths().matches(request);
     }
 
     @Override

@@ -8,15 +8,17 @@ import java.util.UUID;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.token.IEntityPrincipal;
-import ar.com.acme.bootstrap.common.Constants;
-import ar.com.acme.bootstrap.framework.auth.IAuthenticationHelper;
+import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.principal.IEntityPrincipalService;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
+import ar.com.acme.bootstrap.framework.jws.IJwsService;
 
 @Service
 @RequiredArgsConstructor
 public class SessionService implements ISessionService {
-    private final IAuthenticationHelper authenticationHelper;
+        private final IEntityPrincipalService<IEntityPrincipal> principalService;
+        private final IJwsService jwsService;
 
     @Override
     public String login(Authentication authentication) {
@@ -26,11 +28,11 @@ public class SessionService implements ISessionService {
 
         validateCanCreateSession(principal);
 
-        var token = authenticationHelper.getJwsService().generateJws(principal);
+        var token = jwsService.generateJws(principal);
 
-        principal.setToken(UUID.fromString(authenticationHelper.getJwsService().getIdFromJws(token)));
+        principal.setToken(UUID.fromString(jwsService.getIdFromJws(token)));
         principal.setLastLogin(LocalDateTime.now());
-        authenticationHelper.getPrincipalService().updatePrincipal(principal);
+        principalService.updatePrincipal(principal);
 
         return token;
     }
@@ -44,21 +46,22 @@ public class SessionService implements ISessionService {
         validateCanDeleteSession(principal);
 
         principal.setToken(null);
+        principalService.updatePrincipal(principal);
     }
 
     private void validateAuthentication(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
-            throw new AuthException(Constants.MSJ_SES_ERR_USERNOAUTH);
+            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERNOAUTH);
         }
 
         if ((IEntityPrincipal)authentication.getPrincipal() == null) {
-            throw new AuthException(Constants.MSJ_SES_ERR_ONAUTH);
+            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_ONAUTH);
         }
     }
 
     private void validateCanCreateSession(IEntityPrincipal principal) {
         if (principal.getToken() != null) {
-            throw new AuthException(Constants.MSJ_SES_ERR_USERALREADYLOGGED);
+            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERALREADYLOGGED);
         }
 
         principal.verifyCanOperate();
@@ -66,7 +69,7 @@ public class SessionService implements ISessionService {
 
     private void validateCanDeleteSession(IEntityPrincipal principal) {
         if (principal.getToken() == null) {
-            throw new AuthException(Constants.MSJ_SES_ERR_USERNOTLOGGED);
+            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERNOTLOGGED);
         }
     }
 }

@@ -7,8 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 
-import ar.com.acme.adapter.token.IEntityPrincipal;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import lombok.Getter;
 
@@ -38,7 +38,7 @@ public class TokenAuthentication implements Authentication, CredentialsContainer
 
     @Override
     public final String getName() {
-        return (this.isAuthenticated() && this.principal != null) ? this.principal.toString() : Constants.SYS_CAD_UNSESION;
+        return (this.isAuthenticated() && this.principal != null) ? this.principal.toString() : BootstrapConstants.SYS_CAD_UNSESION;
     }
 
     @Override

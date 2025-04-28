@@ -2,10 +2,10 @@ package ar.com.acme.application.user;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.adapter.service.ServiceException;
-import ar.com.acme.adapter.token.IEntityPrincipal;
-import ar.com.acme.adapter.token.IEntityPrincipalAuthority;
 import ar.com.acme.application.common.AppProperties;
+import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.principal.IEntityPrincipalAuthority;
+import ar.com.acme.base.service.ServiceException;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.function.Predicate;
 
 @Service
-public class UserService extends ar.com.acme.adapter.service.Service<User, UUID> implements IUserService {
+public class UserService extends ar.com.acme.base.service.Service<User, UUID> implements IUserService {
     private final Predicate<String> isValidEmail;
     private final Predicate<String> isValidPassword;
 
@@ -27,13 +27,6 @@ public class UserService extends ar.com.acme.adapter.service.Service<User, UUID>
 
     @Override
     public User persist(User instancia) throws ServiceException {
-        if(isValidEmail.test(instancia.getEmail()) == false) {
-            throw new UserException(User.ERR_BAD_EMAIL, instancia.getEmail());
-        }
-        if(isValidPassword.test(instancia.getPassword()) == false) {
-            throw new UserException(User.ERR_BAD_PASSWORD, instancia.getPassword());
-        }
-
         return super.persist(instancia);
     }
 
@@ -65,6 +58,16 @@ public class UserService extends ar.com.acme.adapter.service.Service<User, UUID>
 
     @Override
     public void updatePrincipal(IEntityPrincipal principal) {
-        super.persist((User)principal);
+        persist((User)principal);
+    }
+
+    @Override
+    public Boolean isValidEmail(String email) {
+        return isValidEmail.test(email);
+    }
+
+    @Override
+    public Boolean isValidPassword(String password) {
+        return isValidPassword.test(password);
     }
 }

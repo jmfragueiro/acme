@@ -2,7 +2,7 @@ package ar.com.acme.bootstrap.framework.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.BootstrapConstants;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public final class HttpResponseService {
      * @param body   el cuerpo de la respuesta como un HttpResponse
      */
     public static void respondHandler(HttpServletResponse response, HttpResponseBody body) throws IOException {
-        response.setContentType(Constants.SYS_CAD_APP_MIMETYPE_JSON);
+        response.setContentType(BootstrapConstants.SYS_CAD_APP_MIMETYPE_JSON);
         response.setStatus(body.status().value());
 
         new ObjectMapper().writeValue(response.getOutputStream(), getJsonResponse(body));
