@@ -13,8 +13,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import ar.com.acme.base.exception.ItemNotFoundException;
+import ar.com.acme.base.utils.http.HttpResponseError;
 import ar.com.acme.base.utils.jws.JWSException;
-import ar.com.acme.bootstrap.framework.http.HttpResponseError;
 
 @RestControllerAdvice
 public class GlobalResponseErrorHandler {

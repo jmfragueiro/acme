@@ -1,4 +1,4 @@
-package ar.com.acme.bootstrap.framework.http;
+package ar.com.acme.base.utils.http;
 
 /**
  * Este tipo registro debe ser utilizado generar un formato común de respuesta HTTP

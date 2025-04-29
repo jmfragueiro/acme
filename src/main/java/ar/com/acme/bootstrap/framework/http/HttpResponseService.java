@@ -2,6 +2,7 @@ package ar.com.acme.bootstrap.framework.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ar.com.acme.base.utils.http.HttpResponseError;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
