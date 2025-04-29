@@ -9,11 +9,10 @@ import ar.com.acme.base.common.BaseProperties;
 
 @Service
 public class PasswordService implements IPasswordService {
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final Predicate<String> isValidPassword;
 
-    public PasswordService(BCryptPasswordEncoder passwordEncoder, BaseProperties baseProperties) {
-        this.passwordEncoder = passwordEncoder;
+    public PasswordService(BaseProperties baseProperties) {
         this.isValidPassword = password -> { return password.matches(baseProperties.getRegexp().get("password")); };
     }
 
