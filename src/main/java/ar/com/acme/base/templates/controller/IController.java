@@ -27,13 +27,13 @@ public interface IController<U extends IEntity<TKI>, TKI, X, W> {
      */
     IService<U, TKI> getService();
 
-    ControllerResponse<W> view(TKI key);
+    W view(TKI key);
 
-    ControllerResponse<Collection<W>> list();
+    Collection<W> list();
 
-    ControllerResponse<W> add(X objeto) throws IOException;
+    W add(X objeto) throws IOException;
 
-    ControllerResponse<W> update(X objeto) throws IOException;
+    W update(X objeto) throws IOException;
 
-    ControllerResponse<Object> delete(TKI key) throws IOException;
+    void delete(TKI key) throws IOException;
 }
