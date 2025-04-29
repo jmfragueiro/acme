@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 
 import ar.com.acme.base.utils.http.HttpResponseError;
 
@@ -12,7 +11,7 @@ import ar.com.acme.base.utils.http.HttpResponseError;
 public class UserResponseErrorHandler {
     @ExceptionHandler(UserException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public final HttpResponseError UserExceptionHandler(UserException ex, WebRequest req) {
+    public final HttpResponseError UserExceptionHandler(UserException ex) {
         return new HttpResponseError(ex.getMessage());
     }
 }
