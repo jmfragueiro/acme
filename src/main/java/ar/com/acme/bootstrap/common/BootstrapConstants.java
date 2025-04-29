@@ -24,6 +24,7 @@ public abstract class BootstrapConstants {
     public static final String SYS_CAD_USER_URL = "/usuario";
     public static final String SYS_CAD_LOGGIN_URL = "/login";
     public static final String SYS_CAD_LOGGOUT_URL = "/logout";
+    public static final String SYS_CAD_ERROR_URL = "/error";
     public static final String SYS_CAD_HTTPAUTH_BASIC = "BASIC";
     public static final String SYS_CAD_HTTPAUTH_BEARER = "BEARER";
     public static final String SYS_CAD_TXTLOGGIN_USER = "username";
