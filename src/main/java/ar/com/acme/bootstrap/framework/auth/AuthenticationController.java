@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.acme.base.common.Tools;
-import ar.com.acme.base.controller.ControllerResponse;
+import ar.com.acme.base.templates.controller.ControllerResponse;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import ar.com.acme.bootstrap.framework.http.HttpResponseBody;

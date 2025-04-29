@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Phone extends ar.com.acme.base.entity.Entity {
+public class Phone extends ar.com.acme.base.templates.entity.Entity {
     public static final String FIELD_USER = "User";
     public static final String FIELD_NUMBER = "Number";
     public static final String FIELD_CITYCODE = "City Code";

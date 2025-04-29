@@ -1,4 +1,4 @@
-package ar.com.acme.base.principal;
+package ar.com.acme.base.utils.principal;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package ar.com.acme.base.service;
+package ar.com.acme.base.templates.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.*;
 
 import ar.com.acme.base.common.BaseConstants;
-import ar.com.acme.base.entity.IEntity;
-import ar.com.acme.base.repository.IRepository;
+import ar.com.acme.base.templates.entity.IEntity;
+import ar.com.acme.base.templates.repository.IRepository;
 
 /**
  * Implementación de interfase IServicio para un sistema con JPA-Spring. Esta clase es ademas

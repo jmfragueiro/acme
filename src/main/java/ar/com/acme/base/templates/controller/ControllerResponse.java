@@ -1,4 +1,4 @@
-package ar.com.acme.base.controller;
+package ar.com.acme.base.templates.controller;
 
 import java.util.List;
 import java.util.Map;

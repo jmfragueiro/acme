@@ -4,8 +4,8 @@ import java.util.Base64;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.base.principal.IEntityPrincipal;
-import ar.com.acme.base.principal.IEntityPrincipalService;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.principal.IEntityPrincipalService;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.exception.AuthException;

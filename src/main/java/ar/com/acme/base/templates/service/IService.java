@@ -1,12 +1,12 @@
-package ar.com.acme.base.service;
+package ar.com.acme.base.templates.service;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-import ar.com.acme.base.entity.EntityException;
-import ar.com.acme.base.entity.IEntity;
-import ar.com.acme.base.repository.IRepository;
+import ar.com.acme.base.templates.entity.EntityException;
+import ar.com.acme.base.templates.entity.IEntity;
+import ar.com.acme.base.templates.repository.IRepository;
 
 /**
  * Esta interfase representa el comprotamiento deseable de un servicio de persistencia para el modelo

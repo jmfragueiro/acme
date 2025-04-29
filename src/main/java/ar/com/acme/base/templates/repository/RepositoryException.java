@@ -1,4 +1,4 @@
-package ar.com.acme.base.repository;
+package ar.com.acme.base.templates.repository;
 
 import ar.com.acme.base.exception.MessageException;
 

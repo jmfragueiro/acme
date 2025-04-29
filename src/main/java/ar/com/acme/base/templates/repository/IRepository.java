@@ -1,9 +1,9 @@
-package ar.com.acme.base.repository;
+package ar.com.acme.base.templates.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import ar.com.acme.base.entity.IEntity;
+import ar.com.acme.base.templates.entity.IEntity;
 
 import java.util.List;
 

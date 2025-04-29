@@ -1,14 +1,13 @@
-package ar.com.acme.bootstrap.framework.jws;
+package ar.com.acme.base.utils.jws;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.base.principal.IEntityPrincipal;
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.BootstrapProperties;
-import ar.com.acme.bootstrap.framework.exception.AuthException;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
+import ar.com.acme.base.common.BaseConstants;
+import ar.com.acme.base.common.BaseProperties;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -21,9 +20,9 @@ public class JwsService implements IJwsService {
     private final String signingKey;
     private final String realm;
 
-    public JwsService(BootstrapProperties properties) {
-        this.signingKey = properties.getSecurity().get("signing_key");
-        this.realm = properties.getSecurity().get("realm");
+    public JwsService(BaseProperties properties) {
+        this.signingKey = properties.getJws().get("signing_key");
+        this.realm = properties.getJws().get("realm");
     }
 
     @Override
@@ -43,24 +42,24 @@ public class JwsService implements IJwsService {
     public void validateJws(String jws) {
         try {
             if (jws == null || getBody(jws).isEmpty()) {
-                throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM);
+                throw new JWSException(BaseConstants.MSJ_TOK_ERR_BADTOKEN, BaseConstants.MSJ_TOK_ERR_EMPTYCLAIM);
             }
 
             if (!getKeyId(jws).equals(this.realm)) {
-                throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, BootstrapConstants.MSJ_TOK_ERR_BADJWT);
+                throw new JWSException(BaseConstants.MSJ_TOK_ERR_BADJWTSIGN, BaseConstants.MSJ_TOK_ERR_BADJWT);
             }
         } catch (ExpiredJwtException e) {
             // ACA NO PASA NADA, SE RESUELVE MAS ADELANTE...
         } catch (SignatureException e) {
-            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
+            throw new JWSException(BaseConstants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
         } catch (MalformedJwtException e) {
-            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
+            throw new JWSException(BaseConstants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
         } catch (UnsupportedJwtException e) {
-            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
+            throw new JWSException(BaseConstants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
         } catch (IllegalArgumentException e) {
-            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
+            throw new JWSException(BaseConstants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
         } catch (Exception e) {
-            throw new AuthException(BootstrapConstants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
+            throw new JWSException(BaseConstants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
         }
     }
 

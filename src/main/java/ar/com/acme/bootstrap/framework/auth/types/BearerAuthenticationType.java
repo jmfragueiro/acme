@@ -4,11 +4,11 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.base.principal.IEntityPrincipal;
-import ar.com.acme.base.principal.IEntityPrincipalService;
+import ar.com.acme.base.utils.jws.IJwsService;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.principal.IEntityPrincipalService;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
-import ar.com.acme.bootstrap.framework.jws.IJwsService;
 import ar.com.acme.bootstrap.framework.token.TokenAuthentication;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

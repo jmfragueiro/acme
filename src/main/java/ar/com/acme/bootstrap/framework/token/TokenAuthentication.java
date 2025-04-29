@@ -7,7 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 
-import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.framework.exception.AuthException;
 import lombok.Getter;

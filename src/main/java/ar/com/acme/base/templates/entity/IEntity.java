@@ -1,4 +1,4 @@
-package ar.com.acme.base.entity;
+package ar.com.acme.base.templates.entity;
 
 import java.time.LocalDateTime;
 

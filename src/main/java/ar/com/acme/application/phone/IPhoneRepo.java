@@ -2,7 +2,7 @@ package ar.com.acme.application.phone;
 
 import org.springframework.stereotype.Repository;
 
-import ar.com.acme.base.repository.IRepository;
+import ar.com.acme.base.templates.repository.IRepository;
 
 import java.util.UUID;
 

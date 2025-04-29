@@ -1,12 +1,12 @@
-package ar.com.acme.base.controller;
+package ar.com.acme.base.templates.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
-import ar.com.acme.base.entity.IEntity;
 import ar.com.acme.base.exception.ItemNotFoundException;
-import ar.com.acme.base.service.IService;
+import ar.com.acme.base.templates.entity.IEntity;
+import ar.com.acme.base.templates.service.IService;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.io.Serializable;

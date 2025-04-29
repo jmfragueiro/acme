@@ -1,6 +1,6 @@
-package ar.com.acme.bootstrap.framework.jws;
+package ar.com.acme.base.utils.jws;
 
-import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
 
 /**
  * Esta interface implementa el comportamiento necesario aquí para el servicio

@@ -13,8 +13,8 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.base.passw.IPasswordService;
-import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.passw.IPasswordService;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import ar.com.acme.bootstrap.common.BootstrapProperties;
 import ar.com.acme.bootstrap.framework.auth.types.IAuthenticationType;

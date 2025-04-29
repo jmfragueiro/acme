@@ -2,7 +2,7 @@ package ar.com.acme.application.user;
 
 import ar.com.acme.application.phone.Phone;
 import ar.com.acme.base.common.BaseConstants;
-import ar.com.acme.base.principal.IEntityPrincipal;
+import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.base.entity.Entity implements IEntityPrincipal {
+public class User extends ar.com.acme.base.templates.entity.Entity implements IEntityPrincipal {
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
     public static final String FIELD_PASSWORD = "Password";

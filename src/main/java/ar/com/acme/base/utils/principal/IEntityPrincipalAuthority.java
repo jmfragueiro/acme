@@ -1,4 +1,4 @@
-package ar.com.acme.base.principal;
+package ar.com.acme.base.utils.principal;
 
 import org.springframework.security.core.GrantedAuthority;
 
