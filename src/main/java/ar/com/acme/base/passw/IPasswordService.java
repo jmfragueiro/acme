@@ -1,5 +1,7 @@
-package ar.com.acme.bootstrap.framework.passw;
+package ar.com.acme.base.passw;
 
 public interface IPasswordService {
+    String encode(CharSequence rawPassword);
+
     boolean matches(String rawPassword, String encodedPassword);
 }

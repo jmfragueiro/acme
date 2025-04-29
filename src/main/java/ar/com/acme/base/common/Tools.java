@@ -6,8 +6,6 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-
 /**
  * Esta clase debe ser utilizada como un punto focal para todos los metodos utilitarios genéricos
  * del sistema, de manera de tener encapsulada, en una sola clase, todas estas utilidades generales.
@@ -45,7 +43,7 @@ public abstract class Tools {
     public static String getCadenaErrorFormateada(String error, String extra, String username) {
         return (!Strings.hasText(error)
                 ? error.concat(BaseConstants.SYS_CAD_LOGSEP)
-                : BootstrapConstants.SYS_CAD_ERROR)
+                : BaseConstants.SYS_CAD_ERROR)
                         .concat(BaseConstants.SYS_CAD_SPACE)
                         .concat(Strings.hasText(extra) ? extra : BaseConstants.SYS_CAD_NULL)
                         .concat(BaseConstants.SYS_CAD_SPACE)
@@ -68,7 +66,7 @@ public abstract class Tools {
             byte[] digest = md.digest(texto.getBytes(StandardCharsets.UTF_8));
             sb = DatatypeConverter.printHexBinary(digest).toLowerCase();
         } catch (Exception exc) {
-            sb = BootstrapConstants.SYS_CAD_NULL;
+            sb = BaseConstants.SYS_CAD_NULL;
         }
 
         return sb;
@@ -82,6 +80,6 @@ public abstract class Tools {
      * @return un objeto para controlar si es nulo
      */
     public static String getEmptyStringOnNull(String objeto) {
-        return ((objeto == null) ? BootstrapConstants.SYS_CAD_NULL : objeto);
+        return ((objeto == null) ? BaseConstants.SYS_CAD_NULL : objeto);
     }
 }

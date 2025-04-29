@@ -22,6 +22,7 @@ public class BaseConstants {
     public static final String SYS_CAD_SPACE = " ";
     public static final String SYS_CAD_LOGSEP = ":";
     public static final String SYS_CAD_NULL = "";
+    public static final String SYS_CAD_ERROR = "ERROR:";
 
     //  **********************************************************
     //  * CADENAS DE MENSAJES DE ERROR COMUNES

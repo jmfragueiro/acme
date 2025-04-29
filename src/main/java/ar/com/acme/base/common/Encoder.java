@@ -1,4 +1,4 @@
-package ar.com.acme.bootstrap.common;
+package ar.com.acme.base.common;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

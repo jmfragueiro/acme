@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import ar.com.acme.application.phone.IPhoneService;
 import ar.com.acme.application.phone.PhoneWebDTO;
 import ar.com.acme.base.common.BaseConstants;
-import ar.com.acme.bootstrap.common.Encoder;
+import ar.com.acme.base.common.Encoder;
 
 public record UserWebInDTO(UUID id,
                            String name,
