@@ -2,8 +2,11 @@ package ar.com.acme.application.email;
 
 import java.util.function.Predicate;
 
+import org.springframework.stereotype.Service;
+
 import ar.com.acme.application.common.AppProperties;
 
+@Service
 public class EmailService implements IEmailService {
     private final Predicate<String> isValidEmail;
 
