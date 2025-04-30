@@ -3,7 +3,6 @@ package ar.com.acme.application.user;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.common.AppProperties;
-import ar.com.acme.base.templates.service.ServiceException;
 import ar.com.acme.base.utils.passw.IPasswordService;
 import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import ar.com.acme.base.utils.principal.IEntityPrincipalAuthority;
@@ -25,11 +24,6 @@ public class UserService extends ar.com.acme.base.templates.service.Service<User
         super(usuarioRepo);
         this.isValidEmail = email -> { return email.matches(appProperties.getRegexp().get("email")); };
         this.passwordService = passwordService;
-    }
-
-    @Override
-    public User persist(User instancia) throws ServiceException {
-        return super.persist(instancia);
     }
 
     @Override

@@ -33,7 +33,7 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIzMzkxZTgzYy03MWJjLTQ5MDItYjI1NC01YTg1YTI1ZTY2YTgiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.cUTV2nKOz-kNSkoLQNzP9DXCHuUBNipLziMwzgNwIckCOSkxwu3VnmLwRvRXq6k5Hj7jCOLxEHGrHpyAQNaD-g
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJjOTI5NTEwMy04NWI3LTRlOGQtYTgyMi1kY2Q1NTUxNTcwYTMiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.d0m12TpYu61U66ebno8c3S0CH8OPWBW02OB1ml34h9KpQcdIf5c4P3W82_R8INeuNofcOj06UrOoS_eYoBv_9g
 
 ###
 
@@ -41,14 +41,14 @@ GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJhYTQ0Mzg4Ny05NjllLTRiODMtYWI5YS1iZGU2YjU0Y2JlMWMiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTgwOTIwMH0.2ZWcbVfvRxwH_CZEzlBjgPS8P8jvtyeuDnU54ZD32nuD56pxf5pNasv2d2e2rNPoUFdv0FmpKpnAxnCXKRcmTg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJjOTI5NTEwMy04NWI3LTRlOGQtYTgyMi1kY2Q1NTUxNTcwYTMiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.d0m12TpYu61U66ebno8c3S0CH8OPWBW02OB1ml34h9KpQcdIf5c4P3W82_R8INeuNofcOj06UrOoS_eYoBv_9g
 
 ###
 POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIzMzkxZTgzYy03MWJjLTQ5MDItYjI1NC01YTg1YTI1ZTY2YTgiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.cUTV2nKOz-kNSkoLQNzP9DXCHuUBNipLziMwzgNwIckCOSkxwu3VnmLwRvRXq6k5Hj7jCOLxEHGrHpyAQNaD-g
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJjOTI5NTEwMy04NWI3LTRlOGQtYTgyMi1kY2Q1NTUxNTcwYTMiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.d0m12TpYu61U66ebno8c3S0CH8OPWBW02OB1ml34h9KpQcdIf5c4P3W82_R8INeuNofcOj06UrOoS_eYoBv_9g
 
 {
     "name": "Juan Rodriguez",
