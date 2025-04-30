@@ -11,6 +11,7 @@ public class BaseConstants {
     public static final String MSJ_REP_ERR_NOITEM = "NO PUDO OBTENERSE EL ELEMENTO DESEADO!";
     public static final String MSJ_REP_ERR_TOOMANY = "SE OBTUVIERON MAS ELEMENTOS QUE LOS DESEADOS!";
     public static final String MSJ_REP_ERR_NULLITEM = "NO SE HA INFORMADO EL ELEMENTO DESEADO!";
+    public static final String MSJ_REP_ERR_NOVALIDATE = "SE HAN ENCONTRADO ERRORES DE VALIDEZ";
 
     //  **********************************************************
     //  * CADENAS DE DE TEXTOS COMUNES

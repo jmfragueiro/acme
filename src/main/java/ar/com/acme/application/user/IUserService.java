@@ -13,8 +13,6 @@ public interface IUserService extends IService<User, UUID>, IEntityPrincipalServ
 
     Boolean isValidEmail(String email);
 
-    
-
     Boolean isValidPassword(String rawPassword);
 
     String encodePassword(CharSequence rawPassword);

@@ -37,8 +37,14 @@ public record UserWebInModel(UUID id,
         }
         user.setEmail(this.email());
 
+        // al crearse el usuario se activa el mismo
+        if (user.isNew()) {
+            user.setActive(true);
+        } else if (this.active() != null) {
+            user.setActive(this.active());
+        }
+
         user.setName(this.name());
-        user.setActive(this.active());
         this.phones().stream().map(p -> p.toPhone(phoneService)).collect(Collectors.toList());
 
         return user;

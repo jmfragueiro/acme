@@ -48,15 +48,15 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI0MjFmNzI0MS0xYzVjLTQ1M2ItYmY4ZC00MTA5YjUzNjc0OTIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.dp-7g2fEFvT7hjRwfoSY_L-8u_p8WAmzZmq0ycd0Y6uOT15ate8dEneURu8DMHrRs1sqX1rM97n4tsxEZiclTw
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwMjFhZmRhOC1hOTUyLTQ2ODEtOWI0Ni1lOTVmZGNlM2M5NjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.IWX-zkuHLZP8tHZpbc2lmQMDrUQRVcFZ2-F04f8KKX73l93wJtQz5LFOjmULli3J1wLGpqujh4fzs0glcHz5AQ
 
 {
-    "name": "Juan Rodriguez",
-    "email": "juan@acme.cl",
+    "name": "Xua",
+    "email": "xinxuauan22@acme.cl",
     "password": "Hunter2@3!",
     "phones": [
         {
-        "number": "1234567",
+        "number": "12345627",
         "citycode": "1",
         "contrycode": "57"
         }

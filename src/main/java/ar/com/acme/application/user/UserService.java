@@ -6,6 +6,7 @@ import ar.com.acme.application.email.IEmailService;
 import ar.com.acme.base.utils.passw.IPasswordService;
 import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import ar.com.acme.base.utils.principal.IEntityPrincipalAuthority;
+import jakarta.validation.Validator;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -18,8 +19,8 @@ public class UserService extends ar.com.acme.base.templates.service.Service<User
     private final IEmailService emailService;
     private final IPasswordService passwordService;
 
-    public UserService(IUserRepo usuarioRepo, IPasswordService passwordService, IEmailService emailService) {
-        super(usuarioRepo);
+    public UserService(IUserRepo usuarioRepo, Validator validator, IPasswordService passwordService, IEmailService emailService) {
+        super(usuarioRepo, validator);
         this.passwordService = passwordService;
         this.emailService = emailService;
     }

@@ -2,6 +2,9 @@ package ar.com.acme.base.templates.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
 
 import java.io.Serializable;
 import java.util.*;
@@ -22,12 +25,14 @@ import ar.com.acme.base.templates.repository.IRepository;
  */
 public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> implements IService<U, TKI> {
     protected final IRepository<U, TKI> repo;
+    protected final Validator validator;
 
     @PersistenceContext
     protected EntityManager entityManagerrrr;
 
-    protected Service(IRepository<U, TKI> repo) {
+    protected Service(IRepository<U, TKI> repo, Validator validator) {
         this.repo = repo;
+        this.validator = validator;
     }
 
     public IRepository<U, TKI> getRepo() {
@@ -36,10 +41,12 @@ public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> 
 
     @Override
     public U persist(U instancia) throws ServiceException {
+        this.validate(instancia);
+        
         try {
             return repo.save(instancia);
         } catch (Exception ex) {
-            throw new ServiceException(BaseConstants.MSJ_REP_ERR_ATSAVEDATA, instancia.toString());
+            throw new ServiceException(BaseConstants.MSJ_REP_ERR_ATSAVEDATA, ex.toString());
         }
     }
 
@@ -57,5 +64,17 @@ public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> 
     @Override
     public List<U> findAllAlive() {
         return repo.findAllAlive();
+    }
+
+    protected void validate(U entity) {
+        Set<ConstraintViolation<U>> violations = validator.validate(entity);
+
+        if (!violations.isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+            for (ConstraintViolation<U> constraintViolation : violations) {
+                sb.append(constraintViolation.getMessage());
+            }
+            throw new ConstraintViolationException(BaseConstants.MSJ_REP_ERR_NOVALIDATE + BaseConstants.SYS_CAD_LOGSEP + sb.toString(), violations);
+        }
     }
 }
