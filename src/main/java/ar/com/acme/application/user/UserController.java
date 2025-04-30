@@ -9,7 +9,7 @@ import ar.com.acme.application.common.AppConstants;
 
 @RestController
 @RequestMapping(AppConstants.URL_CONTROLLER_USER)
-public class UserController extends Controller<User, UUID, UserWebInDTO, UserWebOutDTO> {
+public class UserController extends Controller<User, UUID, UserWebInModel, UserWebOutModel> {
     private final IPhoneService phoneService;
     public UserController(IUserService service, IPhoneService phoneService) {
         super(service);
@@ -17,12 +17,12 @@ public class UserController extends Controller<User, UUID, UserWebInDTO, UserWeb
     }
 
     @Override
-    protected UserWebOutDTO toWebOutModel(User source) {
-        return UserWebOutDTO.fromUser(source);
+    protected UserWebOutModel toWebOutModel(User source) {
+        return UserWebOutModel.fromUser(source);
     }
 
     @Override
-    protected User fromWebInModel(UserWebInDTO source) {
+    protected User fromWebInModel(UserWebInModel source) {
         return source.toUser((IUserService)getService(), phoneService);
     }
 }

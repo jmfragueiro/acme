@@ -8,7 +8,7 @@ import ar.com.acme.application.phone.IPhoneService;
 import ar.com.acme.application.phone.PhoneWebDTO;
 import ar.com.acme.base.common.BaseConstants;
 
-public record UserWebInDTO(UUID id,
+public record UserWebInModel(UUID id,
                            String name,
                            String email,
                            String password, // null si no hay que modificar

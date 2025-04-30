@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import ar.com.acme.application.phone.PhoneWebDTO;
 
-public record UserWebOutDTO(UUID id,
+public record UserWebOutModel(UUID id,
                             String name,
                             String email,
                             LocalDateTime created,
@@ -16,8 +16,8 @@ public record UserWebOutDTO(UUID id,
                             String token,
                             LocalDateTime lastLogin,
                             Collection<PhoneWebDTO> phones) {
-    public static UserWebOutDTO fromUser(User user) {
-        return new UserWebOutDTO(user.getId(),
+    public static UserWebOutModel fromUser(User user) {
+        return new UserWebOutModel(user.getId(),
                                 user.getName(),
                                 user.getEmail(),
                                 user.getCreated(),

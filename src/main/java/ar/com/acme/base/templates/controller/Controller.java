@@ -21,16 +21,16 @@ import java.util.Collection;
  * @author jmfragueiro
  * @version 20200201
  */
-public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, X, W> implements IController<U, TKI, X, W> {
+public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, WI, WO> implements IController<U, TKI, WI, WO> {
     private final IService<U, TKI> service;
 
     protected Controller(IService<U, TKI> service) {
         this.service = service;
     }
 
-    protected abstract W toWebOutModel(U source);
+    protected abstract WO toWebOutModel(U source);
 
-    protected abstract U fromWebInModel(X source);
+    protected abstract U fromWebInModel(WI source);
 
     @Override
     public IService<U, TKI> getService() {
@@ -39,13 +39,13 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
     @GetMapping(path = "/{key}")
     @ResponseStatus(HttpStatus.OK)
-    public W view(@PathVariable("key") TKI key) {
+    public WO view(@PathVariable("key") TKI key) {
         return toWebOutModel(service.findById(key).orElseThrow(() -> new ItemNotFoundException(key.toString())));
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Collection<W> list() {
+    public Collection<WO> list() {
         var lista = getService().findAllAlive();
 
         return lista.stream().map(this::toWebOutModel).toList();
@@ -53,7 +53,7 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public W add(@Valid @RequestBody X object) throws IOException {
+    public WO add(@Valid @RequestBody WI object) throws IOException {
         U added = getService().persist(fromWebInModel(object));
 
         return toWebOutModel(added);
@@ -61,7 +61,7 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
 
     @PutMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public W update(@Valid @RequestBody X object) throws IOException {
+    public WO update(@Valid @RequestBody WI object) throws IOException {
         U updated = getService().persist(fromWebInModel(object));
 
         return toWebOutModel(updated);
