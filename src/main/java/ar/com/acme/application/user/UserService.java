@@ -2,7 +2,6 @@ package ar.com.acme.application.user;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.common.AppProperties;
 import ar.com.acme.application.email.IEmailService;
 import ar.com.acme.base.utils.passw.IPasswordService;
 import ar.com.acme.base.utils.principal.IEntityPrincipal;
@@ -13,7 +12,6 @@ import java.util.UUID;
 import java.util.Optional;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.function.Predicate;
 
 @Service
 public class UserService extends ar.com.acme.base.templates.service.Service<User, UUID> implements IUserService {
