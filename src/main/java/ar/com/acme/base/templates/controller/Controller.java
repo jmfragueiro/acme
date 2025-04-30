@@ -28,6 +28,7 @@ public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializabl
         this.service = service;
     }
 
+    // esto se saca
     protected abstract W toWebOutModel(U source);
 
     protected abstract U fromWebInModel(X source);
