@@ -3,6 +3,7 @@ package ar.com.acme.application.user;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.common.AppProperties;
+import ar.com.acme.application.email.IEmailService;
 import ar.com.acme.base.utils.passw.IPasswordService;
 import ar.com.acme.base.utils.principal.IEntityPrincipal;
 import ar.com.acme.base.utils.principal.IEntityPrincipalAuthority;
@@ -16,14 +17,13 @@ import java.util.function.Predicate;
 
 @Service
 public class UserService extends ar.com.acme.base.templates.service.Service<User, UUID> implements IUserService {
-    private final Predicate<String> isValidEmail;
-
+    private final IEmailService emailService;
     private final IPasswordService passwordService;
 
-    public UserService(IUserRepo usuarioRepo, AppProperties appProperties, IPasswordService passwordService) {
+    public UserService(IUserRepo usuarioRepo, IPasswordService passwordService, IEmailService emailService) {
         super(usuarioRepo);
-        this.isValidEmail = email -> { return email.matches(appProperties.getRegexp().get("email")); };
         this.passwordService = passwordService;
+        this.emailService = emailService;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class UserService extends ar.com.acme.base.templates.service.Service<User
 
     @Override
     public Boolean isValidEmail(String email) {
-        return isValidEmail.test(email);
+        return emailService.isValidEmail(email);
     }
 
     @Override

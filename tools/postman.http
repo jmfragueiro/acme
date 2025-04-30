@@ -33,7 +33,7 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJkZDU5ODExMS0zMzMwLTQ2ZmQtOGJiYy01MzBiNTI0YThkY2UiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.lIdnQp872E021Hq11u3kkqCCfH9_iVIWnKZs28HqPHTv9GWAJ3klTF4ZFTaF_Gu0zC20R6qlY5zpE77u6k5D1Q
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI3MmZjYjViZS00NjgzLTRmZTAtYjFiYi1kZmJkNTc3ZmNhZjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.qi761qFzLWdHPfmpqd1eM7d6uCBmVphuA-QsozT1vxvCb3KXbXI3wISh8UoGQrWhLhB64VVKQUcuHekNQ8zbfw
 
 ###
 
@@ -48,7 +48,7 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJkZDU5ODExMS0zMzMwLTQ2ZmQtOGJiYy01MzBiNTI0YThkY2UiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.lIdnQp872E021Hq11u3kkqCCfH9_iVIWnKZs28HqPHTv9GWAJ3klTF4ZFTaF_Gu0zC20R6qlY5zpE77u6k5D1Q
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI0MjFmNzI0MS0xYzVjLTQ1M2ItYmY4ZC00MTA5YjUzNjc0OTIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.dp-7g2fEFvT7hjRwfoSY_L-8u_p8WAmzZmq0ycd0Y6uOT15ate8dEneURu8DMHrRs1sqX1rM97n4tsxEZiclTw
 
 {
     "name": "Juan Rodriguez",
