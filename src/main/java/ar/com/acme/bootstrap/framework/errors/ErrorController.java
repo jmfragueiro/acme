@@ -1,10 +1,8 @@
 package ar.com.acme.bootstrap.framework.errors;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,19 +10,38 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.com.acme.bootstrap.common.BootstrapConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping(BootstrapConstants.SYS_CAD_ERROR_URL)
 public class ErrorController {
+    private final Map<String, String> errorResponse = Map.of(
+            BootstrapConstants.SYS_CAD_RESPONSE_ERROR_MSG, BootstrapConstants.MSJ_SES_ERR_NOACTIVETOKEN);
+
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public Map<String, String> error(HttpServletRequest request, HttpServletResponse response) {
-        var errors = new HashMap<String, String>();
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> errorGet(HttpServletRequest request, HttpServletResponse response) {
+        return errorResponse;
+    }
 
-        response.getStatus();
+    @PostMapping
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> errorPost(HttpServletRequest request, HttpServletResponse response) {
+        return errorResponse;
+    }
 
-        errors.put("mensaje", "ERROR DE AUTENTICACION!!!");
+    @PutMapping
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> errorPut(HttpServletRequest request, HttpServletResponse response) {
+        return errorResponse;
+    }
 
-        return errors;
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> errorDelete(HttpServletRequest request, HttpServletResponse response) {
+        return errorResponse;
     }
 }

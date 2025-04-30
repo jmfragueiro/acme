@@ -14,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import ar.com.acme.base.exception.ItemNotFoundException;
 import ar.com.acme.base.utils.http.HttpResponseError;
 import ar.com.acme.base.utils.jws.JWSException;
+import ar.com.acme.bootstrap.framework.exception.AuthException;
 
 @RestControllerAdvice
 public class GlobalResponseErrorHandler {
@@ -37,6 +38,12 @@ public class GlobalResponseErrorHandler {
     @ExceptionHandler(AccessDeniedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public final HttpResponseError AccessExceptionHandler(AccessDeniedException ex) {
+        return new HttpResponseError(ex.getMessage());
+    }
+
+    @ExceptionHandler(AuthException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public final HttpResponseError AuthExceptionHandler(AuthException ex) {
         return new HttpResponseError(ex.getMessage());
     }
 

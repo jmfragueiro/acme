@@ -30,6 +30,7 @@ public abstract class BootstrapConstants {
     public static final String SYS_CAD_TXTLOGGIN_USER = "username";
     public static final String SYS_CAD_TXTLOGGIN_PASS = "password";
     public static final String SYS_CAD_HTTP_AUTH = "Authorization";
+    public static final String SYS_CAD_RESPONSE_ERROR_MSG = "mensaje";
 
     //  **********************************************************
     //  * CADENAS ASOCIADAS A LOS TIPOS DE CONTENIDO HTTP
