@@ -1,7 +1,7 @@
 package ar.com.acme.application.phone;
 
 import ar.com.acme.application.user.User;
-import ar.com.acme.base.common.BaseConstants;
+import ar.com.acme.application.common.Constants;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Phone extends ar.com.acme.base.templates.entity.Entity {
+public class Phone extends ar.com.acme.application.common.templates.entity.Entity {
     public static final String FIELD_USER = "User";
     public static final String FIELD_NUMBER = "Number";
     public static final String FIELD_CITYCODE = "City Code";
@@ -29,19 +29,19 @@ public class Phone extends ar.com.acme.base.templates.entity.Entity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_USER)
+    @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_USER)
     private User user;
 
     @Column(name = "number", unique = true)
-    @NotNull(message =  BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_NUMBER)
-    @Size(min = 0, max = 999_999_999, message = BaseConstants.MSJ_REP_ERR_FIELD_LONG_NOK + FIELD_NUMBER)
+    @NotNull(message =  Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_NUMBER)
+    @Size(min = 0, max = 999_999_999, message = Constants.MSJ_REP_ERR_FIELD_LONG_NOK + FIELD_NUMBER)
     private Long number;
 
     @Column(name = "citycode")
-    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_CITYCODE)
+    @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_CITYCODE)
     private Integer citycode;
 
     @Column(name = "countrycode")
-    @NotNull(message = BaseConstants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_COUNTRYCODE)
+    @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_COUNTRYCODE)
     private Integer countrycode;
 }

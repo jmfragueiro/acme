@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import ar.com.acme.application.phone.IPhoneService;
 import ar.com.acme.application.phone.PhoneWebDTO;
-import ar.com.acme.base.common.BaseConstants;
+import ar.com.acme.application.common.Constants;
 
 public record UserWebInModel(UUID id,
                            String name,
@@ -19,7 +19,7 @@ public record UserWebInModel(UUID id,
 
         if (this.id != null) {
             user = service.findById(this.id())
-                          .orElseThrow(() -> new UserException(BaseConstants.MSJ_REP_ERR_NOITEM, "User"));
+                          .orElseThrow(() -> new UserException(Constants.MSJ_REP_ERR_NOITEM, "User"));
         } else {
             user = new User();
         }

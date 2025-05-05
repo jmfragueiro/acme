@@ -4,13 +4,13 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.common.AppProperties;
+import ar.com.acme.application.common.Properties;
 
 @Service
 public class EmailService implements IEmailService {
     private final Predicate<String> isValidEmail;
 
-        public EmailService(AppProperties appProperties) {
+        public EmailService(Properties appProperties) {
         this.isValidEmail = email -> { return email.matches(appProperties.getRegexp().get("email")); };
     }
 

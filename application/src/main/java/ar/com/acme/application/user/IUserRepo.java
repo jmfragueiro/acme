@@ -2,7 +2,7 @@ package ar.com.acme.application.user;
 
 import org.springframework.stereotype.Repository;
 
-import ar.com.acme.base.templates.repository.IRepository;
+import ar.com.acme.application.common.templates.repository.IRepository;
 
 import java.util.Optional;
 import java.util.UUID;

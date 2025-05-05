@@ -3,9 +3,8 @@ package ar.com.acme.application.user;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.email.IEmailService;
-import ar.com.acme.base.utils.passw.IPasswordService;
-import ar.com.acme.base.utils.principal.IEntityPrincipal;
-import ar.com.acme.base.utils.principal.IEntityPrincipalAuthority;
+import ar.com.acme.application.password.IPasswordService;
+import ar.com.acme.application.principal.IPrincipal;
 import jakarta.validation.Validator;
 
 import java.time.LocalDateTime;
@@ -15,7 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Service
-public class UserService extends ar.com.acme.base.templates.service.Service<User, UUID> implements IUserService {
+public class UserService extends ar.com.acme.application.common.templates.service.Service<User, UUID> implements IUserService {
     private final IEmailService emailService;
     private final IPasswordService passwordService;
 
@@ -47,12 +46,12 @@ public class UserService extends ar.com.acme.base.templates.service.Service<User
     }
 
     @Override
-    public Collection<IEntityPrincipalAuthority> getAuthorities(IEntityPrincipal principal) {
+    public Collection<String> getAuthorities(IPrincipal principal) {
         return Collections.emptyList();
     }
 
     @Override
-    public void updatePrincipal(IEntityPrincipal principal) {
+    public void updatePrincipal(IPrincipal principal) {
         persist((User)principal);
     }
 

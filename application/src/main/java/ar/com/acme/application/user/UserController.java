@@ -4,11 +4,11 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.acme.application.phone.IPhoneService;
-import ar.com.acme.base.templates.controller.Controller;
-import ar.com.acme.application.common.AppConstants;
+import ar.com.acme.application.common.Constants;
+import ar.com.acme.application.common.templates.controller.Controller;
 
 @RestController
-@RequestMapping(AppConstants.URL_CONTROLLER_USER)
+@RequestMapping(Constants.URL_CONTROLLER_USER)
 public class UserController extends Controller<User, UUID, UserWebInModel, UserWebOutModel> {
     private final IPhoneService phoneService;
     public UserController(IUserService service, IPhoneService phoneService) {

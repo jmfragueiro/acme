@@ -16,11 +16,11 @@ import lombok.Setter;
  * @version 20250421
  */
 @Component
-@ConfigurationProperties(prefix = "framework")
+@ConfigurationProperties(prefix = "bootstrap")
 @Getter
 @Setter
 public class BootstrapProperties {
     private Map<String, String> security;
-    private Map<String, String> token;
     private Map<String, String> database;
+    private Map<String, String> jws;
 }
