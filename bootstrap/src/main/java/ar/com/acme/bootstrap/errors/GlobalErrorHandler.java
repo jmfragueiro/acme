@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import ar.com.acme.bootstrap.common.ResponseError;
+import ar.com.acme.commons.ResponseError;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.jws.JWSException;
 

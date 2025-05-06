@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.commons.Constants;
 import ar.com.acme.bootstrap.exception.AuthException;
 import lombok.Getter;
 

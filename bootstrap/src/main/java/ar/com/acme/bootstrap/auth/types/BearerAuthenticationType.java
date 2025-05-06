@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import ar.com.acme.adapter.principal.IPrincipal;
 import ar.com.acme.adapter.principal.IPrincipalService;
 import ar.com.acme.bootstrap.auth.AuthenticationToken;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.commons.Constants;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.jws.IJwsService;
 import jakarta.servlet.http.HttpServletRequest;

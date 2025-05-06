@@ -4,8 +4,8 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.acme.application.phone.IPhoneService;
-import ar.com.acme.application.common.Constants;
-import ar.com.acme.application.common.templates.controller.Controller;
+import ar.com.acme.application.templates.controller.Controller;
+import ar.com.acme.commons.Constants;
 
 @RestController
 @RequestMapping(Constants.URL_CONTROLLER_USER)

@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.common.Properties;
+import ar.com.acme.commons.Properties;
 
 @Service
 public class PasswordService implements IPasswordService {

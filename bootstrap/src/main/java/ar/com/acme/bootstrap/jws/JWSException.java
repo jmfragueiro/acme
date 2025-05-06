@@ -1,9 +1,9 @@
 package ar.com.acme.bootstrap.jws;
 
-import ar.com.acme.bootstrap.common.Constants;
-import ar.com.acme.bootstrap.common.Logging;
+import ar.com.acme.commons.Constants;
+import ar.com.acme.commons.MessageException;
 
-public class JWSException extends RuntimeException {
+public class JWSException extends MessageException {
     public JWSException(String item) {
         super(Constants.MSJ_TOK_ERR_GENERAL
                 .concat(Constants.SYS_CAD_SPACE)
@@ -19,14 +19,6 @@ public class JWSException extends RuntimeException {
      * @param extra   La cadena con datos extras para mostrarInnerLayout en la exepcion
      */
     public JWSException(String mensaje, String extra) {
-        super(mensaje);
-        registrarMensaje(mensaje, extra);
-    }
-
-    /**
-     * Este metodo registra al sistema de Logging la excepcion lanzada
-     */
-    private void registrarMensaje(String mensaje, String extra) {
-        Logging.error(this.getClass(), extra);
+        super(mensaje, extra);
     }
 }

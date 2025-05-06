@@ -2,7 +2,7 @@ package ar.com.acme.application.phone;
 
 import java.util.UUID;
 
-import ar.com.acme.application.common.Constants;
+import ar.com.acme.commons.Constants;
 import ar.com.acme.application.user.UserException;
 
 public record PhoneWebDTO(UUID id, Long number, Integer citycode, Integer countrycode) {

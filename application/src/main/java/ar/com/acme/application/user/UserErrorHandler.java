@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import ar.com.acme.application.common.ResponseError;
+import ar.com.acme.commons.ResponseError;
 
 @RestControllerAdvice
 public class UserErrorHandler {

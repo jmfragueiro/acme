@@ -1,6 +1,6 @@
 package ar.com.acme.bootstrap.http;
 
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.commons.Constants;
 import ar.com.acme.bootstrap.exception.AuthException;
 import jakarta.servlet.http.HttpServletRequest;
 

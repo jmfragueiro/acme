@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import ar.com.acme.application.phone.IPhoneService;
 import ar.com.acme.application.phone.PhoneWebDTO;
-import ar.com.acme.application.common.Constants;
+import ar.com.acme.commons.Constants;
 
 public record UserWebInModel(UUID id,
                            String name,

@@ -11,7 +11,7 @@ import java.util.UUID;
 import java.util.Optional;
 
 @Service
-public class UserService extends ar.com.acme.application.common.templates.service.Service<User, UUID> implements IUserService {
+public class UserService extends ar.com.acme.application.templates.service.Service<User, UUID> implements IUserService {
     private final IEmailService emailService;
     private final IPasswordService passwordService;
 

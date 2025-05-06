@@ -1,7 +1,7 @@
 package ar.com.acme.application.user;
 
 import ar.com.acme.application.phone.Phone;
-import ar.com.acme.application.common.Constants;
+import ar.com.acme.commons.Constants;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +26,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.application.common.templates.entity.Entity {
+public class User extends ar.com.acme.application.templates.entity.Entity {
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
     public static final String FIELD_PASSWORD = "Password";

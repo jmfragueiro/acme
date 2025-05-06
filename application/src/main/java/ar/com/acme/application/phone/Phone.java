@@ -1,7 +1,7 @@
 package ar.com.acme.application.phone;
 
 import ar.com.acme.application.user.User;
-import ar.com.acme.application.common.Constants;
+import ar.com.acme.commons.Constants;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Phone extends ar.com.acme.application.common.templates.entity.Entity {
+public class Phone extends ar.com.acme.application.templates.entity.Entity {
     public static final String FIELD_USER = "User";
     public static final String FIELD_NUMBER = "Number";
     public static final String FIELD_CITYCODE = "City Code";

@@ -6,8 +6,8 @@ import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Service;
 
 import ar.com.acme.adapter.principal.IPrincipal;
-import ar.com.acme.bootstrap.common.Constants;
-import ar.com.acme.bootstrap.common.Properties;
+import ar.com.acme.commons.Constants;
+import ar.com.acme.commons.Properties;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;

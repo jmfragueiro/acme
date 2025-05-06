@@ -7,7 +7,7 @@ import jakarta.validation.Validator;
 import java.util.UUID;
 
 @Service
-public class PhoneService extends ar.com.acme.application.common.templates.service.Service<Phone, UUID> implements IPhoneService {
+public class PhoneService extends ar.com.acme.application.templates.service.Service<Phone, UUID> implements IPhoneService {
     public PhoneService(IPhoneRepo phoneRepo, Validator validator) {
         super(phoneRepo, validator);
     }

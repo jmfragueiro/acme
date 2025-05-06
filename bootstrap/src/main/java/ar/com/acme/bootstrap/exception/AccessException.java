@@ -2,8 +2,8 @@ package ar.com.acme.bootstrap.exception;
 
 import org.springframework.security.access.AccessDeniedException;
 
-import ar.com.acme.bootstrap.common.Logging;
-import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.commons.Logging;
+import ar.com.acme.commons.Constants;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema

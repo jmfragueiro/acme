@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.acme.bootstrap.common.Constants;
-import ar.com.acme.bootstrap.common.Tools;
+import ar.com.acme.commons.Constants;
+import ar.com.acme.commons.Tools;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.http.HttpResponseBody;
 import ar.com.acme.bootstrap.session.ISessionService;
