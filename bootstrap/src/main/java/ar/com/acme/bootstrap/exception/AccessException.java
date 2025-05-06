@@ -2,8 +2,8 @@ package ar.com.acme.bootstrap.exception;
 
 import org.springframework.security.access.AccessDeniedException;
 
-import ar.com.acme.application.common.Logging;
-import ar.com.acme.bootstrap.common.BootstrapConstants;
+import ar.com.acme.bootstrap.common.Logging;
+import ar.com.acme.bootstrap.common.Constants;
 
 /**
  * Esta clase de excepcion deberia utilizarse para representar todos los errores asociados a un problema
@@ -18,10 +18,10 @@ public class AccessException extends AccessDeniedException {
      * Esta version del contructor permite crear una excepcion sin mensaje ni datos extras
      * (utiliza en este caso un mensaje generico tomado de la constante MSJ_ERR_EXCEPCION).
      *
-     * @see BootstrapConstants
+     * @see Constants
      */
     public AccessException() {
-        this(BootstrapConstants.MSJ_USR_ERR_NOACCES);
+        this(Constants.MSJ_USR_ERR_NOACCES);
     }
 
     /**

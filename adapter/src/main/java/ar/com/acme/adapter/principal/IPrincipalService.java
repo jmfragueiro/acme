@@ -1,4 +1,4 @@
-package ar.com.acme.application.principal;
+package ar.com.acme.adapter.principal;
 
 import java.util.Collection;
 import java.util.Optional;

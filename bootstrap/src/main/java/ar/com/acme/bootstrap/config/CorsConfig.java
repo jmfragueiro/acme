@@ -6,8 +6,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.BootstrapProperties;
+import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.Properties;
 
 import static java.util.Collections.singletonList;
 
@@ -17,7 +17,7 @@ public class CorsConfig {
     private final String corsAllowMethod;
     private final String corsAllowHeader;
 
-    public CorsConfig(BootstrapProperties propiedades) {
+    public CorsConfig(Properties propiedades) {
         this.corsAllowOrigin = propiedades.getSecurity().get("cors_allow_origin");
         this.corsAllowMethod = propiedades.getSecurity().get("cors_allow_method");
         this.corsAllowHeader = propiedades.getSecurity().get("cors_allow_header");
@@ -33,7 +33,7 @@ public class CorsConfig {
 
         // define para qué URLs aplicar esa configuración
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration(BootstrapConstants.SYS_CAD_URLALL, configuration);
+        source.registerCorsConfiguration(Constants.SYS_CAD_URLALL, configuration);
 
         return source;
     }

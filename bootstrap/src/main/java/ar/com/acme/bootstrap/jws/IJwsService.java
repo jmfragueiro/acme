@@ -1,6 +1,8 @@
 package ar.com.acme.bootstrap.jws;
 
-import ar.com.acme.application.principal.IPrincipal;
+import java.time.LocalDateTime;
+
+import ar.com.acme.adapter.principal.IPrincipal;
 
 /**
  * Esta interface implementa el comportamiento necesario aquí para el servicio
@@ -23,4 +25,6 @@ public interface IJwsService {
     String getIdFromJws(String jws);
 
     String getNameFromJws(String jws);
+
+    LocalDateTime getIatFromJws(String jws);
 }

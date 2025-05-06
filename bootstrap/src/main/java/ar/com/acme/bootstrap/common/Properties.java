@@ -19,7 +19,7 @@ import lombok.Setter;
 @ConfigurationProperties(prefix = "bootstrap")
 @Getter
 @Setter
-public class BootstrapProperties {
+public class Properties {
     private Map<String, String> security;
     private Map<String, String> database;
     private Map<String, String> jws;

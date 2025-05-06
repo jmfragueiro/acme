@@ -8,10 +8,10 @@ import java.util.UUID;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.principal.IPrincipal;
-import ar.com.acme.application.principal.IPrincipalService;
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.BootstrapProperties;
+import ar.com.acme.adapter.principal.IPrincipal;
+import ar.com.acme.adapter.principal.IPrincipalService;
+import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.jws.IJwsService;
 
@@ -20,7 +20,7 @@ import ar.com.acme.bootstrap.jws.IJwsService;
 public class SessionService implements ISessionService {
         private final IPrincipalService<? extends IPrincipal> principalService;
         private final IJwsService jwsService;
-        private final BootstrapProperties properties;
+        private final Properties properties;
 
     @Override
     public String login(Authentication authentication) {
@@ -53,26 +53,28 @@ public class SessionService implements ISessionService {
 
     private void validateAuthentication(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERNOAUTH);
+            throw new AuthException(Constants.MSJ_SES_ERR_USERNOAUTH);
         }
 
         if ((IPrincipal)authentication.getPrincipal() == null) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_ONAUTH);
+            throw new AuthException(Constants.MSJ_SES_ERR_ONAUTH);
         }
     }
 
     private void validateCanCreateSession(IPrincipal principal) {
         // permite o no multiples sesiones de usuario segun la propiedad user_multisession
         if (principal.getToken() != null && !properties.getSecurity().get("user_multisession").equalsIgnoreCase("true")) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERALREADYLOGGED);
+            throw new AuthException(Constants.MSJ_SES_ERR_USERALREADYLOGGED);
         }
 
-        principal.verifyCanOperate();
+        if (!principal.canOperate()) {
+            throw new AuthException(Constants.MSJ_SES_ERR_USERCANTOP);
+        };
     }
 
     private void validateCanDeleteSession(IPrincipal principal) {
         if (principal.getToken() == null) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_USERNOTLOGGED);
+            throw new AuthException(Constants.MSJ_SES_ERR_USERNOTLOGGED);
         }
     }
 }

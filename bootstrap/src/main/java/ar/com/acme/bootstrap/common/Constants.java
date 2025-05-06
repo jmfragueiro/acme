@@ -7,7 +7,7 @@ package ar.com.acme.bootstrap.common;
  * @author jmfragueiro
  * @version 20250421
  */
-public abstract class BootstrapConstants {
+public abstract class Constants {
     //  **********************************************************
     //  * CADENAS DE DE TEXTOS COMUNES
     //  **********************************************************
@@ -63,6 +63,7 @@ public abstract class BootstrapConstants {
     public static final String MSJ_SES_ERR_NOACTIVETOKEN = "NO SE HA ENCONTRADO UNA SESION DE USUARIO ACTIVA";
     public static final String MSJ_SES_ERR_USERALREADYLOGGED = "EL USUARIO YA SE ENCUENTRA LOGUEADO EN EL SISTEMA";
     public static final String MSJ_SES_ERR_USERNOTLOGGED = "EL USUARIO NO SE ENCUENTRA LOGUEADO EN EL SISTEMA";
+    public static final String MSJ_SES_ERR_USERCANTOP = "EL USUARIO NO PUEDE OPERAR EL SISTEMA ACTUALMENTE";
 
     //  **********************************************************
     //  * CADENAS DE MENSAJES DE USUARIO COMUNES

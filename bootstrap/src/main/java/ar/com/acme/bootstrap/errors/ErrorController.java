@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.acme.bootstrap.common.BootstrapConstants;
+import ar.com.acme.bootstrap.common.Constants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping(BootstrapConstants.SYS_CAD_ERROR_URL)
+@RequestMapping(Constants.SYS_CAD_ERROR_URL)
 public class ErrorController {
     private final Map<String, String> errorResponse = Map.of(
-            BootstrapConstants.SYS_CAD_RESPONSE_ERROR_MSG, BootstrapConstants.MSJ_SES_ERR_NOACTIVETOKEN);
+            Constants.SYS_CAD_RESPONSE_ERROR_MSG, Constants.MSJ_SES_ERR_NOACTIVETOKEN);
 
     @GetMapping
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

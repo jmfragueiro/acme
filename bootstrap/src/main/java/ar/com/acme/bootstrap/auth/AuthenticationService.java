@@ -13,11 +13,10 @@ import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.principal.IPrincipal;
-import ar.com.acme.application.password.IPasswordService;
+import ar.com.acme.adapter.principal.IPrincipal;
 import ar.com.acme.bootstrap.auth.types.IAuthenticationType;
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.BootstrapProperties;
+import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.Properties;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.http.HttpRequestAuthorizationHeader;
 
@@ -25,25 +24,22 @@ import ar.com.acme.bootstrap.http.HttpRequestAuthorizationHeader;
 public class AuthenticationService implements IAuthenticationService {
     private final RequestMatcher publicPaths;
     private final Map<String, IAuthenticationType> authTypesMap;
-    private final IPasswordService passwordService;
 
-    public AuthenticationService(BootstrapProperties propiedades,
-        Map<String, IAuthenticationType> authTypesMap,
-        IPasswordService passwordService) {
+    public AuthenticationService(Properties propiedades, Map<String, IAuthenticationType> authTypesMap) {
         this.publicPaths = new OrRequestMatcher(
                                     Arrays.stream(propiedades.getSecurity().get("public_paths").split(","))
                                           .map(AntPathRequestMatcher::new)
                                           .toArray(RequestMatcher[]::new));
         this.authTypesMap = authTypesMap;
-        this.passwordService = passwordService;
     }
 
     @Override
     public Authentication authenticateFromRequest(HttpServletRequest request) throws AuthenticationException {
         var authHeader = HttpRequestAuthorizationHeader.from(request);
 
-        IAuthenticationType authType = Optional.of(authTypesMap.get(authHeader.type()))
-                                           .orElseThrow(() -> new AuthException(BootstrapConstants.MSJ_REQ_ERR_BADREQUEST));
+        IAuthenticationType authType =
+            Optional.of(authTypesMap.get(authHeader.type()))
+                                    .orElseThrow(() -> new AuthException(Constants.MSJ_REQ_ERR_BADREQUEST));
 
         return authenticate(authType.generateAuthentication(request, authHeader.value()));
     }
@@ -52,13 +48,12 @@ public class AuthenticationService implements IAuthenticationService {
     public Authentication authenticate(Authentication auth) {
         var principal = (IPrincipal)auth.getPrincipal();
 
-        if (principal == null || principal.getCredentials() == null) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_INVALIDTOKEN);
+        if (principal == null) {
+            throw new AuthException(Constants.MSJ_SES_ERR_INVALIDTOKEN);
         }
 
-        if (auth.getCredentials() != null
-            && !passwordService.matches(auth.getCredentials().toString(), principal.getCredentials().toString())) {
-            throw new AuthException(BootstrapConstants.MSJ_SES_ERR_BADCREDENTIAL);
+        if (auth.getCredentials() != null && !principal.matchPassword(auth.getCredentials().toString())) {
+            throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
         }
 
         auth.setAuthenticated(true);

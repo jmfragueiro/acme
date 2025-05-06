@@ -1,4 +1,4 @@
-package ar.com.acme.application.principal;
+package ar.com.acme.adapter.principal;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -35,7 +35,7 @@ public interface IPrincipal {
 
     LocalDateTime getLastLogin();
 
-    Object getCredentials();
+    boolean canOperate();
 
-    void verifyCanOperate();
+    boolean matchPassword(String rawPassword);
 }

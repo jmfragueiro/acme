@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import ar.com.acme.application.common.ResponseError;
-import ar.com.acme.application.common.templates.repository.ItemNotFoundException;
+import ar.com.acme.bootstrap.common.ResponseError;
 import ar.com.acme.bootstrap.exception.AuthException;
 import ar.com.acme.bootstrap.jws.JWSException;
 
 @RestControllerAdvice
-public class GlobalResponseErrorHandler {
+public class GlobalErrorHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseError handleValidationErrors(ConstraintViolationException ex) {
@@ -56,12 +55,6 @@ public class GlobalResponseErrorHandler {
     @ExceptionHandler(SecurityException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public final ResponseError SecurityExceptionHandler(SecurityException ex) {
-        return new ResponseError(ex.getMessage());
-    }
-
-    @ExceptionHandler(ItemNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public final ResponseError ItemNotFoundExceptionHandler(Exception ex) {
         return new ResponseError(ex.getMessage());
     }
 

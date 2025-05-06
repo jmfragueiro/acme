@@ -5,12 +5,14 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.principal.IPrincipal;
-import ar.com.acme.bootstrap.common.BootstrapConstants;
-import ar.com.acme.bootstrap.common.BootstrapProperties;
+import ar.com.acme.adapter.principal.IPrincipal;
+import ar.com.acme.bootstrap.common.Constants;
+import ar.com.acme.bootstrap.common.Properties;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 import javax.crypto.SecretKey;
@@ -20,7 +22,7 @@ public class JwsService implements IJwsService {
     private final String signingKey;
     private final String realm;
 
-    public JwsService(BootstrapProperties properties) {
+    public JwsService(Properties properties) {
         this.signingKey = properties.getJws().get("signing_key");
         this.realm = properties.getJws().get("realm");
     }
@@ -42,24 +44,24 @@ public class JwsService implements IJwsService {
     public void validateJws(String jws) {
         try {
             if (jws == null || getBody(jws).isEmpty()) {
-                throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM);
+                throw new JWSException(Constants.MSJ_TOK_ERR_BADTOKEN, Constants.MSJ_TOK_ERR_EMPTYCLAIM);
             }
 
             if (!getKeyId(jws).equals(this.realm)) {
-                throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, BootstrapConstants.MSJ_TOK_ERR_BADJWT);
+                throw new JWSException(Constants.MSJ_TOK_ERR_BADJWTSIGN, Constants.MSJ_TOK_ERR_BADJWT);
             }
         } catch (ExpiredJwtException e) {
             // ACA NO PASA NADA, SE RESUELVE MAS ADELANTE...
         } catch (SignatureException e) {
-            throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
+            throw new JWSException(Constants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
         } catch (MalformedJwtException e) {
-            throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
+            throw new JWSException(Constants.MSJ_TOK_ERR_BADTOKEN, e.getMessage());
         } catch (UnsupportedJwtException e) {
-            throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
+            throw new JWSException(Constants.MSJ_TOK_ERR_TOKENNOTSUP, e.getMessage());
         } catch (IllegalArgumentException e) {
-            throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
+            throw new JWSException(Constants.MSJ_TOK_ERR_EMPTYCLAIM, e.getMessage());
         } catch (Exception e) {
-            throw new JWSException(BootstrapConstants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
+            throw new JWSException(Constants.MSJ_TOK_ERR_TOKENREINIT, e.getMessage());
         }
     }
 
@@ -71,6 +73,11 @@ public class JwsService implements IJwsService {
     @Override
     public String getNameFromJws(String jws) {
         return getBody(jws).getSubject();
+    }
+
+    @Override
+    public LocalDateTime getIatFromJws(String jws) {
+        return LocalDateTime.ofInstant(getBody(jws).getIssuedAt().toInstant(), ZoneId.systemDefault());
     }
 
     private Claims getBody(String jws) {

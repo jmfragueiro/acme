@@ -2,7 +2,6 @@ package ar.com.acme.application.user;
 
 import ar.com.acme.application.phone.Phone;
 import ar.com.acme.application.common.Constants;
-import ar.com.acme.application.principal.IPrincipal;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +26,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends ar.com.acme.application.common.templates.entity.Entity implements IPrincipal {
+public class User extends ar.com.acme.application.common.templates.entity.Entity {
     public static final String FIELD_NAME = "Name";
     public static final String FIELD_EMAIL = "Email";
     public static final String FIELD_PASSWORD = "Password";
@@ -62,15 +61,10 @@ public class User extends ar.com.acme.application.common.templates.entity.Entity
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Phone> phones = new HashSet<>();
 
-    @Override
-    public Object getCredentials() {
-        return password;
-    }
-
-    @Override
-    public void verifyCanOperate() {
-        if (!getActive()) {
-            throw new UserException(ERR_NOT_ENABLED, getName());
-        }
-    }
+    // @Override
+    // public void verifyCanOperate() {
+    //     if (!getActive()) {
+    //         throw new UserException(ERR_NOT_ENABLED, getName());
+    //     }
+    // }
 }

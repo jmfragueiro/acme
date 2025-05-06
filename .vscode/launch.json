@@ -4,7 +4,7 @@
             "type": "java",
             "name": "SPRINGBOOT",
             "request": "launch",
-            "mainClass": "ar.com.acme.base.BaseSystem",
+            "mainClass": "ar.com.acme.bootstrap.AcmeApplication",
             "projectName": "acme",
             "env": {
                 "SPRING_CONFIG_LOCATION": "classpath:/application.properties,file:${workspaceFolder}\\local\\appext.properties",

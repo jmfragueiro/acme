@@ -24,12 +24,12 @@ public abstract class Tools {
      */
     public static String getNombreMetodoLlamante(int index) {
         StackTraceElement ste = new Exception().getStackTrace()[index];
-        return BootstrapConstants.SYS_CAD_OPENTYPE.concat(ste.getClassName())
-                .concat(BootstrapConstants.SYS_CAD_LOGSEP)
+        return Constants.SYS_CAD_OPENTYPE.concat(ste.getClassName())
+                .concat(Constants.SYS_CAD_LOGSEP)
                 .concat(ste.getMethodName())
-                .concat(BootstrapConstants.SYS_CAD_LOGSEP)
+                .concat(Constants.SYS_CAD_LOGSEP)
                 .concat(String.valueOf(ste.getLineNumber()))
-                .concat(BootstrapConstants.SYS_CAD_CLOSETPE);
+                .concat(Constants.SYS_CAD_CLOSETPE);
     }
 
     /**
@@ -42,14 +42,14 @@ public abstract class Tools {
      */
     public static String getCadenaErrorFormateada(String error, String extra, String username) {
         return (!Strings.hasText(error)
-                ? error.concat(BootstrapConstants.SYS_CAD_LOGSEP)
-                : BootstrapConstants.SYS_CAD_ERROR)
-                        .concat(BootstrapConstants.SYS_CAD_SPACE)
-                        .concat(Strings.hasText(extra) ? extra : BootstrapConstants.SYS_CAD_NULL)
-                        .concat(BootstrapConstants.SYS_CAD_SPACE)
-                        .concat(BootstrapConstants.SYS_CAD_OPENTYPE)
-                        .concat(Strings.hasText(username) ? username : BootstrapConstants.SYS_CAD_NULL)
-                        .concat(BootstrapConstants.SYS_CAD_CLOSETPE);
+                ? error.concat(Constants.SYS_CAD_LOGSEP)
+                : Constants.SYS_CAD_ERROR)
+                        .concat(Constants.SYS_CAD_SPACE)
+                        .concat(Strings.hasText(extra) ? extra : Constants.SYS_CAD_NULL)
+                        .concat(Constants.SYS_CAD_SPACE)
+                        .concat(Constants.SYS_CAD_OPENTYPE)
+                        .concat(Strings.hasText(username) ? username : Constants.SYS_CAD_NULL)
+                        .concat(Constants.SYS_CAD_CLOSETPE);
     }
 
     /**
@@ -66,7 +66,7 @@ public abstract class Tools {
             byte[] digest = md.digest(texto.getBytes(StandardCharsets.UTF_8));
             sb = DatatypeConverter.printHexBinary(digest).toLowerCase();
         } catch (Exception exc) {
-            sb = BootstrapConstants.SYS_CAD_NULL;
+            sb = Constants.SYS_CAD_NULL;
         }
 
         return sb;
@@ -80,6 +80,6 @@ public abstract class Tools {
      * @return un objeto para controlar si es nulo
      */
     public static String getEmptyStringOnNull(String objeto) {
-        return ((objeto == null) ? BootstrapConstants.SYS_CAD_NULL : objeto);
+        return ((objeto == null) ? Constants.SYS_CAD_NULL : objeto);
     }
 }

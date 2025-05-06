@@ -4,14 +4,11 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.application.email.IEmailService;
 import ar.com.acme.application.password.IPasswordService;
-import ar.com.acme.application.principal.IPrincipal;
 import jakarta.validation.Validator;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.Optional;
-import java.util.Collection;
-import java.util.Collections;
 
 @Service
 public class UserService extends ar.com.acme.application.common.templates.service.Service<User, UUID> implements IUserService {
@@ -43,16 +40,6 @@ public class UserService extends ar.com.acme.application.common.templates.servic
     @Override
     public Optional<User> findByToken(UUID token) {
         return ((IUserRepo)getRepo()).findByToken(token);
-    }
-
-    @Override
-    public Collection<String> getAuthorities(IPrincipal principal) {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public void updatePrincipal(IPrincipal principal) {
-        persist((User)principal);
     }
 
     @Override

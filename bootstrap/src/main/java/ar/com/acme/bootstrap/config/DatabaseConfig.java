@@ -6,13 +6,13 @@ import org.h2.tools.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ar.com.acme.bootstrap.common.BootstrapProperties;
+import ar.com.acme.bootstrap.common.Properties;
 
 @Configuration
 public class DatabaseConfig {
     private final String H2_PORT;
 
-    public DatabaseConfig(BootstrapProperties properties) {
+    public DatabaseConfig(Properties properties) {
         this.H2_PORT = properties.getDatabase().get("h2_port");
     }
 
