@@ -14,11 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>ar.com.acme</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>ar.com.acme</groupId>
             <artifactId>application</artifactId>
             <version>1.0.0</version>
         </dependency>
