@@ -1,8 +1,5 @@
 package ar.com.acme.bootstrap.errors;
 
-import jakarta.validation.ConstraintViolationException;
-
-import java.util.HashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -17,17 +14,6 @@ import ar.com.acme.bootstrap.jws.JWSException;
 
 @RestControllerAdvice
 public class GlobalErrorHandler {
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseError handleValidationErrors(ConstraintViolationException ex) {
-        var errors = new HashMap<>();
-        ex.getConstraintViolations().forEach(violation ->
-            errors.put(violation.getPropertyPath().toString(), violation.getMessage())
-        );
-
-        return new ResponseError(errors.values().stream().map(v -> v.toString()).findFirst().orElse(ex.getClass().getName()));
-    }
-
     @ExceptionHandler(JWSException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public final ResponseError JWSExceptionHandler(JWSException ex) {
