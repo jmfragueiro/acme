@@ -10,34 +10,13 @@
     </parent>
 
     <artifactId>bootstrap</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>ar.com.acme</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <dependency>
             <groupId>ar.com.acme</groupId>
             <artifactId>adapter</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-    </build>
 </project>

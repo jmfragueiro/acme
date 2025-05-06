@@ -25,9 +25,9 @@ public class AuthenticationService implements IAuthenticationService {
     private final RequestMatcher publicPaths;
     private final Map<String, IAuthenticationType> authTypesMap;
 
-    public AuthenticationService(Properties propiedades, Map<String, IAuthenticationType> authTypesMap) {
+    public AuthenticationService(Properties properties, Map<String, IAuthenticationType> authTypesMap) {
         this.publicPaths = new OrRequestMatcher(
-                                    Arrays.stream(propiedades.getSecurity().get("public_paths").split(","))
+                                    Arrays.stream(properties.getSecurity().get("public_paths").split(","))
                                           .map(AntPathRequestMatcher::new)
                                           .toArray(RequestMatcher[]::new));
         this.authTypesMap = authTypesMap;

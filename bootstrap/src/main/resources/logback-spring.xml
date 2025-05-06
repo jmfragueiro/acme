@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <define name="DIRBASE" class="ar.com.acme.bootstrap.framework.logging.LogbackPathHelper"/>
-    <define name="SYSNAME" class="ar.com.acme.bootstrap.framework.logging.LogbackSysNameHelper"/>
+    <define name="DIRBASE" class="ar.com.acme.bootstrap.logging.LogbackPathHelper"/>
+    <define name="SYSNAME" class="ar.com.acme.bootstrap.logging.LogbackSysNameHelper"/>
     <variable name="PATTERN" value="%-32.-32(%d{HH:mm:ss.SSS} [%thread]) %-5level %-36.-36logger{36} %-5.-5line - %message%n%throwable"/>
     <timestamp key="myTimestamp" datePattern="yyyy-MM-dd'_'HH-mm"/>
 
@@ -26,18 +26,13 @@
         </rollingPolicy>
     </appender>
 
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="Console" />
         <appender-ref ref="RollingFile" />
     </root>
 
-    <logger name="ar.com.acme" level="debug">
+    <!-- <logger name="ar.com.acme" level="debug">
         <appender-ref ref="Console" />
         <appender-ref ref="RollingFile" />
-    </logger>
-
-    <logger name="org.hibernate" level="info">
-		<appender-ref ref="Console" />
-        <appender-ref ref="RollingFile" />
-    </logger>
+    </logger> -->
 </configuration>

@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>adapter</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
