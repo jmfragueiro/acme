@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service(Constants.SYS_CAD_HTTPAUTH_BEARER)
 @RequiredArgsConstructor
 public class BearerAuthenticationType implements IAuthenticationType {
-        private final IPrincipalService<? extends IPrincipal> principalService;
+        private final IPrincipalService<IPrincipal> principalService;
         private final IJwsService jwsService;
 
         @Override

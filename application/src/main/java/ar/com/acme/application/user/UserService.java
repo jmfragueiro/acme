@@ -15,8 +15,8 @@ public class UserService extends ar.com.acme.application.templates.service.Servi
     private final IEmailService emailService;
     private final IPasswordService passwordService;
 
-    public UserService(IUserRepo usuarioRepo, Validator validator, IPasswordService passwordService, IEmailService emailService) {
-        super(usuarioRepo, validator);
+    public UserService(IUserRepo userRepo, Validator validator, IPasswordService passwordService, IEmailService emailService) {
+        super(userRepo, validator);
         this.passwordService = passwordService;
         this.emailService = emailService;
     }

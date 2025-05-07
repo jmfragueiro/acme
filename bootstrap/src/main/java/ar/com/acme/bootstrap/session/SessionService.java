@@ -18,7 +18,7 @@ import ar.com.acme.bootstrap.jws.IJwsService;
 @Service
 @RequiredArgsConstructor
 public class SessionService implements ISessionService {
-        private final IPrincipalService<? extends IPrincipal> principalService;
+        private final IPrincipalService<IPrincipal> principalService;
         private final IJwsService jwsService;
         private final Properties properties;
 

@@ -4,7 +4,7 @@
     "maven.terminal.favorites": [
         {
             "alias": "mvnpnt",
-            "command": "clean package -DskipTests=true"
+            "command": "clean install -DskipTests=true"
         }
     ],
     "maven.view": "hierarchical",

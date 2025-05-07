@@ -1,6 +1,5 @@
 package ar.com.acme.commons;
 
-import io.jsonwebtoken.lang.Strings;
 import jakarta.xml.bind.DatatypeConverter;
 
 import java.nio.charset.StandardCharsets;
@@ -25,11 +24,11 @@ public abstract class Tools {
     public static String getNombreMetodoLlamante(int index) {
         StackTraceElement ste = new Exception().getStackTrace()[index];
         return Constants.SYS_CAD_OPENTYPE.concat(ste.getClassName())
-                .concat(Constants.SYS_CAD_LOGSEP)
-                .concat(ste.getMethodName())
-                .concat(Constants.SYS_CAD_LOGSEP)
-                .concat(String.valueOf(ste.getLineNumber()))
-                .concat(Constants.SYS_CAD_CLOSETPE);
+                                         .concat(Constants.SYS_CAD_LOGSEP)
+                                         .concat(ste.getMethodName())
+                                         .concat(Constants.SYS_CAD_LOGSEP)
+                                         .concat(String.valueOf(ste.getLineNumber()))
+                                         .concat(Constants.SYS_CAD_CLOSETPE);
     }
 
     /**
@@ -41,14 +40,14 @@ public abstract class Tools {
      * @return la cadena de error formateada
      */
     public static String getCadenaErrorFormateada(String error, String extra, String username) {
-        return (!Strings.hasText(error)
+        return (!error.isBlank()
                 ? error.concat(Constants.SYS_CAD_LOGSEP)
                 : Constants.SYS_CAD_ERROR)
                         .concat(Constants.SYS_CAD_SPACE)
-                        .concat(Strings.hasText(extra) ? extra : Constants.SYS_CAD_NULL)
+                        .concat(!extra.isBlank() ? extra : Constants.SYS_CAD_NULL)
                         .concat(Constants.SYS_CAD_SPACE)
                         .concat(Constants.SYS_CAD_OPENTYPE)
-                        .concat(Strings.hasText(username) ? username : Constants.SYS_CAD_NULL)
+                        .concat(!username.isBlank() ? username : Constants.SYS_CAD_NULL)
                         .concat(Constants.SYS_CAD_CLOSETPE);
     }
 

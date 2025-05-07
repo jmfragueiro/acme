@@ -9,7 +9,7 @@ public interface IPrincipalService<U extends IPrincipal> {
 
     Optional<U> findByToken(UUID token);
 
-    Collection<String> getAuthorities(IPrincipal principal);
+    Collection<String> getAuthorities(U principal);
 
-    void updatePrincipal(IPrincipal principal);
+    void updatePrincipal(U principal);
 }
