@@ -5,15 +5,15 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import ar.com.acme.application.phone.IPhoneService;
-import ar.com.acme.application.phone.PhoneWebDTO;
+import ar.com.acme.application.phone.PhoneWebInModel;
 import ar.com.acme.commons.Constants;
 
 public record UserWebInModel(UUID id,
-                           String name,
-                           String email,
-                           String password, // null si no hay que modificar
-                           Boolean active,
-                           Collection<PhoneWebDTO> phones) {
+                             String name,
+                             String email,
+                             String password, // null si no hay que modificar
+                             Boolean active,
+                             Collection<PhoneWebInModel> phones) {
     public User toUser(IUserService service, IPhoneService phoneService) {
         User user;
 

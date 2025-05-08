@@ -5,9 +5,9 @@ import java.util.UUID;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.application.user.UserException;
 
-public record PhoneWebDTO(UUID id, Long number, Integer citycode, Integer countrycode) {
-    public static PhoneWebDTO fromPhone(Phone phone) {
-        return new PhoneWebDTO(phone.getId(), phone.getNumber(), phone.getCitycode(), phone.getCountrycode());
+public record PhoneWebInModel(UUID id, Long number, Integer citycode, Integer countrycode) {
+    public static PhoneWebInModel fromPhone(Phone phone) {
+        return new PhoneWebInModel(phone.getId(), phone.getNumber(), phone.getCitycode(), phone.getCountrycode());
     }
 
     public Phone toPhone(IPhoneService service) {

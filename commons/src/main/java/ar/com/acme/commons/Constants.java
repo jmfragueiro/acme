@@ -12,6 +12,7 @@ public class Constants {
     public static final String SYS_CAD_LOGSEP = ":";
     public static final String SYS_CAD_URLALL = "/**";
     public static final String SYS_CAD_CLOSEREF = ">";
+    public static final String SYS_CAD_MSJ_SEPARATOR = ". ";
     public static final String SYS_CAD_SPACE = " ";
     public static final String SYS_CAD_UNSESION = "UNKNOW";
     public static final String SYS_CAD_SUCCESS = "Operación ejecutada satisfactoriamente...";
