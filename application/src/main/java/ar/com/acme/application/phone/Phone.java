@@ -8,8 +8,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,14 +35,17 @@ public class Phone extends ar.com.acme.application.templates.entity.Entity {
 
     @Column(name = "number", unique = true)
     @NotNull(message =  Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_NUMBER)
-    @Size(min = 0, max = 999_999_999, message = Constants.MSJ_REP_ERR_FIELD_LONG_NOK + FIELD_NUMBER)
+    @Min(value = 0, message = Constants.MSJ_REP_ERR_FIELD_NOK + FIELD_NUMBER)
+    @Max(value = 999_999_999, message = Constants.MSJ_REP_ERR_FIELD_NOK + FIELD_NUMBER)
     private Long number;
 
     @Column(name = "citycode")
     @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_CITYCODE)
+    @Min(value = 0, message = Constants.MSJ_REP_ERR_FIELD_NOK + FIELD_CITYCODE)
     private Integer citycode;
 
     @Column(name = "countrycode")
     @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_COUNTRYCODE)
+    @Min(value = 0, message = Constants.MSJ_REP_ERR_FIELD_NOK + FIELD_COUNTRYCODE)
     private Integer countrycode;
 }

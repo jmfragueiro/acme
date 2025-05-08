@@ -33,7 +33,8 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI1OThlYWUyNS0zMTM0LTQ3YzgtYTQ1ZS00ZjNlZWU4YjU5NGQiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcxNzAxNiwiZXhwIjoxNzQ2NzE3MTk2fQ.TiczSzKE6U15TDKwkP1-l_4mP3srqPsEWzTwVEUK-G_RYfUZIiowFGvnNtpQ27zTQKjkRhoKQ5iRthQC2Bp-9Q
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJhM2UwMDhhZC05MjQ2LTQxNWYtOTJlYi01N2ZhNjIwMmNhZTEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcyMjE2OSwiZXhwIjoxNzQ2NzIyMzQ5fQ.JQQ3BmxGyuHhz5GPq6NuEvUzAawmUpDqqY1PbhueY3sJSK7z9_jNL-jW7RB9sczU_lDrjETlGyjzcR4_J5tLrw
+
 ###
 
 GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
@@ -47,17 +48,17 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwMjFhZmRhOC1hOTUyLTQ2ODEtOWI0Ni1lOTVmZGNlM2M5NjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.IWX-zkuHLZP8tHZpbc2lmQMDrUQRVcFZ2-F04f8KKX73l93wJtQz5LFOjmULli3J1wLGpqujh4fzs0glcHz5AQ
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIzNTI4ZGY4MS1hN2YxLTQ5NTYtYTExZS0wMmIzMWIxNDNjZGMiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcyMzY5MiwiZXhwIjoxNzQ2NzIzODcyfQ.pZYfaL1jIISJLEFFOibd_iRLFMehXFkDqUVXK2czYAjrkdWTQUIiX_VWRTEU2VIKv0w55vQRjdFRQXi6CwAEMA
 
 {
-    "name": "Xua",
-    "email": "xinxuauan22@acme.cl",
+    "name": "javomilei",
+    "email": "leonmilei@acme.cl",
     "password": "Hunter2@3!",
     "phones": [
         {
-        "number": "12345627",
+        "number": "11124363177",
         "citycode": "1",
-        "contrycode": "57"
+        "countrycode": "57"
         }
     ]
  }
@@ -68,4 +69,4 @@ POST http://127.0.0.1:8080/auth/logout
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5ODFjMTNiZi00YjQyLTQzOGEtOTVlNi03ZjZhMTJiYmU2ODYiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjU4NjgwMH0.Tv32FKZvqwJZWH7RZ12Z30R621EZuRCivT3q0FJRdBqqvOIWRfWw-StxUZMd1ZjBxlYBZPFXETClqMRexAVqog
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4Y2JjM2Y3Ni02NzYwLTQwODMtOWUxMy1mYzRkZjIzZGQ2MmYiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcyMDQ1NSwiZXhwIjoxNzQ2NzIwNjM1fQ.iQ68PP47Egzt0DycTXANj9xvTa_UKc4Y5BD7dhhDwv0LbN3E3AxK1qZKzN-lee6ue_WJuSIkB2ViZUgZVMyx9w

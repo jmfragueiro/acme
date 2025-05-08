@@ -60,11 +60,4 @@ public class User extends ar.com.acme.application.templates.entity.Entity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Phone> phones = new HashSet<>();
-
-    // @Override
-    // public void verifyCanOperate() {
-    //     if (!getActive()) {
-    //         throw new UserException(ERR_NOT_ENABLED, getName());
-    //     }
-    // }
 }
