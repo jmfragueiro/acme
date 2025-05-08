@@ -25,6 +25,16 @@ Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
 
+username=javomilei&password=Hunter2@3!
+
+###
+
+POST http://127.0.0.1:8080/auth/login
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
+
 username=lschwegler&password=Damasco004
 
 ###
@@ -48,17 +58,22 @@ POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJhOTQyZGRjNy1iODRhLTRjNDItODFlYS02MWI0MjVlYTA0MjAiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjczNDUxMiwiZXhwIjoxNzQ2NzM0NjkyfQ.TG4Mdaud5RFjuuJy3eaq19yq-17sJHu8ZbqFof7b-bFKrrLLWcmkAI8JC-LRjKyAH6tbUfF5fUKQlbHsJ-CLzg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4YTE1ODFlNC1hMTlhLTQ0M2QtOTEzMi1hNzkzNDc1NjBkMzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Njc0MzYwNCwiZXhwIjoxNzQ2NzQzNzg0fQ.7y1055qj8PUAW8dQhvyzZzghIsM2LVAAJGyNR2GQhgKMw_9nJdk9bs_W_62LcBtQQwvEoMT4Ao-9NMpFriJ4Tg
 
 {
-    "name": "javomilei",
-    "email": "leonmilei@acme.cl",
+    "name": "liomessi",
+    "email": "liomessi10@acme.cl",
     "password": "Hunter2@3!",
     "phones": [
         {
-        "number": "11124363177",
-        "citycode": "1",
-        "countrycode": "57"
+        "number": "4363178",
+        "citycode": "376",
+        "countrycode": "54"
+        },
+        {
+        "number": "4588590",
+        "citycode": "376",
+        "countrycode": "54"
         }
     ]
  }
@@ -69,4 +84,4 @@ POST http://127.0.0.1:8080/auth/logout
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4Y2JjM2Y3Ni02NzYwLTQwODMtOWUxMy1mYzRkZjIzZGQ2MmYiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcyMDQ1NSwiZXhwIjoxNzQ2NzIwNjM1fQ.iQ68PP47Egzt0DycTXANj9xvTa_UKc4Y5BD7dhhDwv0LbN3E3AxK1qZKzN-lee6ue_WJuSIkB2ViZUgZVMyx9w
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI2MjFmMjA4OC1hNzFkLTQ1YmEtYjc4Zi05NmY2Njk2MDgzNWMiLCJzdWIiOiJqYXZvbWlsZWkiLCJpYXQiOjE3NDY3NDM0NDYsImV4cCI6MTc0Njc0MzYyNn0.syXw_hCsqVixIe2g08Z2BqWbQxAXjfA1YJVhDgiyWb4Dk2HVLZ_-YTOUe9fF87oengpx2SCIQ2sH98uA9e0sYA

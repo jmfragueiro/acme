@@ -45,7 +45,11 @@ public record UserWebInModel(UUID id,
         }
 
         user.setName(this.name());
-        user.setPhones(this.phones().stream().map(p -> p.toPhone(phoneService)).collect(Collectors.toSet()));
+        user.setPhones(this.phones()
+                           .stream()
+                           .map(p -> p.toPhone(phoneService))
+                           .peek(phone -> phone.setUser(user))
+                           .collect(Collectors.toSet()));
 
         return user;
     }

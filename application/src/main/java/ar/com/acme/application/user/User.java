@@ -59,7 +59,7 @@ public class User extends ar.com.acme.application.templates.entity.Entity {
     @Column(name = "token")
     private UUID token;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Valid
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Phone> phones = new HashSet<>();
 }
