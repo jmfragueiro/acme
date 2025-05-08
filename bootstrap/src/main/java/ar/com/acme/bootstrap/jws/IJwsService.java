@@ -1,6 +1,7 @@
 package ar.com.acme.bootstrap.jws;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import ar.com.acme.adapter.principal.IPrincipal;
 
@@ -18,7 +19,7 @@ import ar.com.acme.adapter.principal.IPrincipal;
  * @version 20230601
  */
 public interface IJwsService {
-    String generateJws(IPrincipal source);
+    String generateJws(IPrincipal source, UUID tid, LocalDateTime now);
 
     void validateJws(String jws);
 

@@ -24,13 +24,19 @@ public class ErrorController {
     @GetMapping
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Map<String, String> errorGet(HttpServletRequest request, HttpServletResponse response) {
-        return errorResponse;
+        Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
+
+        return Map.of(
+            Constants.SYS_CAD_RESPONSE_ERROR_MSG, exception.getMessage());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Map<String, String> errorPost(HttpServletRequest request, HttpServletResponse response) {
-        return errorResponse;
+        Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
+
+        return Map.of(
+            Constants.SYS_CAD_RESPONSE_ERROR_MSG, exception.getMessage());
     }
 
     @PutMapping

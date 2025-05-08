@@ -9,6 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import ar.com.acme.bootstrap.exception.AuthException;
+
 import java.io.IOException;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -24,7 +26,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        return ((IAuthenticationService)getAuthenticationManager()).authenticateFromRequest(request);
+        try {
+            return ((IAuthenticationService)getAuthenticationManager()).authenticateFromRequest(request);
+        } catch (Exception ex) {
+            throw new AuthException(ex.getMessage());
+        }
     }
 
     @Override

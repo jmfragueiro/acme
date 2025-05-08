@@ -10,9 +10,9 @@ import ar.com.acme.commons.Constants;
 import ar.com.acme.commons.Properties;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.crypto.SecretKey;
@@ -21,23 +21,26 @@ import javax.crypto.SecretKey;
 public class JwsService implements IJwsService {
     private final String signingKey;
     private final String realm;
+    private final Integer tkduration;
 
     public JwsService(Properties properties) {
         this.signingKey = properties.getJws().get("signing_key");
         this.realm = properties.getJws().get("realm");
+        this.tkduration = Integer.valueOf(properties.getJws().get("token_duration"));
     }
 
     @Override
-    public String generateJws(IPrincipal source) {
+    public String generateJws(IPrincipal source, UUID tid, LocalDateTime now) {
         return Jwts.builder()
-                      .header()
-                        .keyId(this.realm)
-                        .and()
-                      .id(UUID.randomUUID().toString())
-                      .subject(source.getName())
-                      .issuedAt(java.sql.Date.valueOf(LocalDate.now()))
-                      .signWith(getSecretKey())
-                      .compact();
+                   .header()
+                   .keyId(this.realm)
+                   .and()
+                   .id(tid.toString())
+                   .subject(source.getName())
+                   .issuedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
+                   .expiration(Date.from(now.plusSeconds(this.tkduration).atZone(ZoneId.systemDefault()).toInstant()))
+                   .signWith(getSecretKey())
+                   .compact();
     }
 
     @Override
@@ -51,7 +54,7 @@ public class JwsService implements IJwsService {
                 throw new JWSException(Constants.MSJ_TOK_ERR_BADJWTSIGN, Constants.MSJ_TOK_ERR_BADJWT);
             }
         } catch (ExpiredJwtException e) {
-            // ACA NO PASA NADA, SE RESUELVE MAS ADELANTE...
+            throw new JWSException(Constants.MSJ_TOK_ERR_EXPIRED, e.getMessage());
         } catch (SignatureException e) {
             throw new JWSException(Constants.MSJ_TOK_ERR_BADJWTSIGN, e.getMessage());
         } catch (MalformedJwtException e) {

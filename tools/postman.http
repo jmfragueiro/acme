@@ -33,7 +33,7 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJiOTE4OWE4Zi1jZjNhLTQ2ZTctYTA4My1lMjM4Y2NhYWY2ODIiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjU4NjgwMH0.SbrFh8JTsSORUHxGP6xP0McCSRBNHtpdSCQovW51z2Ry-hDP1tSJrFX5bQr-aAGp44FCR6GBmdoRoZhbp8pReA
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI0NDg5MjQyMi1jNjM1LTQ1NGQtODhlNS0zZjgzODdlYTBiY2UiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjY2MzIyOSwiZXhwIjoxNzQ2NjYzNDA5fQ.6ClD61MYvk1w93IRrxGwoKkxgWmcPXJHV-OVKytF-EKiQPFkdePIMr21WuZDyktiAaa-ieczC-I0DszZos0fNw
 
 ###
 
@@ -64,8 +64,9 @@ Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiIwMjFhZm
  }
 
 ###
+
 POST http://127.0.0.1:8080/auth/logout
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI0M2JjZmJjZC1iNjJjLTRkNmItYmY0MC05NGU1ZmMxMzRmMmEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTg5NTYwMH0.wirmGh_BFwGs9puhPnh62Yk-rKNqhVLfwDe6pCBPlGAXFhsV_zWvDuiDH0alvSq77UXkUlsxw5IiEUtD855NuA
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI5ODFjMTNiZi00YjQyLTQzOGEtOTVlNi03ZjZhMTJiYmU2ODYiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjU4NjgwMH0.Tv32FKZvqwJZWH7RZ12Z30R621EZuRCivT3q0FJRdBqqvOIWRfWw-StxUZMd1ZjBxlYBZPFXETClqMRexAVqog

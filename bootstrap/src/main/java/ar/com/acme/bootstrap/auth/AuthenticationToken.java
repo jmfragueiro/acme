@@ -40,7 +40,7 @@ public class AuthenticationToken implements Authentication, CredentialsContainer
 
     @Override
     public final String getName() {
-        return (this.isAuthenticated() && this.principal != null) ? this.principal.toString() : Constants.SYS_CAD_UNSESION;
+        return (this.isAuthenticated() && this.principal != null) ? this.principal.getName() : Constants.SYS_CAD_UNSESION;
     }
 
     @Override

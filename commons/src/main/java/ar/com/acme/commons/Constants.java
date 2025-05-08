@@ -79,12 +79,13 @@ public class Constants {
     public static final String MSJ_TOK_ERR_BADJWT = "DATOS DE TOKEN INCORRRECTOS";
     public static final String MSJ_TOK_ERR_TOKENNOTSUP = "TOKEN NO SOPORTADO POR LA PLATAFORMA";
     public static final String MSJ_TOK_ERR_EMPTYCLAIM = "CADENA DE CONTENIDO DE TOKEN VACIA";
+    public static final String MSJ_TOK_ERR_EXPIRED = "TOKEN DE AUTENTICACION EXPIRADO";
     public static final String MSJ_TOK_ERR_CANTEXTRACTTED = "NO SE OBTUVO NINGUN VALOR EXTRA DESDE EL TOKEN";
     public static final String MSJ_TOK_ERR_BADTOKEN = "FORMATO DE TOKEN INVALIDO";
     public static final String MSJ_TOK_ERR_TOKENUSERNOOP = "EL ESTADO DEL USUARIO NO PERMITE GENERAR UN TOKEN VALIDO";
     public static final String MSJ_TOK_ERR_TOKENREINIT = "ERROR AL INTENTAR REVALIDAR UN TOKEN";
     public static final String MSJ_TOK_ERR_NOAUTHCAD = "SE REQUIERE UNA CADENA QUE REPRESENTE EL PERMISO ASIGNADO";
-    public static final String MSJ_TOK_ERR_GENERAL = "ERROR DURANTE LA GESTION DEL TOKEN JWT";
+    public static final String MSJ_TOK_ERR_GENERAL = "ERROR DE VALIDACION DE TOKEN";
 
     //  **********************************************************
     //  * CADENAS DE MENSAJES DE ERROR COMUNES

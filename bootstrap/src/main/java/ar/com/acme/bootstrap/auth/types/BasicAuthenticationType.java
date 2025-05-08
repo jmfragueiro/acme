@@ -9,6 +9,7 @@ import ar.com.acme.bootstrap.auth.AuthenticationToken;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.commons.Properties;
 import ar.com.acme.bootstrap.exception.AuthException;
+import ar.com.acme.bootstrap.jws.JWSException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +21,8 @@ public class BasicAuthenticationType implements IAuthenticationType {
 
         @Override
         public AuthenticationToken generateAuthentication(HttpServletRequest request, String authcad) {
-            var clientid = properties.getSecurity().get("jwt_client-id");
-            var clientsecret = properties.getSecurity().get("jwt_client-secret");
+            var clientid = properties.getSecurity().get("client_id");
+            var clientsecret = properties.getSecurity().get("client_secret");
 
             ////////////////////////////////////////////////////////////////////////
             // PARA VER/GENERAR CUAL ES EL CODIGO DE CLIENTE QUE DEBE USARSE HAY  //
@@ -36,7 +37,7 @@ public class BasicAuthenticationType implements IAuthenticationType {
             String authid = new String(Base64.getDecoder().decode(authcad)).split(":")[0];
             String authsecret = new String(Base64.getDecoder().decode(authcad)).split(":")[1];
             if (!(authid.equals(clientid) && authsecret.equals(clientsecret))) {
-                throw new AuthException(Constants.MSJ_REQ_ERR_BADREQUESTVALUE);
+                throw new JWSException(Constants.MSJ_REQ_ERR_BADREQUESTVALUE);
             }
 
             String username = request.getParameter(Constants.SYS_CAD_TXTLOGGIN_USER);

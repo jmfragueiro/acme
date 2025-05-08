@@ -40,15 +40,15 @@ public abstract class Tools {
      * @return la cadena de error formateada
      */
     public static String getCadenaErrorFormateada(String error, String extra, String username) {
-        return (!error.isBlank()
+        return ((error != null && !error.isBlank())
                 ? error.concat(Constants.SYS_CAD_LOGSEP)
-                : Constants.SYS_CAD_ERROR)
-                        .concat(Constants.SYS_CAD_SPACE)
-                        .concat(!extra.isBlank() ? extra : Constants.SYS_CAD_NULL)
-                        .concat(Constants.SYS_CAD_SPACE)
-                        .concat(Constants.SYS_CAD_OPENTYPE)
-                        .concat(!username.isBlank() ? username : Constants.SYS_CAD_NULL)
-                        .concat(Constants.SYS_CAD_CLOSETPE);
+                : Constants.SYS_CAD_ERROR).concat(Constants.SYS_CAD_SPACE)
+                                          .concat((extra != null && !extra.isBlank())? extra : Constants.SYS_CAD_NULL)
+                                          .concat(Constants.SYS_CAD_SPACE)
+                                          .concat((username != null && !username.isBlank())
+                                                ? Constants.SYS_CAD_OPENTYPE.concat(username).concat(Constants.SYS_CAD_CLOSETPE)
+                                                : Constants.SYS_CAD_NULL)
+                                          .trim();
     }
 
     /**

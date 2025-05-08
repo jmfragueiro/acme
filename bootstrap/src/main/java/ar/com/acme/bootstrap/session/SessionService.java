@@ -30,10 +30,12 @@ public class SessionService implements ISessionService {
 
         validateCanCreateSession(principal);
 
-        var token = jwsService.generateJws(principal);
+        var tid = UUID.randomUUID();
+        var now = LocalDateTime.now();
+        var token = jwsService.generateJws(principal, tid, now);
 
-        principal.setToken(UUID.fromString(jwsService.getIdFromJws(token)));
-        principal.setLastLogin(LocalDateTime.now());
+        principal.setToken(tid);
+        principal.setLastLogin(now);
         principalService.updatePrincipal(principal);
 
         return token;
