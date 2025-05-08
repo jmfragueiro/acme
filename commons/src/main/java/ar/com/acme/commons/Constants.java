@@ -71,6 +71,7 @@ public class Constants {
     public static final String MSJ_USR_ERR_USERLOCKED = "EL USUARIO SOLICITADO SE ENCUENTRA BLOQUEADO";
     public static final String MSJ_USR_ERR_USERNOINIT = "ERROR AL VALIDAR LA SESION DEL USUARIO";
     public static final String MSJ_USR_ERR_USERNOTENABLED = "EL USUARIO SOLICITADO SE ENCUENTRA INHABILITADO";
+    public static final String MSJ_USR_ERR_UNPROCESSABLE = "EL REQUERIMIENTO NO PUDO PROCESARSE CORRECTAMENTE";
 
     //  **********************************************************
     //  * CADENAS ASOCIADAS AL MANEJO DE TOKENS

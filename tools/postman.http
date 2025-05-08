@@ -33,8 +33,7 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI0NDg5MjQyMi1jNjM1LTQ1NGQtODhlNS0zZjgzODdlYTBiY2UiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjY2MzIyOSwiZXhwIjoxNzQ2NjYzNDA5fQ.6ClD61MYvk1w93IRrxGwoKkxgWmcPXJHV-OVKytF-EKiQPFkdePIMr21WuZDyktiAaa-ieczC-I0DszZos0fNw
-
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI1OThlYWUyNS0zMTM0LTQ3YzgtYTQ1ZS00ZjNlZWU4YjU5NGQiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcxNzAxNiwiZXhwIjoxNzQ2NzE3MTk2fQ.TiczSzKE6U15TDKwkP1-l_4mP3srqPsEWzTwVEUK-G_RYfUZIiowFGvnNtpQ27zTQKjkRhoKQ5iRthQC2Bp-9Q
 ###
 
 GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
