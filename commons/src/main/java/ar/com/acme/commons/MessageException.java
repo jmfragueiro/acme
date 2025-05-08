@@ -49,6 +49,6 @@ public class MessageException extends RuntimeException {
      * Este metodo registra al sistema de Logging la excepcion lanzada
      */
     private void registrarMensaje(String mensaje, String extra) {
-        Logging.error(this.getClass(), extra);
+        Logging.error(this.getClass(), Tools.getCadenaErrorFormateada(mensaje, extra, null));
     }
 }

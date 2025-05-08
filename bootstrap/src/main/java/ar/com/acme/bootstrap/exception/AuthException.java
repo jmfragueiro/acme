@@ -3,6 +3,7 @@ package ar.com.acme.bootstrap.exception;
 import org.springframework.security.core.AuthenticationException;
 
 import ar.com.acme.commons.Logging;
+import ar.com.acme.commons.Tools;
 import ar.com.acme.commons.Constants;
 
 /**
@@ -48,6 +49,6 @@ public class AuthException extends AuthenticationException {
      * Este metodo registra al sistema de Logging la excepcion lanzada
      */
     private void registrarMensaje(String mensaje, String extra) {
-        Logging.error(this.getClass(), extra);
+        Logging.error(this.getClass(), Tools.getCadenaErrorFormateada(mensaje, extra, null));
     }
 }

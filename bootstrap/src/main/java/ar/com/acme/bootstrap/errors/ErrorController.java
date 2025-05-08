@@ -12,6 +12,7 @@ import ar.com.acme.commons.Tools;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping(Constants.SYS_CAD_ERROR_URL)
@@ -21,6 +22,15 @@ public class ErrorController {
     @GetMapping
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public Map<String, String> errorGet(HttpServletRequest request, HttpServletResponse response) {
+        return Map.of(Constants.SYS_CAD_RESPONSE_ERROR_MSG,
+                      Tools.getCadenaErrorFormateada(Constants.MSJ_USR_ERR_UNPROCESSABLE,
+                                                     request.getAttribute(errMsgAttr).toString(),
+                                                     null));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public Map<String, String> errorPost(HttpServletRequest request, HttpServletResponse response) {
         return Map.of(Constants.SYS_CAD_RESPONSE_ERROR_MSG,
                       Tools.getCadenaErrorFormateada(Constants.MSJ_USR_ERR_UNPROCESSABLE,
                                                      request.getAttribute(errMsgAttr).toString(),
