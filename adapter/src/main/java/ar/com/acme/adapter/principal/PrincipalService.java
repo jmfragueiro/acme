@@ -41,8 +41,8 @@ public class PrincipalService implements IPrincipalService<IPrincipal> {
 
     @Override
     public Collection<String> getAuthorities(IPrincipal principal) {
-        // TODO: para retornar roles y permisos
-        return Collections.emptyList();
+        // retornar los roles asociados al principal
+        return Collections.singleton("ROLE_ADMIN");
     }
 
     @Override

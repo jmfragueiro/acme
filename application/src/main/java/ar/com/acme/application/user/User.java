@@ -45,6 +45,14 @@ public class User extends ar.com.acme.application.templates.entity.Entity {
     @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_EMAIL)
     private String email;
 
+    ///////////////////////////////////////////////////////
+    // PARA GENERAR LAS CLAVES INICIALES PARA PROBAR:    //
+    // (hay que debuggear y parar en la captura de pass  //
+    //  y guardar el pass generado en la base de datos)  //
+    ///////////////////////////////////////////////////////
+    // var passService = new PaswordService();           //
+    // var pass = passService.encode("nuevo_password");  //
+    ///////////////////////////////////////////////////////
     @Column(name = "password")
     @NotNull(message = Constants.MSJ_REP_ERR_FIELD_EMPTY + FIELD_PASSWORD)
     private String password;

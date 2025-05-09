@@ -4,27 +4,23 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * Un TOKENPAYLOAD es un elemento que puede ser "registrado" dentro de otro objeto denominado
- * ITOKEN, representando su carga útil . Esta interface permite establecer el comportamiento de
- * una clase para esa carga útil registrada.
+ * <p>Esta interfase define el comportamiento deseado de un objeto que representa al usuario
+ * actualmente conectado y de cara al al contexto de seguridad que se aplique dentro del
+ * sistema, para que pueda ser recuperado para validaciones, controles de acceso, etc. Se
+ * espera que sea un objeto que solo tenga vida durante el procesamiento del requerimiento
+ * web actual. Actúa además, junto con su servicio, como unico punto de relación entre la
+ * módulo de aplicación y el de bootstrap, permitiendo evitar el acoplamiento etre estos
+ * módulos.</p>
+ * <p>Se espera que un objeto Principal se asocie internamente a la entidad, dentro de la
+ * aplicación específica, que representa a un usuario, la que entonces será desconocida
+ * para el mecanismo de contexto de seguridad aplicado por el framework utilizado (el cual
+ * sera represenatado por el módulo bootstrap).</p>
  *
  * @author jmfragueiro
- * @version 20250421
+ * @version 20250505
+ * @see IPrincipalService
  */
 public interface IPrincipal {
-    ///////////////////////////////////////////////////////
-    // ESTO ES PARA GENERAR USUARIOS Y CLAVES Y PROBAR:  //
-    // (hay que debuggear y parar en la captura de pass  //
-    //  y guardar el pass generado en la base de datos)  //
-    ///////////////////////////////////////////////////////
-    // @Autowired                                        //
-    // private BCryptPasswordEncoder passEncoder;        //
-    //                                                   //
-    // Usuario us = new Usuario();                       //
-    // us.setUsername("jmfragueiro");                    //
-    // us.setPassword(passEncoder.encode("fito"));       //
-    // String pass = us.getPassword();                   //
-    ///////////////////////////////////////////////////////
     String getName();
 
     void setToken(UUID token);
@@ -37,5 +33,5 @@ public interface IPrincipal {
 
     boolean canOperate();
 
-    boolean matchPassword(String rawPassword);
+    boolean matchCredential(String rawCredential);
 }

@@ -14,25 +14,12 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
 
-/**
- * Implementación de interfase IControlador para un sistema con REST-JPA. Esta clase es
- * ademas la base esperada de controladores REST para el sistema en el framework ad-hoc.
- *
- * @param <U>   El tipo de la entidad servida por el servicio
- * @param <TKI> El tipo de la clave de identificacion para la entidad
- * @author jmfragueiro
- * @version 20200201
- */
 public abstract class Controller<U extends IEntity<TKI>, TKI extends Serializable, WI, WO> implements IController<U, TKI, WI, WO> {
     private final IService<U, TKI> service;
 
     protected Controller(IService<U, TKI> service) {
         this.service = service;
     }
-
-    protected abstract WO toWebOutModel(U source);
-
-    protected abstract U fromWebInModel(WI source);
 
     @Override
     public IService<U, TKI> getService() {

@@ -7,33 +7,44 @@ import ar.com.acme.application.templates.entity.IEntity;
 import ar.com.acme.application.templates.service.IService;
 
 /**
- * Esta interfase representa el comprotamiento deseable de un controlador de servicios REST
- * que permita asociar una vista con un servicio de repositorio de persistencia dentro del
- * framework ad-hoc.
+ * <p>Esta interfase representa el comportamiento general deseable de un controlador básico
+ * de servicios REST dentro de la arquitectura base de esta aplicación.
+ * Se respeta aquí el esquema de dependencia de:</p>
  *
- * @param <U>   El tipo de la entidad servida por el servicio
- * @param <TKI> El tipo de la clave de identificacion para la entidad
- * @param <W>   El tipo del modelo web asociado a la entidad
+ * Entidad ({@code IEntidad}) <- Repositorio ({@code IRepository}) <- ({@code IService}) Servicio <- Controlador ({@code IController})
+ *
+ * <p>Esta interfase funciona entonces como una plantilla para estos controladores básicos,
+ * permitiendo unificar funcionalidad general y ordenar la organización del código subyacente.
+ * Cada controlador basado en esta plantilla procesará peticiones REST asociadas a una sola
+ * {@link IEntidad} y la relacionará con un modelo de ingreso de datos (representado por la
+ * clase argumento del parámetro de clase {@code WI}) y un modelo de generación de respuesta
+ * (representado por la clase argumento del parametro de clase {@code WO}). Asi mismo, si se
+ * requieren mas modelos y conversiones, debe resolverse en cada implementación específica.</p>
+ *
+ * <p> Todo {@code IController} debe tener un {@link IService} por detrás que es el que
+ * procesa efectivamente las reglas de negocio que dan soporte al controlador.
+ *
+ * @param <U>    El tipo de la entidad procesada por el controlador
+ * @param <TKI>  El tipo de la clave de identificacion para la entidad
+ * @param <WI>   El tipo del modelo web de puerto primario asociado a la entidad
+ * @param <WO>   El tipo del modelo web de puerto secundario asociado a la entidad
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250505
  */
-public interface IController<U extends IEntity<TKI>, TKI, X, W> {
-    /**
-     * Todas las implementaciones de Controlador de entrada deben tener un repositorio
-     * por detrás que es el que efectivamente se comunica con el mecanismo de persistenia.
-     * Este es el metodo que debe utilizarse para obtener una referencia a ese repositorio.
-     *
-     * @return una referencia al repositorio subyacente al controlador.
-     */
+public interface IController<U extends IEntity<TKI>, TKI, WI, WO> {
     IService<U, TKI> getService();
 
-    W view(TKI key);
+    WO view(TKI key);
 
-    Collection<W> list();
+    Collection<WO> list();
 
-    W add(X objeto) throws IOException;
+    WO add(WI objeto) throws IOException;
 
-    W update(X objeto) throws IOException;
+    WO update(WI objeto) throws IOException;
 
     void delete(TKI key) throws IOException;
+
+    WO toWebOutModel(U source);
+
+    U fromWebInModel(WI source);
 }

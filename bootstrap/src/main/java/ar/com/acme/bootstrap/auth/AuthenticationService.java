@@ -52,7 +52,7 @@ public class AuthenticationService implements IAuthenticationService {
             throw new AuthException(Constants.MSJ_SES_ERR_INVALIDTOKEN);
         }
 
-        if (auth.getCredentials() != null && !principal.matchPassword(auth.getCredentials().toString())) {
+        if (auth.getCredentials() != null && !principal.matchCredential(auth.getCredentials().toString())) {
             throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
         }
 

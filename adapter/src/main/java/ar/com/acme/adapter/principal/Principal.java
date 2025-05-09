@@ -54,7 +54,7 @@ public class Principal implements IPrincipal {
     }
 
     @Override
-    public boolean matchPassword(String rawPassword) {
+    public boolean matchCredential(String rawPassword) {
         return passwordService.matches(rawPassword, user.getPassword());
     }
 

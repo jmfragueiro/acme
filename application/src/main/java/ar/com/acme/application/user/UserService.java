@@ -2,7 +2,7 @@ package ar.com.acme.application.user;
 
 import org.springframework.stereotype.Service;
 
-import ar.com.acme.application.email.IEmailService;
+import ar.com.acme.application.email.IEmailServiceValidator;
 import ar.com.acme.application.password.IPasswordService;
 
 import java.time.LocalDateTime;
@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Service
 public class UserService extends ar.com.acme.application.templates.service.Service<User, UUID> implements IUserService {
-    private final IEmailService emailService;
+    private final IEmailServiceValidator emailService;
     private final IPasswordService passwordService;
 
-    public UserService(IUserRepo userRepo, IPasswordService passwordService, IEmailService emailService) {
+    public UserService(IUserRepo userRepo, IPasswordService passwordService, IEmailServiceValidator emailService) {
         super(userRepo);
         this.passwordService = passwordService;
         this.emailService = emailService;

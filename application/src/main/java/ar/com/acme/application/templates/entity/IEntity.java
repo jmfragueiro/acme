@@ -3,23 +3,27 @@ package ar.com.acme.application.templates.entity;
 import java.time.LocalDateTime;
 
 /**
- * Esta interface representa el ultimo escalon predefinido por el framework ad-hoc, para las entidades
- * que pueden ser representadas dentro del sistema. Se utiliza basicamente con fines de abstraccion y
- * permite agregar los ultimos mensajes aceptados por la jerarquia.
+ * <p>Esta interface representa el comportamiento deseable para el último escalón definido por
+ * este diseño ad-hoc para la aplicación: el de las entidades del modelo. Se espera se utilize
+ * basicamente con fines de abstraccion y permite agregar los ultimos mensajes aceptados por
+ * la jerarquia.</p>
+ *
+ * <p>Toda entidad debe poseer un modo de determinar si una instancia de la misma ya ha sido
+ * 'registrda': es decir que persistirá mas allá de una sesión de acceso a la aplicación, o
+ * bien si unicamente se encuentra instanciada en memoria pero sin capacidad de persistencia
+ * entre sesiones.<p>
  *
  * @param <TKI> El tipo de la clave de identificacion para la entidad
  * @author jmfragueiro
- * @version 20250421
+ * @version 20250505
  */
 public interface IEntity<TKI> {
     /**
-     * Toda entidad persistente debe poseer un modo de determinar si una instancia ya ha sido marcada para
-     * ser persistida o aun se encuentra unicamente en memoria. Es este metodo el encargado de anunciar si la
-     * instancia de la entidad persistente en cuestion se encuentra marcada para ser persistida o no. Recordar
-     * que, bajo ciertas implementaciones, el hecho de que sea marcada para persistirse no significa que
-     * efectivamente lo haya sido.
+     * Es este metodo el encargado de anunciar si la instancia de la entidad en cuestion se
+     * encuentra 'registrada', es decir marcada para ser persistir entre sesiones de acceso
+     * a la aplicación o no.
      *
-     * @returns Retorna false si el objeto ya ha sido persistido, o true si no lo ha sido.
+     * @returns {@code false} si el objeto ya ha sido registrado, o {@code true} si no lo ha sido.
      */
     boolean isNew();
 
@@ -37,27 +41,29 @@ public interface IEntity<TKI> {
 
     /**
      * Este metodo deberia ser capaz de 'desactivar' una instancia de esta entidad y devolver la fecha en la que
-     * dicha desactivacion. Esto implica que, posterior a la invocacion de este metodo, la instancia debe retornar
-     * false al metodo isAlive().
+     * se produce dicha desactivacion. Esto implica que, posterior a la invocacion de este metodo, la instancia
+     * debe retornar {@code false} al método {@code isAlive()}.
      *
-     * @return Retorna la fecha de 'dsactivacion' persitida de la instancia.
+     * @return fecha de 'desactivacion' persitida de la instancia.
      */
     LocalDateTime kill();
 
     /**
-     * Identificador unico (como una clave primaria) para los objetos de una entidad identificable. Todos
-     * los objetos de una entidad identificable deben poseer un identificador único de tipo long int. La
-     * entidad debe establecer un mecanismo automatico de asignacion de ID, de manera de que no existe un
-     * seter para este atributo.
+     * Todos los objetos {@code IEntidad} deben poder ser 'identificables' en el contexto del mecanismo de
+     * registración elegido (por ejemplo el repositorio). Cada implementación debe establecer un mecanismo
+     * automatico de asignacion de este valor de identificación , de manera de que no exista un seter para
+     * este atributo. Este método debe retornar el identificador único para la instancia que recibe el mensaje.
+     *
+     * @return el identificador único para la instancia
      */
     TKI getId();
 
     /**
      * Este metodo deberia ser capaz de devolver la fecha en la que una instancia ha sido 'creada' y ha sido
-     * efectivamente persistida o bien deberia devolver nulo unicamente si la instancia en cuestion no ha sido
-     * persistida (si isNew() retorna true).
+     * efectivamente 'registrada' como tal o bien deberia devolver {@code null} unicamente si la instancia en
+     * cuestion no ha sido aún registrada (si isNew() retorna true).
      *
-     * @return Retorna la fecha de 'creacion' persitida de la instancia o null si es una nueva.
+     * @return Retorna la fecha de 'registración' de la instancia o {@code null} si es una nueva.
      */
     LocalDateTime getCreated();
 

@@ -16,6 +16,14 @@ public class PasswordService implements IPasswordService {
         this.isValidPassword = password -> { return password.matches(properties.getRegexp().get("password")); };
     }
 
+    ///////////////////////////////////////////////////////
+    // PARA GENERAR LAS CLAVES INICIALES PARA PROBAR:    //
+    // (hay que debuggear y parar en la captura de pass  //
+    //  y guardar el pass generado en la base de datos)  //
+    ///////////////////////////////////////////////////////
+    // var passService = new PaswordService();           //
+    // var pass = passService.encode("nuevo_password");  //
+    ///////////////////////////////////////////////////////
     @Override
     public String encode(CharSequence rawPassword) {
         return passwordEncoder.encode(rawPassword);

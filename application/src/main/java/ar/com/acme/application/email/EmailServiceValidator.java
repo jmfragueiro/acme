@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import ar.com.acme.commons.Properties;
 
 @Service
-public class EmailService implements IEmailService {
+public class EmailServiceValidator implements IEmailServiceValidator {
     private final Predicate<String> isValidEmail;
 
-        public EmailService(Properties appProperties) {
+        public EmailServiceValidator(Properties appProperties) {
         this.isValidEmail = email -> { return email.matches(appProperties.getRegexp().get("email")); };
     }
 
