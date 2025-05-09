@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import ar.com.acme.application.password.IPasswordService;
 import ar.com.acme.application.user.User;
+import ar.com.acme.commons.Constants;
+import ar.com.acme.commons.Logging;
 
 public class Principal implements IPrincipal {
     private User user;
@@ -50,7 +52,17 @@ public class Principal implements IPrincipal {
 
     @Override
     public boolean canOperate() {
-        return (user.isAlive() && user.getActive());
+        if (!user.isAlive()) {
+            Logging.info(getClass(), Constants.MSJ_USR_ERR_DELETED);
+            return false;
+        }
+
+        if (!user.getActive()) {
+            Logging.info(getClass(), Constants.MSJ_USR_ERR_USERINACTIVE);
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.acme.adapter.principal.IPrincipal;
 import ar.com.acme.adapter.principal.IPrincipalService;
+import ar.com.acme.bootstrap.auth.AuthenticationModel;
 import ar.com.acme.bootstrap.auth.AuthenticationToken;
 import ar.com.acme.commons.Constants;
 import ar.com.acme.commons.Properties;
@@ -40,17 +41,16 @@ public class BasicAuthenticationType implements IAuthenticationType {
                 throw new JWSException(Constants.MSJ_REQ_ERR_BADREQUESTVALUE);
             }
 
-            String username = request.getParameter(Constants.SYS_CAD_TXTLOGGIN_USER);
-            String password = request.getParameter(Constants.SYS_CAD_TXTLOGGIN_PASS);
-            if (username == null || password == null) {
+            var authModel = AuthenticationModel.fromRequest(request);
+            if (authModel.username() == null || authModel.password() == null) {
                 throw new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL);
             }
 
-            var repoUser = principalService.findByName(username)
+            var repoUser = principalService.findByName(authModel.username())
                                            .orElseThrow(() -> new AuthException(Constants.MSJ_SES_ERR_BADCREDENTIAL));
 
             var authorities = principalService.getAuthorities(repoUser);
 
-            return new AuthenticationToken(repoUser, password, authorities);
+            return new AuthenticationToken(repoUser, authModel.password(), authorities);
         }
 }

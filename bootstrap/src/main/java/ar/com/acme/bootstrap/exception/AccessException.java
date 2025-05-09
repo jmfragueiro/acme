@@ -16,7 +16,7 @@ import ar.com.acme.commons.Constants;
  */
 public class AccessException extends AccessDeniedException {
     public AccessException() {
-        this(Constants.MSJ_USR_ERR_NOACCES);
+        this(Constants.MSJ_SES_ERR_NOACCES);
     }
 
     public AccessException(String mensaje) {

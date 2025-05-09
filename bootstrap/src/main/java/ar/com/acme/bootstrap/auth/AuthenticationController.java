@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDateTime;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ public class AuthenticationController {
     private final IAuthenticationService authenticationService;
     private final ISessionService sessionService;
 
-    @PostMapping(value = Constants.SYS_CAD_LOGGIN_URL, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = Constants.SYS_CAD_LOGGIN_URL, consumes = Constants.SYS_CAD_APP_MIMETYPE_JSON)
     public HttpResponseBody login(HttpServletRequest request) {
         try {
             var authtentication = authenticationService.authenticateFromRequest(request);

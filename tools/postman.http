@@ -1,41 +1,10 @@
-
 POST http://127.0.0.1:8080/auth/login
 Accept: */*
 Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-Authorization: Basic YXItZ292LXBvc2FkYXM6d3N4cG9pNzU=
-
-username=jmfragueiro&password=fito
-
-###
-
-POST http://127.0.0.1:8080/auth/login
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
 
-username=jmfragueiro&password=fito
-
-###
-
-POST http://127.0.0.1:8080/auth/login
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
-
-username=javomilei&password=Hunter2@3!
-
-###
-
-POST http://127.0.0.1:8080/auth/login
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-Authorization: Basic NDM1Zjk5NjgtZjY0My00N2U5LTlkMTU6MjNhNWNiMzYxYjFk
-
-username=lschwegler&password=Damasco004
+{ "username":"jmfragueiro","password":"fito" }
 
 ###
 
@@ -43,7 +12,7 @@ GET http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJhM2UwMDhhZC05MjQ2LTQxNWYtOTJlYi01N2ZhNjIwMmNhZTEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjcyMjE2OSwiZXhwIjoxNzQ2NzIyMzQ5fQ.JQQ3BmxGyuHhz5GPq6NuEvUzAawmUpDqqY1PbhueY3sJSK7z9_jNL-jW7RB9sczU_lDrjETlGyjzcR4_J5tLrw
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
 
 ###
 
@@ -51,14 +20,15 @@ GET http://127.0.0.1:8080/user/b3f2ebd3-4434-47b0-95ed-1a3f48825069
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJkZDU5ODExMS0zMzMwLTQ2ZmQtOGJiYy01MzBiNTI0YThkY2UiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NTk4MjAwMH0.lIdnQp872E021Hq11u3kkqCCfH9_iVIWnKZs28HqPHTv9GWAJ3klTF4ZFTaF_Gu0zC20R6qlY5zpE77u6k5D1Q
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
 
 ###
+
 POST http://127.0.0.1:8080/user
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4YTE1ODFlNC1hMTlhLTQ0M2QtOTEzMi1hNzkzNDc1NjBkMzEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0Njc0MzYwNCwiZXhwIjoxNzQ2NzQzNzg0fQ.7y1055qj8PUAW8dQhvyzZzghIsM2LVAAJGyNR2GQhgKMw_9nJdk9bs_W_62LcBtQQwvEoMT4Ao-9NMpFriJ4Tg
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
 
 {
     "name": "liomessi",
@@ -66,16 +36,77 @@ Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4YTE1OD
     "password": "Hunter2@3!",
     "phones": [
         {
-        "number": "4363178",
-        "citycode": "376",
-        "countrycode": "54"
+            "number": "4363178",
+            "citycode": "376",
+            "countrycode": "54"
         },
         {
-        "number": "4588590",
-        "citycode": "376",
-        "countrycode": "54"
+            "number": "4588590",
+            "citycode": "376",
+            "countrycode": "54"
         }
     ]
+ }
+
+###
+
+POST http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
+
+{
+    "name": "maradona",
+    "email": "diego10@acme.cl",
+    "password": "Pelus@3!",
+    "phones": [
+        {
+            "number": "4399178",
+            "citycode": "11",
+            "countrycode": "54"
+        }
+    ]
+ }
+
+###
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
+
+###
+
+DELETE http://127.0.0.1:8080/user/a30204a8-1fe2-460a-8498-1fe72f76b71a
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
+
+###
+
+GET http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI4N2VhYmQzNi03ZjUxLTRiNzUtOTY0Yy04MWZmZWNkYWJiMjEiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzIxMCwiZXhwIjoxNzQ2ODMzMzkwfQ.IqWBJ3NOKf9GcTS5JKu3mJikSdjr5rYOKwPzwTB6899vfzb8ixO2tr042mfzgsHNpNbZpPuNuJI1YaozTo8Fjw
+
+###
+
+PUT http://127.0.0.1:8080/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlMzA3NGVmNy0xN2NjLTQ3NDQtOTBkMy1lMzM3NzJiZTM4NzUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzQwMywiZXhwIjoxNzQ2ODMzNTgzfQ.03cduwUgFhXIR37DHIOLZ4wNMOZ4hZfhVpQcfkt4mfqa0yTUhcYMW8p1uWMyiJUzPcFclbyM364bsPyfQDpIRw
+
+{
+    "id": "bde5bec7-eebe-4fb2-a737-4ed20004791d",
+    "name": "liomessi22",
+    "email": "liomessi10@acme.cl",
+    "password": "Hunter2@3!",
+    "phones": []
  }
 
 ###
@@ -84,4 +115,6 @@ POST http://127.0.0.1:8080/auth/logout
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiI2MjFmMjA4OC1hNzFkLTQ1YmEtYjc4Zi05NmY2Njk2MDgzNWMiLCJzdWIiOiJqYXZvbWlsZWkiLCJpYXQiOjE3NDY3NDM0NDYsImV4cCI6MTc0Njc0MzYyNn0.syXw_hCsqVixIe2g08Z2BqWbQxAXjfA1YJVhDgiyWb4Dk2HVLZ_-YTOUe9fF87oengpx2SCIQ2sH98uA9e0sYA
+Authorization: Bearer eyJraWQiOiJtYmVzciIsImFsZyI6IkhTNTEyIn0.eyJqdGkiOiJlMzA3NGVmNy0xN2NjLTQ3NDQtOTBkMy1lMzM3NzJiZTM4NzUiLCJzdWIiOiJqbWZyYWd1ZWlybyIsImlhdCI6MTc0NjgzMzQwMywiZXhwIjoxNzQ2ODMzNTgzfQ.03cduwUgFhXIR37DHIOLZ4wNMOZ4hZfhVpQcfkt4mfqa0yTUhcYMW8p1uWMyiJUzPcFclbyM364bsPyfQDpIRw
+
+###
