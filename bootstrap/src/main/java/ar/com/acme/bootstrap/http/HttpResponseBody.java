@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
  * ante errores o mensajes que no sean propios de una Entidad específica solicitada.
  *
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250505
  */
 public record HttpResponseBody(String timestamp,
 							   HttpStatus status,

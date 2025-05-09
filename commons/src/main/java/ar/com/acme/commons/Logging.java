@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
  * Esta clase debe ser utilizada como un wrapper para las operaciones de logging del sistema.
  *
  * @author jmfragueiro
- * @version 20250421
+ * @version 20250505
  */
 public abstract class Logging {
     public static void info(Class<?> clazz, String mensaje) {

@@ -5,7 +5,7 @@ package ar.com.acme.commons;
  * ante errores o mensajes que no sean propios de una Entidad específica solicitada.
  *
  * @author jmfragueiro
- * @version 20200201
+ * @version 20250505
  */
 public record ResponseError(String mensaje) {
 	public static ResponseError of(String mensaje) {

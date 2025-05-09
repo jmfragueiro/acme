@@ -13,7 +13,7 @@ import lombok.Setter;
  * el sistema, de manera de tener encasulada, en una sola clase, todas las cuestiones relativas a estos.
  *
  * @author jmfragueiro
- * @version 20250421
+ * @version 20250505
  */
 @Component
 @ConfigurationProperties(prefix = "application")

@@ -12,12 +12,6 @@ public class JWSException extends MessageException {
                 .concat(Constants.SYS_CAD_CLOSETPE));
     }
 
-    /**
-     * Esta version del contructor permite crear una excepcion con mensaje y con datos extras.
-     *
-     * @param mensaje El mensaje que describe la excepcion.
-     * @param extra   La cadena con datos extras para mostrarInnerLayout en la exepcion
-     */
     public JWSException(String mensaje, String extra) {
         super(mensaje, extra);
     }

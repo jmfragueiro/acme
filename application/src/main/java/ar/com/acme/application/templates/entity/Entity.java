@@ -10,16 +10,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-/**
- * Esta clase abstracta representa el concepto de una Entidad que posee mecanismos que
- * permiten establecer una cierta trazabilidad de los cambios realizados sobre la misma.
- * Para ello se incorporan los atributos de fechas de alta, ultima modificacion y baja.
- * Se espera que toda entidad persistente y administrada de los sistemas creados con el
- * framework sean auditables y por ello hereden e imeplementen efectivmente de esta interfaz.
- *
- * @author jmfragueiro
- * @version 20200201
- */
 @MappedSuperclass
 @Getter
 public abstract class Entity implements IEntity<UUID>, Serializable, Cloneable {

@@ -10,7 +10,7 @@ import java.security.MessageDigest;
  * del sistema, de manera de tener encapsulada, en una sola clase, todas estas utilidades generales.
  *
  * @author jmfragueiro
- * @version 20250421
+ * @version 20250505
  */
 public abstract class Tools {
     /**

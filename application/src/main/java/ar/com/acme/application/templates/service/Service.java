@@ -14,16 +14,6 @@ import ar.com.acme.commons.Constants;
 import ar.com.acme.application.templates.entity.IEntity;
 import ar.com.acme.application.templates.repository.IRepository;
 
-/**
- * Implementación de interfase IServicio para un sistema con JPA-Spring. Esta clase es ademas
- * la que se encuentra encargada de representar al EntityManager que se usa en la aplicacion
- * para el manejo de la persistencia contra una base de datos relacional.
- *
- * @param <U>   El tipo de la entidad servida por el servicio
- * @param <TKI> El tipo de la clave de identificacion para la entidad
- * @author jmfragueiro
- * @version 20250421
- */
 public abstract class Service<U extends IEntity<TKI>, TKI extends Serializable> implements IService<U, TKI> {
     protected final IRepository<U, TKI> repo;
     protected final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();

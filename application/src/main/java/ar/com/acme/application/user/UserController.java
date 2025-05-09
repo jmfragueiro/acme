@@ -17,12 +17,12 @@ public class UserController extends Controller<User, UUID, UserWebInModel, UserW
     }
 
     @Override
-    protected UserWebOutModel toWebOutModel(User source) {
+    public UserWebOutModel toWebOutModel(User source) {
         return UserWebOutModel.fromUser(source);
     }
 
     @Override
-    protected User fromWebInModel(UserWebInModel source) {
+    public User fromWebInModel(UserWebInModel source) {
         return source.toUser((IUserService)getService(), phoneService);
     }
 }
